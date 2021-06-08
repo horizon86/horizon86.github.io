@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>字符串转Unicode，UTF-8，UTF16，UTF32，GBK</title>
+	</head>
+	<body>
+		<script src="codeT.js"></script>
+		<div style="text-align: center;">
+			<h1>字符编码转换</h1>
+			<form name="djcform" id="djc">
+				<label style=" width:100px; display: inline-block; text-align: center;">汉字 </label>
+				<input id="srcChar" type="text" placeholder="你好" />
+				<input id="btnsrcChar" type="button" value="转换" onclick="convClick(this)" />
+
+				<br />
+				<label style=" width:100px; display: inline-block; text-align: center;"> Unicode</label>
+				<input id="ucode" type="text" placeholder="4f60 597d" />
+				<input id="btnucode" type="button" value="转换" onclick="convClick(this)" />
+
+				<br />
+				<label style=" width:100px; display: inline-block; text-align: center;"> UTF-8</label>
+				<input id="u8" type="text" placeholder="e4bda0 e5a5bd" />
+				<input id="btnu8" type="button" value="转换" onclick="convClick(this)" />
+
+				<br />
+				<!-- 
+				
+				<label style =" width:100px; display: inline-block; text-align: center;"> utf-16 BE</label>
+				<input id="u16be" type="text" placeholder="utf-16 BE" />
+				<input id="btnu16be" type="button" value="转换" />
+				
+				<br />
+				<label style =" width:100px; display: inline-block; text-align: center;"> UTF-16 LE</label>
+				<input id="u16le" type="text" placeholder="utf-16 LE" />
+				<input id="btnu16le" type="button" value="转换" />
+				
+				<br />
+				<label style =" width:100px; display: inline-block; text-align: center;"> utf-32 BE</label>
+				<input id="u32be" type="text" placeholder="utf-32 BE" />
+				<input id="btnu32be" type="button" value="转换" />
+				
+				<br />
+				<label style =" width:100px; display: inline-block; text-align: center;"> utf-32 LE</label>
+				<input id="u32le" type="text" placeholder="utf-32 LE" />
+				<input id="btnu32le" type="button" value="转换" />
+				 -->
+			</form>
+		</div>
+
+		<div id="foot" style="width: 50%; text-align: center; margin: auto; padding: 10px;">
+			<p>注意：Unicode和utf-8均只能输入<b> 一个 </b>字符的16进制编码， <b>不要</b> 包含空格</p><p>
+			代码里还有关于utf-16和utf-32的转换，但是不常用就不放出来了</p>
+			<p>很多网站完全不分Unicode和UTF-8，对新手完全是错误的引导。最直观来说，
+			Unicode每个字符用2个字节，UTF-8是变长的，1-4都有。Unicode是字符集，
+			UTF-8是Unicode的一种变长编码方案。</p>
+			<span>参考链接：</span><a href="https://zhuanlan.zhihu.com/p/51202412" target="_blank">https://zhuanlan.zhihu.com/p/51202412</a>
+		</div>
+	</body>
+</html>
