@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>vscode调试参数生成</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>字符编码转换</h1>
+        <form name="djcform" id="djc">
+            <label style=" width:100px; display: inline-block; text-align: center;">cmd </label>
+            <input id="cmd" type="text" placeholder="python -m hello.py --world 1" />
+            <input id="btnCmd" type="button" value="转换" onclick="convClick(this)" />
+
+            <br />
+            <label style=" width:100px; display: inline-block; text-align: center;">args </label>
+            <input id="args" type="text" />
+
+            <br />
+
+        </form>
+    </div>
+    <script>
+        function convClick(obj) {
+            console.log(obj.id);
+            let cmd = djcform.cmd.value;
+            let nargs = cmd.split(" ").filter((item)=>{return item != ''}).map((item) => "\"" + item + "\"")
+
+            djcform.args.value = nargs
+        }
+    </script>
+</body>
+
+</html>
