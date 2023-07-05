@@ -1,4 +1,4 @@
-<html>
+<html lang="zh">
 
 <head>
     <meta charset="utf-8" />
@@ -7,15 +7,16 @@
 
 <body>
     <div style="text-align: center;">
-        <h1>字符编码转换</h1>
+        <h1>vscode调试参数生成</h1>
         <form name="djcform" id="djc">
-            <label style=" width:100px; display: inline-block; text-align: center;">cmd </label>
-            <input id="cmd" type="text" placeholder="python -m hello.py --world 1" />
-            <input id="btnCmd" type="button" value="转换" onclick="convClick(this)" />
+            <label for="cmd" style=" width:100px; display: inline-block; text-align: center;">cmd </label>
+            <input id="cmd" type="text" style="width: 50%; height: 30%;" placeholder="python -m hello.py --world 1" />
+            <input id="btnCmd" type="button" value="转换" title="点击转换" onclick="convClick(this)" />
 
             <br />
-            <label style=" width:100px; display: inline-block; text-align: center;">args </label>
-            <input id="args" type="text" />
+            <div style="margin-bottom: 50px;"></div>
+            <label for="args" style=" width:100px; display: inline-block; text-align: center;">args </label>
+            <textarea id="args" type="text" style="width: 50%; height: 30%;" ></textarea>
 
             <br />
 
@@ -27,7 +28,18 @@
             let cmd = djcform.cmd.value;
             let nargs = cmd.split(" ").filter((item)=>{return item != ''}).map((item) => "\"" + item + "\"")
 
-            djcform.args.value = nargs
+            // 格式化
+            let rows = 1
+            for (let index = 0; index < nargs.length; index++) {
+                const element = nargs[index];
+                if (element.indexOf('--') != -1) {
+                    nargs[index] = "\n    " + nargs[index]
+                }
+                rows++
+            }
+
+            djcform.args.value = nargs.join(',')
+            djcform.args.rows=String(rows)
         }
     </script>
 </body>
