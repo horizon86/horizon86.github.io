@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文用于记录Python学习过程中的笔记，因为不常使用python，每次想写py都得先查半天百度，这里记录一下，顺便正经学一学，不然每次想写都费半天劲。 先来一点无关内容，vscode的python插件智能提示很慢的话，把Language Server改成Pylance，不要用Jedi。来源：vscode写python的自动提示功能太慢，如何改善？ - 真的很厉害的回答 - 知乎 函数函数的定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记">
+<meta property="og:url" content="https://jcdu.top/2021/08/20/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文用于记录Python学习过程中的笔记，因为不常使用python，每次想写py都得先查半天百度，这里记录一下，顺便正经学一学，不然每次想写都费半天劲。 先来一点无关内容，vscode的python插件智能提示很慢的话，把Language Server改成Pylance，不要用Jedi。来源：vscode写python的自动提示功能太慢，如何改善？ - 真的很厉害的回答 - 知乎 函数函数的定义">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-20T13:18:00.000Z">
+<meta property="article:modified_time" content="2024-06-15T08:33:49.576Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Python学习笔记 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Python学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-20 21:18" pubdate>
+          2021年8月20日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Python学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本文用于记录Python学习过程中的笔记，因为不常使用python，每次想写py都得先查半天百度，这里记录一下，顺便正经学一学，不然每次想写都费半天劲。</p>
+<p>先来一点无关内容，vscode的python插件智能提示很慢的话，把Language Server改成<code>Pylance</code>，不要用<code>Jedi</code>。来源：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/328152701/answer/1710006356">vscode写python的自动提示功能太慢，如何改善？ - 真的很厉害的回答 - 知乎</a></p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>函数的定义</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">arg1: <span class="hljs-built_in">str</span>, arg2: <span class="hljs-built_in">int</span>, arg3 = <span class="hljs-number">100</span></span>):<br>    <span class="hljs-keyword">pass</span><br><span class="hljs-comment"># 或者不指明函数参数的类型也可以</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">arg1, arg2, arg3 = <span class="hljs-number">100</span></span>):<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>可以用<code>add.__annotations__</code>获取函数的参数类型，上述第一种写法就是添加了<code>__annotations__</code>信息。详见：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/97625124">不知道python函数参数的类型怎么办？ - 知乎</a></p>
+<p>调用函数的办法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">add(<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-number">2</span>)<br>add(<span class="hljs-string">&quot;1&quot;</span>,arg2=<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+<p>其他参数类型：</p>
+<ol>
+<li><p>变长参数：前缀加*</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">*args0,  arg2: <span class="hljs-built_in">int</span>, arg3 = <span class="hljs-number">100</span></span>):<br>    <span class="hljs-keyword">pass</span><br>add(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,arg2=<span class="hljs-number">5</span>)<br></code></pre></td></tr></table></figure>
+<p>args0的类型实际上是<strong>元组</strong>，里面的元素可以有任意个。上述调用中，<code>args0 = (1,2,3,4)</code>，arg2必须用参数名字传参（想想也知道肯定的）。如果实参是一个元组或者列表，想把它解包成n个元素传进去，可以在实参前加*，如下例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">*args0</span>): <span class="hljs-comment">#函数接收n个参数，并且会被打包成一个元组传进来</span><br>	<span class="hljs-keyword">pass</span><br><br>par = (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>)<br>add(*par) <span class="hljs-comment">#这样就把par解包后传进去，等价于 add(1,2,3,4)</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>可变关键字参数，前缀用**表示，实际上就是传进去一堆key-value对。参数被保存为<strong>字典</strong>类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">**args</span>):<br>    <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> args.items():<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s=%s&quot;</span> % (key, value))<br>add(a=<span class="hljs-number">1</span>,b=<span class="hljs-number">2</span>,c=<span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<p>上述会输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a=<span class="hljs-number">1</span><br>b=<span class="hljs-number">2</span><br>c=<span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<p>这种传参万万不可传进去一个字典对象，也就是下面这种写法是错的：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ada">par = &#123;<br>    <span class="hljs-string">&#x27;a&#x27;</span> : 1,<br>    <span class="hljs-string">&#x27;b&#x27;</span> : 2,<br>    <span class="hljs-string">&#x27;c&#x27;</span> : 3<br>&#125;<br>add(par)<br></code></pre></td></tr></table></figure>
+<p>但是，可以在实参前加**将字典解包传进去，如下例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">**kwargs</span>):<br>	<span class="hljs-keyword">pass</span><br><br>add(**par) <span class="hljs-comment"># 等价于add(a=1,b=2,c=3)</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="星号运算符的其他用法"><a href="#星号运算符的其他用法" class="headerlink" title="星号运算符的其他用法"></a>星号运算符的其他用法</h1><ol>
+<li>赋值语句中作为可变长变量标志<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a, *b = <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>a,b<br>(<span class="hljs-number">0</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>*a, b = <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>a, b<br>([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-number">4</span>)<br></code></pre></td></tr></table></figure>
+当星号出现在赋值符号左边时，必须保证有一个非星号变量，否则，星号的出现没有意义，会报错。</li>
+<li>在除函数参数语境外的其他语境下对可迭代对象进行解包</li>
+</ol>
+<p>在python3.5之后，可以在<strong>元组、列表、集合和字典内部</strong>进行对可迭代参数直接解包，注意，必须是这四种内部。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">a=*<span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>),<br>b=*<span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>),<span class="hljs-number">3</span><br>c=[*<span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>)]<br>d=&#123;*<span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>)&#125;<br>e=&#123;**&#123;<span class="hljs-string">&#x27;y&#x27;</span>:<span class="hljs-number">1</span>&#125;&#125;<br><br><span class="hljs-built_in">print</span>(a) <span class="hljs-comment"># output: (0,1,2)</span><br><span class="hljs-built_in">print</span>(b) <span class="hljs-comment"># output: (0,1,2,3)</span><br><span class="hljs-built_in">print</span>(c) <span class="hljs-comment"># output: [0,1,2]</span><br><span class="hljs-built_in">print</span>(d) <span class="hljs-comment"># output: &#123;0,1,2&#125;</span><br><span class="hljs-built_in">print</span>(e) <span class="hljs-comment"># output: &#123;&#x27;y&#x27;:1&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>一些错误的写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">a = *<span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>) <span class="hljs-comment"># 右边不是tuple、list、set、dict的任何之一内部</span><br></code></pre></td></tr></table></figure>
+<p>此部分引用自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/S_o_l_o_n/article/details/102823490">Python星号表达式(*)用法详解_S_o_l_o_n的博客-CSDN博客_python星号表达式</a></p>
+<h1 id="元组和列表"><a href="#元组和列表" class="headerlink" title="元组和列表"></a>元组和列表</h1><p>元组初始化后就是只读的，列表是可以更改的。<br>元组用圆括号，列表用方括号。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>) <span class="hljs-comment">#元组</span><br>b= [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>] <span class="hljs-comment"># 列表</span><br></code></pre></td></tr></table></figure>
+<p>常用方法：</p>
+<ul>
+<li>len(list) len(tuple)</li>
+<li>list.append(param)</li>
+</ul>
+<p>其他方法就百度搜索吧</p>
+<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">dict</span> = &#123;<br>  <span class="hljs-string">&#x27;Name&#x27;</span>: <span class="hljs-string">&#x27;Zara&#x27;</span>, <br>  <span class="hljs-string">&#x27;Age&#x27;</span>: <span class="hljs-number">7</span>, <br>  <span class="hljs-string">&#x27;Class&#x27;</span>: <span class="hljs-string">&#x27;First&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>访问dict中的元素，没有该key则会抛出异常：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-built_in">dict</span>[<span class="hljs-string">&#x27;Name&#x27;</span>]<br>a = <span class="hljs-built_in">dict</span>[<span class="hljs-string">&#x27;grade&#x27;</span>] <span class="hljs-comment"># 抛出异常</span><br></code></pre></td></tr></table></figure>
+<p>给dict中的元素赋值，有则改之，无则添加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">dict</span>[<span class="hljs-string">&#x27;Name&#x27;</span>] = <span class="hljs-string">&#x27;Bob&#x27;</span> <span class="hljs-comment"># 修改Name项</span><br><span class="hljs-built_in">dict</span>[<span class="hljs-string">&#x27;grade&#x27;</span>] = <span class="hljs-number">100</span> <span class="hljs-comment"># 添加新项</span><br></code></pre></td></tr></table></figure>
+<p>删除一个键：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">del</span> <span class="hljs-built_in">dict</span>[<span class="hljs-string">&#x27;Name&#x27;</span>]<br></code></pre></td></tr></table></figure>
+<p>删除整个字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">del</span> <span class="hljs-built_in">dict</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h1><p><strong>字典遍历：</strong><br>默认遍历key</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">dic = &#123;<span class="hljs-string">&#x27;a&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;b&#x27;</span>: <span class="hljs-number">2</span>&#125;<br><span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> dic:<br>	<span class="hljs-built_in">print</span>(key)<br></code></pre></td></tr></table></figure>
+<p>遍历key和value</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> k,v <span class="hljs-keyword">in</span> dic.items():<br>	<span class="hljs-built_in">print</span>(k,v)<br></code></pre></td></tr></table></figure>
+<p><strong>range</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 输出 [0,10)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>	<span class="hljs-built_in">print</span>(i)<br><span class="hljs-comment"># 输出[10,20)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>):<br>	<span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+<p><strong>用for in快速生成list</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>)]<br>a = [i*<span class="hljs-number">2</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>)]<br>a = [<span class="hljs-built_in">str</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>)]<br>a = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>) <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
+
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>	<span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> ErrorType1:<br>	<span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> ErrorType2:<br>	<span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> ErrorType3 <span class="hljs-keyword">as</span> e:<br>	<span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span>:<br>	<span class="hljs-keyword">pass</span><br><span class="hljs-keyword">else</span>:<br>	<span class="hljs-keyword">pass</span> <span class="hljs-comment">#未发生异常则执行该分支</span><br><span class="hljs-keyword">finally</span>:<br>	<span class="hljs-keyword">pass</span> <span class="hljs-comment"># 无论是否异常都执行该分支</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="恶心人的import"><a href="#恶心人的import" class="headerlink" title="恶心人的import"></a>恶心人的import</h1><p>太麻烦了，困死了，贴两个链接有空再研究</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/348559778">面试官一个小时逼疯面试者》之聊聊Python Import System？ - 没有50CM手臂的文章 - 知乎</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/63143493">Python中import的用法 - 门书生的文章 - 知乎</a></p>
+<h1 id="常用函数技巧（未完待续）"><a href="#常用函数技巧（未完待续）" class="headerlink" title="常用函数技巧（未完待续）"></a>常用函数技巧（未完待续）</h1><p>字符串转数字<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuxiangli/p/6046800.html">https://www.cnblogs.com/wuxiangli/p/6046800.html</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">int</span>(x [,base ])         <span class="hljs-comment"># 将字符串x转换为一个整数</span><br></code></pre></td></tr></table></figure>
+<p>字符串格式化<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/penphy/p/10028546.html">python基础_格式化输出（%用法和format用法） - Penphy - 博客园</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;this is &#123;0&#125; and &#123;1&#125; with &#123;0&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">&#x27;ok&#x27;</span>,<span class="hljs-string">&#x27;nok&#x27;</span>)<br><span class="hljs-string">&#x27;this is %d and %s with %d&#x27;</span> % (<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;age&#x27;</span>,<span class="hljs-number">200</span>)<br></code></pre></td></tr></table></figure>
+
+<p>enumerate函数<br>同时获得列表的数据元素和下表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>]<br><span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(a):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;i = &#123;0&#125; v = &#123;1&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(i, v))<br><br><span class="hljs-comment"># 输出结果：</span><br>i = <span class="hljs-number">0</span> v = a<br>i = <span class="hljs-number">1</span> v = c<br>i = <span class="hljs-number">2</span> v = b<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">enumerate</span>(a)))<br><br><span class="hljs-comment"># 输出结果：</span><br>[(<span class="hljs-number">0</span>, <span class="hljs-string">&#x27;a&#x27;</span>), (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;c&#x27;</span>), (<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;b&#x27;</span>)]<br></code></pre></td></tr></table></figure>
+
+<p>time函数：<br>详见：<a target="_blank" rel="noopener" href="https://www.runoob.com/note/28072">https://www.runoob.com/note/28072</a></p>
+<h1 id="各种骚操作"><a href="#各种骚操作" class="headerlink" title="各种骚操作"></a>各种骚操作</h1><p>函数有个<code>__doc__</code>属性，是字符串，叫docString，就是函数的注释。<br>装饰器：用@开头的类和方法。详见：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/python-func-decorators.html">https://www.runoob.com/w3cnote/python-func-decorators.html</a></p>
+<p>最近发现个查各种文档的好软件：Zeal，用qt写的。macos有dash，但是无windows版。<br>dash官网：<a target="_blank" rel="noopener" href="https://kapeli.com/dash">https://kapeli.com/dash</a><br>zeal官网：<a target="_blank" rel="noopener" href="https://zealdocs.org/">https://zealdocs.org</a><br>能查python、pandas、sql…..</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Python学习笔记</div>
+      <div>https://jcdu.top/2021/08/20/Python学习笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/24/c++%20%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8(&amp;&amp;)%E5%92%8C%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8(&amp;)/" title="c++ 右值引用(&amp;&amp;)和左值引用(&amp;)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">c++ 右值引用(&amp;&amp;)和左值引用(&amp;)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/20/c++%20vector%E7%94%A8%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%8E%9F%E7%90%86/" title="c++ vector用花括号初始化的原理">
+                        <span class="hidden-mobile">c++ vector用花括号初始化的原理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

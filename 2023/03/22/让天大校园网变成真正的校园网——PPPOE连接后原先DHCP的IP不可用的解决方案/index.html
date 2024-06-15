@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="20230819更新最近tju校园网升级，已经无需拨号了，插网线就能上网，十分不错。并且，网段也发生了变化。有线网给172.23.128.0&#x2F;17，wifi给172.18.128.0&#x2F;17.但是这个操作有个很阴间的地方，在宿舍和实验室有线网给同一个网段，但是却无法互相访问；如果是在实验室，同一个网段是可以互相访问的，感觉是划分了vlan，导致同一个子网在不同物理区域也无法互相访">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案">
+<meta property="og:url" content="https://jcdu.top/2023/03/22/%E8%AE%A9%E5%A4%A9%E5%A4%A7%E6%A0%A1%E5%9B%AD%E7%BD%91%E5%8F%98%E6%88%90%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%A0%A1%E5%9B%AD%E7%BD%91%E2%80%94%E2%80%94PPPOE%E8%BF%9E%E6%8E%A5%E5%90%8E%E5%8E%9F%E5%85%88DHCP%E7%9A%84IP%E4%B8%8D%E5%8F%AF%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="20230819更新最近tju校园网升级，已经无需拨号了，插网线就能上网，十分不错。并且，网段也发生了变化。有线网给172.23.128.0&#x2F;17，wifi给172.18.128.0&#x2F;17.但是这个操作有个很阴间的地方，在宿舍和实验室有线网给同一个网段，但是却无法互相访问；如果是在实验室，同一个网段是可以互相访问的，感觉是划分了vlan，导致同一个子网在不同物理区域也无法互相访">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-22T12:49:00.000Z">
+<meta property="article:modified_time" content="2024-06-15T08:31:34.842Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-22 20:49" pubdate>
+          2023年3月22日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="20230819更新"><a href="#20230819更新" class="headerlink" title="20230819更新"></a>20230819更新</h1><p>最近tju校园网升级，已经无需拨号了，插网线就能上网，十分不错。并且，网段也发生了变化。有线网给172.23.128.0&#x2F;17，wifi给172.18.128.0&#x2F;17.但是这个操作有个很阴间的地方，在宿舍和实验室有线网给同一个网段，但是却无法互相访问；如果是在实验室，同一个网段是可以互相访问的，感觉是划分了vlan，导致同一个子网在不同物理区域也无法互相访问。</p>
+<p>由于默认的访问一个子网的路由是on-link，也就是不走网关的，直接arp协议走交换机。所以需要设置路由规则才行。</p>
+<p>windows（管理员）：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">route</span> change <span class="hljs-number">172.23.128.0</span> mask <span class="hljs-number">255.255.128.0</span> <span class="hljs-number">172.23.128.1</span><br></code></pre></td></tr></table></figure>
+
+<p>linux：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ip route add 172.23.128.0/17 via 172.23.128.1<br></code></pre></td></tr></table></figure>
+
+<h1 id="以下原文"><a href="#以下原文" class="headerlink" title="以下原文"></a>以下原文</h1><p>首先说明我的场景：<br>一台电脑安装windows，一台安装linux。两台电脑都连接校园网，并且插网线，拨号。这样获取了两个IP：一个是校园网DHCP的IP，一个是PPPOE的IP。<br>另外，windows电脑还有一个wifi网卡，也可以获得一个IP。<br>这几个IP的前缀分别是：有线网DHCP：<code>172.24.*.*</code>，PPPOE宽带拨号：<code>172.26.*.*</code>，wifi：<code>172.23.*.*</code><br>连接PPPOE后会把默认路由设置为指向PPPOE接口，导致DHCP得到的IP几乎处于废止状态，发出去连接不使用它，给它发的传入连接也会被丢弃。<br>这两个网络接口分别是：eno1和ppp(ifconfig可以看到)</p>
+<p>以下的所有前提是：假定校园网的路由器本身是正确的，有线、宽带、无线都可以正确被路由，本身没有做任何网络切割。</p>
+<p>为了解决这些问题<br>总共分为这么几种情况：</p>
+<ol>
+<li>让linux的dhcp的ip可以被连接<br><a target="_blank" rel="noopener" href="https://support.huaweicloud.com/trouble-ecs/ecs_trouble_0307.html">https://support.huaweicloud.com/trouble-ecs/ecs_trouble_0307.html</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/iproute2/rt_tables<br>添加：32000 djc<br>sudo ip route add default via 172.24.64.1 dev eno1 table djc<br>sudo ip rule add from 172.24.67.11 lookup djc prio 32000<br><span class="hljs-comment"># sudo ip rule add from $(ip -j -4 addr show eno1 | jq -r &#x27;.[0].addr_info[0].local&#x27;) lookup djc prio 32000</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>简洁版：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ip route add default via 172.24.64.1 dev eno1 table djc<br>sudo ip rule add from $(ip -j -4 addr show eno1 | jq -r <span class="hljs-string">&#x27;.[0].addr_info[0].local&#x27;</span>) lookup djc prio 32000<br></code></pre></td></tr></table></figure>
+<p>让来自不同的网卡的数据包查阅不同的路由表，这样，就不会出现收到来自非默认接口(PPP)的数据包，但是从默认接口(eno1)发出去响应包，导致对方无法接收的情况。</p>
+<p>此时，在windows发起ssh连接，连接linux，使用的是windows的PPPOE接口。同时linux ping不通windows的有线网IP和无线网IP，只能ping宽带IP。<br>原因就是：发出去的ping数据包到达windows网卡后，会从windows的宽带网卡发出响应包！这不正确！会被丢弃。应该是哪个网卡收到就从哪个网卡发送响应包！这个问题在linux下面可以让每个网卡使用自己的路由表来解决，但是windows没有这个功能！</p>
+<p>所以只能取舍一下，使用一个略微阴间的解决方案：windows上设置路由，让去往linux主机的数据包走DHCP网卡，而不是PPPOE！这样windows连接linux主机也会走有线网卡而不是默认的PPPOE。<br>2. 使用dhcp的ip发起传出连接<br>但是，windows的路由设置没有不同网卡使用不同的路由表的功能，这样就会出现：外部发送到非默认网卡的数据包，从默认网卡发送了响应。一个尴尬的解决办法是，添加一条路由，让目的地是外部的ip路由到DHCP。<br>代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">route add 172.24.0.0 mask 255.255.0.0 172.24.8.1 <span class="hljs-keyword">if</span> 16<br>route add 172.26.0.0 mask 255.255.0.0 172.24.8.1 <span class="hljs-keyword">if</span> 16<br></code></pre></td></tr></table></figure>
+<p>这样，让去往172.24.0.0&#x2F;16和172.26.0.0&#x2F;16的数据包网关是172.24.8.1，接口是有线网卡。这样linux的两块网卡就可以互相ping通windows的两块网卡了。</p>
+<p>这里有点不理解的问题：linux的默认路由是走PPPOE(172.26.x.x)，从这里访问windows的有线网卡和PPPOE接口，响应数据包都会通过172.24.x.x发送出去。linux访问windows的pppoe，数据包来自接口pppoe，但是响应包从有线网卡接口发送出去，仍然能正常工作。感觉是把两个接口当成了一个接口在用？或者说windows的rp_filter机制是，PPPOE的响应数据包走物理网卡不会被丢弃，物理网卡的响应数据包走PPPOE会被丢弃。都是猜测。</p>
+<p>如果需要让linux ping windows的wifi网卡，按理说那么就要相对应的更改上述路由的网关为wifi的网关。<br>如果想让来自别人wifi的可以ping通有线网卡，则需要添加一条：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">route add 172.23.0.0 mask 255.255.0.0 172.24.8.1 <span class="hljs-keyword">if</span> 16<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案</div>
+      <div>https://jcdu.top/2023/03/22/让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/24/iptables%E8%A7%84%E5%88%99%E6%8C%81%E4%B9%85%E5%8C%96/" title="iptables规则持久化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">iptables规则持久化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/" title="可以建立TCP连接但是无法ping通？windows设置">
+                        <span class="hidden-mobile">可以建立TCP连接但是无法ping通？windows设置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

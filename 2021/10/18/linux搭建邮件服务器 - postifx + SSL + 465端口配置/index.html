@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="整体参考：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;chris-cp&#x2F;p&#x2F;4843407.html建议先看上文，照着配置完再看本文。关于25端口被封无法发邮件的解决办法在本文后半部分。 做几点补充：  &#x2F;etc&#x2F;dovecot&#x2F;conf.d&#x2F;10-ssl.conf中把 ssl &#x3D; required改成ssl &#x3D; no 注意设置&#x2F;etc&#x2F;postfix&#x2F;main.cf中的mynetworks时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux搭建邮件服务器 - postifx + SSL + 465端口配置">
+<meta property="og:url" content="https://jcdu.top/2021/10/18/linux%E6%90%AD%E5%BB%BA%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20-%20postifx%20+%20SSL%20+%20465%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="整体参考：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;chris-cp&#x2F;p&#x2F;4843407.html建议先看上文，照着配置完再看本文。关于25端口被封无法发邮件的解决办法在本文后半部分。 做几点补充：  &#x2F;etc&#x2F;dovecot&#x2F;conf.d&#x2F;10-ssl.conf中把 ssl &#x3D; required改成ssl &#x3D; no 注意设置&#x2F;etc&#x2F;postfix&#x2F;main.cf中的mynetworks时">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-18T03:40:00.000Z">
+<meta property="article:modified_time" content="2024-06-15T08:33:17.047Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>linux搭建邮件服务器 - postifx + SSL + 465端口配置 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="linux搭建邮件服务器 - postifx + SSL + 465端口配置"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-10-18 11:40" pubdate>
+          2021年10月18日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">linux搭建邮件服务器 - postifx + SSL + 465端口配置</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>整体参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chris-cp/p/4843407.html">https://www.cnblogs.com/chris-cp/p/4843407.html</a><br>建议先看上文，照着配置完再看本文。关于25端口被封无法发邮件的解决办法在本文后半部分。</p>
+<p>做几点补充：</p>
+<ol>
+<li><code>/etc/dovecot/conf.d/10-ssl.conf</code>中把 <code>ssl = required</code>改成<code>ssl = no</code></li>
+<li>注意设置<code>/etc/postfix/main.cf</code>中的<code>mynetworks</code>时，注意本地子网的IP格式，比如172.21.0.1&#x2F;28就是错的，要写成172.21.0.0&#x2F;28。<a target="_blank" rel="noopener" href="https://www.sojson.com/convert/subnetmask.html">网段计算器</a></li>
+</ol>
+<p>安全组开放25,110,143端口</p>
+<p>常用命令：<br>查看邮件队列</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">postqueue</span> -p <span class="hljs-comment"># 另一个相似命令：mailq</span><br></code></pre></td></tr></table></figure>
+<p>查看日志：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">systemctl status postfix<br><span class="hljs-keyword">journalctl </span>-u postfix<br><span class="hljs-comment"># 下面这个查看的日志详细</span><br><span class="hljs-keyword">journalctl </span>-u postfix@-<br></code></pre></td></tr></table></figure>
+<p>如果你只图能收邮件，不需要往外发邮件的话，到这里已经可以结束了。</p>
+<h2 id="解决云服务器封了25端口导致的不能发送邮件的问题"><a href="#解决云服务器封了25端口导致的不能发送邮件的问题" class="headerlink" title="解决云服务器封了25端口导致的不能发送邮件的问题"></a>解决云服务器封了25端口导致的不能发送邮件的问题</h2><p>网上说开放465端口，用SSL，我照着<a target="_blank" rel="noopener" href="https://blog.csdn.net/Jesus_loves_me/article/details/89202759">postfix+dovecot+SSL 搭建邮件服务器</a>做了，但是发送邮件一直还是用25端口。</p>
+<p>最后看了半天官方的文档，升级到了postfix3，按照官方给的说明捣鼓了半天终于是解决了。接下来是正文。</p>
+<p>本文提供两种方法，一种是设置transport_maps，对特定地址的邮件指定端口，另一种是用iptables把25端口NAT到465端口。第一种方法测试后不太现实，推荐第二种方法。</p>
+<h3 id="1-安装postfix3"><a href="#1-安装postfix3" class="headerlink" title="1. 安装postfix3"></a>1. 安装postfix3</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl stop postfix<br>yum remove postfix<br>yum install https://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/postfix3-3.6.2-1.gf.el7.x86_64.rpm<br></code></pre></td></tr></table></figure>
+<p>注意，我是Centos 7，如果你是Centos8，请使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install https://mirror.ghettoforge.org/distributions/gf/el/8/plus/x86_64/postfix3-3.6.2-1.gf.el8.x86_64.rpm<br></code></pre></td></tr></table></figure>
+<p>如果有版本更新，上面链接失效了，自己去网站看下最新版链接。</p>
+<h3 id="2-配置postfix-client-tls"><a href="#2-配置postfix-client-tls" class="headerlink" title="2. 配置postfix client tls"></a>2. 配置postfix client tls</h3><blockquote>
+<p>这里科普一点小知识，postfix分为client和server，client是往外发邮件的，server是接收邮件的。我们发邮件要用465，所以设置的是client，配置项以<code>smtp_</code>开头。<code>smtpd_</code>是服务器配置。</p>
+</blockquote>
+<p>先跟着上文中提到的<a target="_blank" rel="noopener" href="https://blog.csdn.net/Jesus_loves_me/article/details/89202759">postfix+dovecot+SSL 搭建邮件服务器</a>生成SSL证书和key，并配置好smtp-server端。<br>上述操作后部分配置如下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># /etc/dovecot/conf.d/10-ssl.conf</span><br><span class="hljs-attr">ssl</span> = <span class="hljs-literal">yes</span><br><span class="hljs-attr">ssl_cert</span> = &lt;/etc/pki/tls/certs/server.crt<br><span class="hljs-attr">ssl_key</span> = &lt;/etc/pki/tls/certs/server.key<br><br><span class="hljs-comment"># /etc/postfix/main.cf</span><br><span class="hljs-attr">smtpd_use_tls</span> = <span class="hljs-literal">yes</span><br><span class="hljs-attr">smtpd_tls_cert_file</span> = /etc/pki/tls/certs/server.crt<br><span class="hljs-attr">smtpd_tls_key_file</span> = /etc/pki/tls/certs/server.key<br><span class="hljs-attr">smtpd_tls_session_cache_database</span> = btree:/etc/postfix/smtpd_scache<br></code></pre></td></tr></table></figure>
+
+<p>到这里，在邮件客户端开启SSL收件应该已经不成问题，但是还无法发邮件。<br>然后参看官网的指导：<br><a target="_blank" rel="noopener" href="http://www.postfix.org/TLS_README.html#quick-client">http://www.postfix.org/TLS_README.html#quick-client</a><br><a target="_blank" rel="noopener" href="http://www.postfix.org/TLS_README.html#client_smtps">http://www.postfix.org/TLS_README.html#client_smtps</a><br>先来自动生成tls client端的配置项。只有tls配置是默认时此命令才有效，否则不会更改配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">postfix tls enable-client<br></code></pre></td></tr></table></figure>
+<p>执行结束后<code>/etc/postfix/main.cf</code>中应当添加了</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">smtp_tls_session_cache_database</span> = btree:/var/lib/postfix/smtp_scache<br><span class="hljs-attr">smtp_tls_security_level</span> = may<br><span class="hljs-attr">tls_random_source</span> = dev:/dev/urandom<br><span class="hljs-attr">smtp_tls_loglevel</span> = <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="3-方法一、设置transport-maps-走465端口"><a href="#3-方法一、设置transport-maps-走465端口" class="headerlink" title="3. 方法一、设置transport_maps 走465端口"></a>3. 方法一、设置transport_maps 走465端口</h3><p>根据官网的说明：</p>
+<blockquote>
+<h1 id="Postfix-≥-3-0-Sending-all-remote-mail-to-an-SMTPS-server"><a href="#Postfix-≥-3-0-Sending-all-remote-mail-to-an-SMTPS-server" class="headerlink" title="Postfix ≥ 3.0: Sending all remote mail to an SMTPS server"></a>Postfix ≥ 3.0: Sending all remote mail to an SMTPS server</h1><p>The first example will send all remote mail over SMTPS through a provider’s server called “mail.example.com”:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs prolog">/etc/postfix/main.cf:<br>    # <span class="hljs-symbol">Client</span>-side <span class="hljs-symbol">SMTPS</span> requires <span class="hljs-string">&quot;encrypt&quot;</span> or stronger.<br>    smtp_tls_security_level = encrypt<br>    smtp_tls_wrappermode = yes<br>    # <span class="hljs-symbol">The</span> [] suppress <span class="hljs-symbol">MX</span> lookups.<br>    relayhost = [mail.example.com]:<span class="hljs-number">465</span><br></code></pre></td></tr></table></figure>
+<p>Use <code>postfix reload</code> to make the change effective.</p>
+</blockquote>
+<blockquote>
+<p>See SOHO_README for additional information about SASL authentication.</p>
+<h1 id="Postfix-≥-3-0-Sending-only-mail-for-a-specific-destination-via-SMTPS"><a href="#Postfix-≥-3-0-Sending-only-mail-for-a-specific-destination-via-SMTPS" class="headerlink" title="Postfix ≥ 3.0: Sending only mail for a specific destination via SMTPS"></a>Postfix ≥ 3.0: Sending only mail for a specific destination via SMTPS</h1><p>The second example will send only mail for “example.com” via SMTPS. This time, Postfix uses a transport map to deliver only mail for “example.com” via SMTPS:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-regexp">/etc/</span><span class="hljs-keyword">postfix</span><span class="hljs-operator">/</span>main.cf:<br>    transport_maps <span class="hljs-operator">=</span> hash:<span class="hljs-regexp">/etc/</span><span class="hljs-keyword">postfix</span><span class="hljs-operator">/</span>transport<br></code></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">/etc/<span class="hljs-built_in">postfix</span>/transport:<br>    <span class="hljs-built_in">example</span>.com  relay-smtps:<span class="hljs-built_in">example</span>.com:<span class="hljs-number">465</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">/etc/postfix/master.cf:<br>    relay-smtps  unix  -       -       n       -       -       smtp<br>        # Client-side SMTPS requires <span class="hljs-string">&quot;encrypt&quot;</span> <span class="hljs-keyword">or</span> stronger.<br>        -o <span class="hljs-attribute">smtp_tls_security_level</span>=encrypt<br>        -o <span class="hljs-attribute">smtp_tls_wrappermode</span>=<span class="hljs-literal">yes</span><br></code></pre></td></tr></table></figure>
+<p>Use “postmap hash:&#x2F;etc&#x2F;postfix&#x2F;transport” and “postfix reload” to make the change effective.</p>
+<p>See SOHO_README for additional information about SASL authentication.</p>
+</blockquote>
+<p>提供了两种方法：</p>
+<ol>
+<li>所有的外发邮件全部发送到一个特定的smtps服务器</li>
+<li>根据不同的邮件地址转发到不同的smtps服务器</li>
+</ol>
+<p>我使用了我校校园邮箱（网易的企业邮箱）进行测试，（很遗憾QQ似乎没有开465端口）。经过测试，发现方法一会被当成垃圾邮件，而且显然不适用我们现在的情况（毕竟你不可能拿网易的服务器给别的邮箱做中转），方法二正常发送。<br>PS. 建议先用telnet看下你的目的邮箱服务器开了哪个端口，别压根没开465…</p>
+<h4 id="获取邮箱的交换服务器域名，即MX记录。"><a href="#获取邮箱的交换服务器域名，即MX记录。" class="headerlink" title="获取邮箱的交换服务器域名，即MX记录。"></a>获取邮箱的交换服务器域名，即MX记录。</h4><p>假定我的校园邮箱是<code>abcabcabc@xyz.edu.cn</code>，查询MX记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nslookup -qt=MX xyz.edu.cn<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">xyz<span class="hljs-selector-class">.edu</span><span class="hljs-selector-class">.cn</span>      MX preference = <span class="hljs-number">10</span>, mail exchanger = hzmx02<span class="hljs-selector-class">.mxmail</span><span class="hljs-selector-class">.netease</span><span class="hljs-selector-class">.com</span><br>xyz<span class="hljs-selector-class">.edu</span><span class="hljs-selector-class">.cn</span>      MX preference = <span class="hljs-number">5</span>, mail exchanger = hzmx01<span class="hljs-selector-class">.mxmail</span><span class="hljs-selector-class">.netease</span><span class="hljs-selector-class">.com</span><br>xyz<span class="hljs-selector-class">.edu</span><span class="hljs-selector-class">.cn</span>      MX preference = <span class="hljs-number">15</span>, mail exchanger = mxhm<span class="hljs-selector-class">.qiye</span>.<span class="hljs-number">163</span>.com<br></code></pre></td></tr></table></figure>
+<p>随便记下来一个，比如<code>hzmx01.mxmail.netease.com</code>。</p>
+<p>按如下配置</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-regexp">/etc/</span><span class="hljs-keyword">postfix</span><span class="hljs-operator">/</span>main.cf:<br>    transport_maps <span class="hljs-operator">=</span> hash:<span class="hljs-regexp">/etc/</span><span class="hljs-keyword">postfix</span><span class="hljs-operator">/</span>transport<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">/etc/postfix/transport:<br>    xyz<span class="hljs-selector-class">.edu</span><span class="hljs-selector-class">.cn</span>  relay-smtps:hzmx01<span class="hljs-selector-class">.mxmail</span><span class="hljs-selector-class">.netease</span><span class="hljs-selector-class">.com</span>:<span class="hljs-number">465</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">/etc/postfix/master.cf:<br>    relay-smtps  unix  -       -       n       -       -       smtp<br>        # Client-side SMTPS requires <span class="hljs-string">&quot;encrypt&quot;</span> <span class="hljs-keyword">or</span> stronger.<br>        -o <span class="hljs-attribute">smtp_tls_security_level</span>=encrypt<br>        -o <span class="hljs-attribute">smtp_tls_wrappermode</span>=<span class="hljs-literal">yes</span><br></code></pre></td></tr></table></figure>
+<p>配置完后执行</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">postmap <span class="hljs-built_in">hash</span>:<span class="hljs-regexp">/etc/</span>postfix/transport<br></code></pre></td></tr></table></figure>
+<p>生成<code>transport.db</code><br>重载配置</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">postfix reload</span><br></code></pre></td></tr></table></figure>
+
+<p>向xyz.edu.cn邮箱发送邮件，成功。</p>
+<p>这样配置后，想给哪个邮箱发邮件都得添加transport才行，很麻烦，但是别的办法暂时没找到可行的…….<br>按理说可以强制全走465端口的…<br>慢慢再找别的方法吧，现在先凑合着用吧…</p>
+<h3 id="3-方法二-465端口最新配置方法（iptables）"><a href="#3-方法二-465端口最新配置方法（iptables）" class="headerlink" title="3. 方法二 465端口最新配置方法（iptables）"></a>3. 方法二 465端口最新配置方法（iptables）</h3><p>按之前操作成功可以发邮件，但是总不能把所有的邮箱域名都写到transport中，看了<a target="_blank" rel="noopener" href="http://www.postfix.org/transport.5.html">官方的transport文档</a>，transport的配置规则是<code>domain transport:nexthop</code>，nexthop要么不写，让它自动去查DNS同时使用25端口；要么就指定域名和端口，无法在指定端口的同时使用DNS查询MX记录。<br>我想了想，ssl加密和465端口似乎没必然的联系，因为开了加密不指定端口的话还一直用25端口。那只能是在25端口上进行TLS&#x2F;SMTPS通信。所以，我大胆操作，将25出端口直接映射到465端口，让所有的都按默认走25端口（实际会被转发到465），成功。具体操作如下：<br><code>/etc/poostfix/transport</code>修改：</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">youdomain.com </span><span class="hljs-punctuation">:</span><br><span class="hljs-attribute">.youdomain.com </span><span class="hljs-punctuation">:</span><br><span class="hljs-attribute">* relay-smtps</span><span class="hljs-punctuation">:</span><br></code></pre></td></tr></table></figure>
+<p>更新postfix配置文件：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs swift">postmap hash:<span class="hljs-regexp">/etc/</span><span class="hljs-keyword">postfix</span><span class="hljs-operator">/</span>transport<br><span class="hljs-keyword">postfix</span> reload<br></code></pre></td></tr></table></figure>
+<p>设置端口映射，将出的25端口映射到465，我是centos7，以iptables为例。<br>安装iptables.services，不然systemctl无法启动iptables。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> iptables-services<br></code></pre></td></tr></table></figure>
+<p>配置端口映射</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">iptables -t nat -<span class="hljs-selector-tag">A</span> OUTPUT -<span class="hljs-selector-tag">p</span> tcp <span class="hljs-attr">--dport</span> <span class="hljs-number">25</span> -j DNAT <span class="hljs-attr">--to-destination</span> :<span class="hljs-number">465</span><br></code></pre></td></tr></table></figure>
+<p>启动iptables</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">systemctl <span class="hljs-literal">start</span> iptables<br></code></pre></td></tr></table></figure>
+<p><strong>注意：启动iptables后一定不要断开ssh连接，先开另一个终端测试一下能否ssh连到服务器，因为iptables可能有预定义规则拦截，导致连不上新的ssh终端，不要问我为什么知道！如果发现无法登录新的ssh终端，请立刻systemctl stop iptables，把里面的规则删了再重来。</strong><br>查看所有的iptables规则</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">iptables-save</span><br></code></pre></td></tr></table></figure>
+<p>删除所有规则</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">iptables -F</span><br></code></pre></td></tr></table></figure>
+
+<p>这样配置后，只要是在465端口开了SSL的邮箱就都能发，很多企业邮箱都开了，但是遭天谴的QQ邮箱只开了25端口…这就很遗憾，不能给QQ邮箱发邮件了。transport文件也可以灵活配置，对于有的不使用465端口的，可以手动添加到transport中走自己的端口。</p>
+<h3 id="方法二补充"><a href="#方法二补充" class="headerlink" title="方法二补充"></a>方法二补充</h3><p>时隔一年，又配了一次postfix，发现方法二完全不需要设置transport_maps和relay-smtps ，只要修改master.cf中的</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">smtp      unix  -       -       y       -       -       smtp</span><br></code></pre></td></tr></table></figure>
+<p>这是默认的发邮件服务，在这行下面启用tls即可，如下</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">smtp      unix  -       -       y       -       -       smtp<br>        -o <span class="hljs-attribute">smtp_tls_security_level</span>=encrypt<br>        -o <span class="hljs-attribute">smtp_tls_wrappermode</span>=<span class="hljs-literal">yes</span><br>        -o <span class="hljs-attribute">smtp_tls_loglevel</span>=1<br></code></pre></td></tr></table></figure>
+<p>然后同上设置iptables</p>
+<h1 id="番外篇"><a href="#番外篇" class="headerlink" title="番外篇"></a>番外篇</h1><p>添加DNS记录，让邮件客户端自动配置邮件服务器。主要是配置一些SRV记录，在<a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc6186">RFC6186</a>中对这些记录做出了规定，主要可以配置以下几个：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">_imap._tcp.         IN      SRV     10 10 143 mail.example.net.<br>_imaps._tcp.        IN      SRV     10 10 993 mail.example.net.<br>_pop3._tcp.         IN      SRV     10 10 110 mail.example.net.<br>_pop3s._tcp.        IN      SRV     10 10 995 mail.example.net.<br>_smtps._tcp.        IN      SRV     10 10 465 mail.example.net.<br>_submission._tcp.   IN      SRV     10 10 587 mail.example.net.<br></code></pre></td></tr></table></figure>
+<p>除了这些，也可以添加常见的子域名A记录解析，如smtp.&#x2F;mail.&#x2F;pop3.&#x2F;imap.&#x2F;….. ，虽然邮件客户端不一定去查，但是有些会去查，可以添加上。<br>更多关于自动配置的可参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://roll.urown.net/server/mail/autoconfig.html">Mail Client Auto-Configuration — Roll Your Own Network</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc6186">RFC6186</a></li>
+<li><a target="_blank" rel="noopener" href="https://serverfault.com/questions/172326/how-to-configure-email-autoconfiguration-for-a-domain">How to configure email autoconfiguration for a domain? - Server Fault</a></li>
+</ul>
+<p>关于windows 10 mail APP无法登录dovecot pop3邮箱的解决办法：<br>假如你的邮箱地址是<a href="mailto:&#97;&#x70;&#112;&#108;&#x65;&#64;&#x67;&#x6f;&#x6f;&#x64;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#97;&#x70;&#112;&#108;&#x65;&#64;&#x67;&#x6f;&#x6f;&#x64;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;</a>，在windows 10 邮件app添加账户时有个“用户名”，这里只写apple，而不能带@goodmail.com。<br>可以使用openssl测试能否登录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">openssl s_client -connect goodmail.com:995<br>....<br>+OK Dovecot (Ubuntu) ready.<br>user apple<br>+OK<br>pass yourpassword<br>+OK Logged in<br></code></pre></td></tr></table></figure>
+<p>密码是明文密码。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>linux搭建邮件服务器 - postifx + SSL + 465端口配置</div>
+      <div>https://jcdu.top/2021/10/18/linux搭建邮件服务器 - postifx + SSL + 465端口配置/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年10月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/18/SSL%E8%AF%81%E4%B9%A6%E7%9A%84%E5%85%B7%E4%BD%93%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B/" title="SSL证书的具体认证过程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SSL证书的具体认证过程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/11/forge%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%AB%98%E5%BA%A6%E5%BE%88%E7%AA%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="forge下载页面显示高度很窄解决办法">
+                        <span class="hidden-mobile">forge下载页面显示高度很窄解决办法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://jcdu.top/page/5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/03/06/shell%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89ipv4-ipv6%E5%9C%B0%E5%9D%80/" target="_self">
+          shell获取所有ipv4/ipv6地址
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/06/shell%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89ipv4-ipv6%E5%9C%B0%E5%9D%80/" target="_self">
+        <div>
+          需要安装jq 1234567891011ubuntu@gooderver:~$ ip -j -4 addr show | jq &#x27;.[]|.addr_info|.[]|.local&#x27;&quot;127.0.0.1&quot;&quot;172.24.64.162&quot;ubuntu@gooderver:~$ ip -j -6 addr show | jq &#x27;.[]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-06 22:08" pubdate>
+              2023-03-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/03/06/find%E5%91%BD%E4%BB%A4/" target="_self">
+          find命令
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/06/find%E5%91%BD%E4%BB%A4/" target="_self">
+        <div>
+          查找多种后缀文件： 1find &lt;path&gt; [-name &lt;pattern&gt;] [-or -name &lt;pattern&gt;] 以查找所有.c和.cpp为例： 12345678910111213 ubuntu@VM-24-13-ubuntu:~/apps/ddns-serv/server$ find ../ -name &quot;*.c&quot; -o -na
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-06 17:21" pubdate>
+              2023-03-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/02/28/%E5%BA%94%E7%94%A8%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%94%E8%AE%B0/" target="_self">
+          应用数理统计笔记
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/28/%E5%BA%94%E7%94%A8%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%94%E8%AE%B0/" target="_self">
+        <div>
+          次序统计量与经验分布函数经验分布函数是一个样本的分布函数，根据样本的频率计算得到，分布函数是总体的分布函数，是概率决定的。经验分布函数的期望是总体分布函数。 gamma分布族gamma分布的定义密度函数： $$ f(x:\alpha, \lambda)=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x},x>0 $$ 称$
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-28 15:27" pubdate>
+              2023-02-28
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/02/11/ipv6%E5%9C%B0%E5%90%8D%E8%AF%8D%EF%BC%9A%E6%9C%89%E7%8A%B6%E6%80%81%EF%BC%88dhcpv6%EF%BC%89%EF%BC%8C%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%88slaac%EF%BC%89%EF%BC%8C%E5%89%8D%E7%BC%80%E4%BB%A3%E7%90%86%EF%BC%88pd%EF%BC%89%E7%AD%89%E8%A7%A3%E9%87%8A/" target="_self">
+          ipv6地名词：有状态（dhcpv6），无状态（slaac），前缀代理（pd）等解释
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/11/ipv6%E5%9C%B0%E5%90%8D%E8%AF%8D%EF%BC%9A%E6%9C%89%E7%8A%B6%E6%80%81%EF%BC%88dhcpv6%EF%BC%89%EF%BC%8C%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%88slaac%EF%BC%89%EF%BC%8C%E5%89%8D%E7%BC%80%E4%BB%A3%E7%90%86%EF%BC%88pd%EF%BC%89%E7%AD%89%E8%A7%A3%E9%87%8A/" target="_self">
+        <div>
+          ipv6地址获取有两种方式：  路由器通告的前缀 + 自己编的后缀（无状态，stateless） DHCP给一个&#x2F;128的地址（有状态，stateful）  需要明确：无状态和有状态，仅仅指的是ipv6地址的获取方式。对于前者，目前实现的就是slaac对于后者，目前是DHCPv6 注意：slaac指的是路由器像下级终端（host）分配地址的方式，同理DHCPv6也是如此。DHCPv6不仅
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-11 12:35" pubdate>
+              2023-02-11
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/01/27/java11%E5%8F%8A%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8Cjavafx%E7%A8%8B%E5%BA%8F/" target="_self">
+          java11及以上版本运行javafx程序
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/27/java11%E5%8F%8A%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8Cjavafx%E7%A8%8B%E5%BA%8F/" target="_self">
+        <div>
+          高版本的java不再自带javafx，需要自己添加路径，如果是java8的话直接可以使用。 本文分为两个部分：第一部分介绍如何运行javafx程序，第二部分介绍如何打包一个包含了javafx的jre环境。 运行javafx程序下载openjfxhttps://gluonhq.com/products/javafx/ openjfx的LTS版本好像要付费才能下载，所以勾选“Include older
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-27 17:56" pubdate>
+              2023-01-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/01/22/gradle%E7%BA%AF%E7%BA%AF%E5%B0%8F%E7%99%BD%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_self">
+          gradle纯纯小白使用教程
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/22/gradle%E7%BA%AF%E7%BA%AF%E5%B0%8F%E7%99%BD%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_self">
+        <div>
+          gradle程序和build.gradle文件是用来“构建”java项目的，类似于C语言中的make和Makefile。 建议先看Gradle 扫盲与 Task 基础 - 知乎然后再看Gradle教程 然后看依赖的类型：gradle使用教程，一篇就够 - 简书 大概了解了之后，就可以看gradle官方文档。官方给了个java库和java项目的配置例子 12345gradlew projects /
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-22 21:49" pubdate>
+              2023-01-22
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/01/16/iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
+          iptables端口转发
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/16/iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
+        <div>
+          用一个例子说明： 服务器：192.168.0.121:27896中转机：192.168.0.163:27896 在192.168.0.121的端口27896上开启了一个服务器，我希望访问中转机192.168.0.163的27896也可以访问到192.168.0.121:27896。需要在163这台机器上配置两条iptables规则： 123iptables -t nat -A PREROUTING
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-16 12:58" pubdate>
+              2023-01-16
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/01/15/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
+          adb常用命令
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/15/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
+        <div>
+          USB连接电脑，打开USB调试模式。 12345678910111213adb devices # 列出设备，包含SERIAL和设备型号adb devices -l # 列出详细信息，包含transport idadb shell &lt;cmd&gt; # 在手机shell中执行命令adb -t &lt;transport_id&gt; shell &lt;cmd&gt; # 用transpor
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-15 18:32" pubdate>
+              2023-01-15
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/01/09/%E4%BB%8E%E9%87%91%E6%80%BB%E9%82%A3%E5%84%BF%E5%81%B7%E5%AD%A6%E7%9A%84%E7%9F%A5%E8%AF%86/" target="_self">
+          从金总那儿偷学的知识
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/09/%E4%BB%8E%E9%87%91%E6%80%BB%E9%82%A3%E5%84%BF%E5%81%B7%E5%AD%A6%E7%9A%84%E7%9F%A5%E8%AF%86/" target="_self">
+        <div>
+          nfs设置写权限 nfs在mount时文件夹所属的用户会改变 解决方案（指定uid）:将&#x2F;etc&#x2F;exports中的配置改为: (rw,sync,no_subtree_check,all_squash,anonuid&#x3D;0,anongid&#x3D;0)，即设置anonuid和anongid all_squash tells NFS that for any user
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-09 19:12" pubdate>
+              2023-01-09
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/12/31/linux%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%20-%20%E7%BD%91%E9%80%9F%E7%9B%91%E6%B5%8B/" target="_self">
+          linux性能监控 | 网速监测
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/31/linux%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%20-%20%E7%BD%91%E9%80%9F%E7%9B%91%E6%B5%8B/" target="_self">
+        <div>
+          网速监测：https://www.cnblogs.com/fan-yuan/p/9231501.html
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-31 21:05" pubdate>
+              2022-12-31
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/#board">14</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

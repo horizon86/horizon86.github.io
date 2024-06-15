@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://jcdu.top/page/7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/11/01/vscode%20%E5%86%85%E5%BB%BA%E5%8F%98%E9%87%8F/" target="_self">
+          vscode 内建变量
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/01/vscode%20%E5%86%85%E5%BB%BA%E5%8F%98%E9%87%8F/" target="_self">
+        <div>
+          转载自https://blog.csdn.net/weixin_39249524/article/details/105438814，本人做了部分小修正更多详见：https://code.visualstudio.com/docs/editor/variables-reference ${workspaceFolder} :表示当前workspace文件夹路径，也即&#x2F;home&#x2F;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-01 14:37" pubdate>
+              2022-11-01
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/10/23/python%E8%A3%85%E9%A5%B0%E5%99%A8/" target="_self">
+          python装饰器
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/23/python%E8%A3%85%E9%A5%B0%E5%99%A8/" target="_self">
+        <div>
+          省流：直接看最后从简单的例子开始，定义装饰器register，定义一个简单的类method，使用装饰器装饰类 123456789101112def register(*args, name=None):    def warpper(method_cls):        print(&#x27;warpper cls&#x27;)        return method_cls    prin
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-23 13:57" pubdate>
+              2022-10-23
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/10/07/SLAM%E6%94%BE%E9%9F%B3%E4%B9%90%E5%8E%9F%E7%90%86(csgo)/" target="_self">
+          SLAM放音乐原理(csgo)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/07/SLAM%E6%94%BE%E9%9F%B3%E4%B9%90%E5%8E%9F%E7%90%86(csgo)/" target="_self">
+        <div>
+          csgo本身提供了一个voice_inputfromfile命令，如果该命令设置为1，将使语音输入来自voice_input.wav文件，而不是您的麦克风。 slam启动后会生成一个slam.cfg文件，该文件位置在C:\SteamLibrary\steamapps\common\Counter-Strike Global Offensive\csgo\cfg\slam.cfg，有几行重要内容：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-07 21:56" pubdate>
+              2022-10-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/10/04/%E5%AE%BD%E5%B8%A6%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97/" target="_self">
+          宽带可以上网，但是无法打开微软商店
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/04/%E5%AE%BD%E5%B8%A6%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97/" target="_self">
+        <div>
+          宽带可以正常上网，但是无法打开microsoft store，使用wifi又可以打开，解决办法： 设置-&gt;拨号-&gt;高级选项-&gt;网络配置文件-&gt;公用 来源：https://answers.microsoft.com/zh-hans/windows/forum/all/%E4%BD%BF%E7%94%A8%E5%AE%BD%E5%B8%A6%E8%BF%9E/cfe04dda-
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-04 14:00" pubdate>
+              2022-10-04
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/09/28/windows%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F/" target="_self">
+          windows设置开机自启动程序
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/28/windows%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F/" target="_self">
+        <div>
+          注册表：HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run添加项目：字符串值，名字随便，内容是启动的程序路径。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-28 19:50" pubdate>
+              2022-09-28
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/09/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E4%B8%8D%E5%B8%B8%E8%A7%81%E7%AC%A6%E5%8F%B7%E6%80%BB%E7%BB%93/" target="_self">
+          机器学习论文不常见符号总结
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E4%B8%8D%E5%B8%B8%E8%A7%81%E7%AC%A6%E5%8F%B7%E6%80%BB%E7%BB%93/" target="_self">
+        <div>
+          [][a]可能表示的是不超过a的整数组成的集合https://math.stackexchange.com/a/4139609论文《Patient Knowledge Distillation for BERT Model Compression》的第3.1章也提到了一下这种写法  圆圈加号element-wise addition  w&#x2F; w&#x2F;ow&#x2F;: with的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-22 10:51" pubdate>
+              2022-09-22
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/09/18/python%20logging%E6%A8%A1%E5%9D%97/" target="_self">
+          python logging模块
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/18/python%20logging%E6%A8%A1%E5%9D%97/" target="_self">
+        <div>
+          logging模块处理流程： 分为几个模块：  logger: 最高层模块，用来输出log logger.level来筛选log logger.debug()&#x2F;info()&#x2F;warning()&#x2F;error()等输出log   handler: 经过logger过滤后log会分发给所有handler处理。每个handler有自己的level, formatter, 以及
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-18 22:48" pubdate>
+              2022-09-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/09/16/latex%E5%85%AC%E5%BC%8F%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%ABtypora%E9%80%82%E9%85%8D%EF%BC%89/" target="_self">
+          latex公式总结（含typora适配）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/16/latex%E5%85%AC%E5%BC%8F%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%ABtypora%E9%80%82%E9%85%8D%EF%BC%89/" target="_self">
+        <div>
+          1. argminlatex没有直接的argmin命令，定义一个： 12\DeclareMathOperator*&#123;\argmax&#125;&#123;arg\,max&#125;\DeclareMathOperator*&#123;\argmin&#125;&#123;arg\,min&#125; 代码： 123\DeclareMathOperator*&#123;\argmax&#
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-16 11:54" pubdate>
+              2022-09-16
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/09/12/windows%E4%BD%BF%E7%94%A8sshd/" target="_self">
+          windows使用sshd
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/12/windows%E4%BD%BF%E7%94%A8sshd/" target="_self">
+        <div>
+          安装并启用opensshhttps://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_overview 123Start-Service sshdStop-Service sshdRestart-Service sshd  配置文件：%programdata%\ssh\sshd_config 开启密钥登
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-12 12:48" pubdate>
+              2022-09-12
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/09/11/tensorflow%E5%AE%89%E8%A3%85/" target="_self">
+          tensorflow安装
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/11/tensorflow%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          安装tensorflow需要有cuda和cudnn，cuda和cudnn有两种安装方法，一种是系统全局安装的，一种是在自己的conda环境里弄一份新的，这两个是可以共存的。所以，先想好自己想用哪个cuda 方法一、使用系统全局的cuda和cudnn（一般是nvidia的驱动包带的）注意tensorflow有严格的cuda对应关系，这里是最低的cuda版本要求。也就是安装tensorflow2.3.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-11 16:11" pubdate>
+              2022-09-11
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/#board">14</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

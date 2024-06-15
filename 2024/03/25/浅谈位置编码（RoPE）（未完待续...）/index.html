@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="当前版本为本文的尝鲜版，稳定版尚未发布： 位置编码：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;454482273transformer的sin位置编码本身已经包含了相对位置信息，本身就是一种包含相对信息的绝对位置编码。因为它符合一种形式： $$PE_{t+k}&#x3D;f(k)\cdot PE(t)$$  而这种编码一种比较尴尬的地方就在于，这仍然是一种绝对位置编码，虽然token之间的位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈位置编码（RoPE）（未完待续...）">
+<meta property="og:url" content="https://jcdu.top/2024/03/25/%E6%B5%85%E8%B0%88%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%EF%BC%88RoPE%EF%BC%89%EF%BC%88%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD...%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="当前版本为本文的尝鲜版，稳定版尚未发布： 位置编码：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;454482273transformer的sin位置编码本身已经包含了相对位置信息，本身就是一种包含相对信息的绝对位置编码。因为它符合一种形式： $$PE_{t+k}&#x3D;f(k)\cdot PE(t)$$  而这种编码一种比较尴尬的地方就在于，这仍然是一种绝对位置编码，虽然token之间的位">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cbm%7BR%7D%5Ed_%7B%5CTheta,m%7D=%5Cbegin%7Bequation%7D%5Cscriptsize%7B%5Cunderbrace%7B%5Cbegin%7Bpmatrix%7D+%5Ccos+m%5Ctheta_0+&+-%5Csin+m%5Ctheta_0+&+0+&+0+&+%5Ccdots+&+0+&+0+%5C%5C+%5Csin+m%5Ctheta_0+&+%5Ccos+m%5Ctheta_0+&+0+&+0+&+%5Ccdots+&+0+&+0+%5C%5C+0+&+0+&+%5Ccos+m%5Ctheta_1+&+-%5Csin+m%5Ctheta_1+&+%5Ccdots+&+0+&+0+%5C%5C+0+&+0+&+%5Csin+m%5Ctheta_1+&+%5Ccos+m%5Ctheta_1+&+%5Ccdots+&+0+&+0+%5C%5C+%5Cvdots+&+%5Cvdots+&+%5Cvdots+&+%5Cvdots+&+%5Cddots+&+%5Cvdots+&+%5Cvdots+%5C%5C+0+&+0+&+0+&+0+&+%5Ccdots+&+%5Ccos+m%5Ctheta_%7Bd/2-1%7D+&+-%5Csin+m%5Ctheta_%7Bd/2-1%7D+%5C%5C+0+&+0+&+0+&+0+&+%5Ccdots+&+%5Csin+m%5Ctheta_%7Bd/2-1%7D+&+%5Ccos+m%5Ctheta_%7Bd/2-1%7D+%5C%5C+%5Cend%7Bpmatrix%7D%7D_%7B%5Cboldsymbol%7BW%7D_m%7D%7D%5Cend%7Bequation%7D%5C%5C%5Ctag%7B5%7D&consumer=ZHI_MENG">
+<meta property="article:published_time" content="2024-03-25T13:06:00.000Z">
+<meta property="article:modified_time" content="2024-06-15T08:30:42.601Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.zhihu.com/equation?tex=%5Cbm%7BR%7D%5Ed_%7B%5CTheta,m%7D=%5Cbegin%7Bequation%7D%5Cscriptsize%7B%5Cunderbrace%7B%5Cbegin%7Bpmatrix%7D+%5Ccos+m%5Ctheta_0+&+-%5Csin+m%5Ctheta_0+&+0+&+0+&+%5Ccdots+&+0+&+0+%5C%5C+%5Csin+m%5Ctheta_0+&+%5Ccos+m%5Ctheta_0+&+0+&+0+&+%5Ccdots+&+0+&+0+%5C%5C+0+&+0+&+%5Ccos+m%5Ctheta_1+&+-%5Csin+m%5Ctheta_1+&+%5Ccdots+&+0+&+0+%5C%5C+0+&+0+&+%5Csin+m%5Ctheta_1+&+%5Ccos+m%5Ctheta_1+&+%5Ccdots+&+0+&+0+%5C%5C+%5Cvdots+&+%5Cvdots+&+%5Cvdots+&+%5Cvdots+&+%5Cddots+&+%5Cvdots+&+%5Cvdots+%5C%5C+0+&+0+&+0+&+0+&+%5Ccdots+&+%5Ccos+m%5Ctheta_%7Bd/2-1%7D+&+-%5Csin+m%5Ctheta_%7Bd/2-1%7D+%5C%5C+0+&+0+&+0+&+0+&+%5Ccdots+&+%5Csin+m%5Ctheta_%7Bd/2-1%7D+&+%5Ccos+m%5Ctheta_%7Bd/2-1%7D+%5C%5C+%5Cend%7Bpmatrix%7D%7D_%7B%5Cboldsymbol%7BW%7D_m%7D%7D%5Cend%7Bequation%7D%5C%5C%5Ctag%7B5%7D&consumer=ZHI_MENG">
+  
+  
+  
+  <title>浅谈位置编码（RoPE）（未完待续...） - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="浅谈位置编码（RoPE）（未完待续...）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-25 21:06" pubdate>
+          2024年3月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          758 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">浅谈位置编码（RoPE）（未完待续...）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>当前版本为本文的尝鲜版，稳定版尚未发布：</strong></p>
+<h1 id="位置编码："><a href="#位置编码：" class="headerlink" title="位置编码："></a>位置编码：</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/454482273">https://zhuanlan.zhihu.com/p/454482273</a><br>transformer的sin位置编码本身已经包含了相对位置信息，本身就是一种包含相对信息的绝对位置编码。因为它符合一种形式：</p>
+$$PE_{t+k}=f(k)\cdot PE(t)$$
+
+<p>而这种编码一种比较尴尬的地方就在于，这仍然是一种绝对位置编码，虽然token之间的位置编码可以互相转换，但是每个token的位置编码还和自己的位置强相关，有点等差数列的意思。（抽象到一维的情况，假如我们使用的位置编码就是一维自然数，那也符合这种形式），所以这仍然是绝对位置编码<br>希望可以有一种完全的相对位置编码，也就是位置编码在后续的forward中完全不会产生绝对位置的信息。<br>这里苏剑林给介绍了一下一些位置编码<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352898810">https://zhuanlan.zhihu.com/p/352898810</a></p>
+<h1 id="ROPE："><a href="#ROPE：" class="headerlink" title="ROPE："></a>ROPE：</h1><p>以下内容摘编自：十分钟读懂旋转编码(RoPE)<br>首先，位置编码本身并不一定需要是一个显式的embedding向量，可以是一种“信息”，融入到模型中即可，这是理解RoPE的一个关键点。一般的位置编码是计算一个embedding向量，和正常的word embedding相加。比如：</p>
+$$X_{out} = X_{emb} + P_{emb} \tag 1$$
+<p>这里 $P_{emb}$是位置编码， $X_{emb}$是词嵌入。我们把上式写成：</p>
+$$X_{out}=f(X_{emb}) \tag 2$$
+<p>这里的 $f$的作用就是”对 $X_{emb}$施加位置编码“。因此，位置编码可以视为一种”施加“作用。然后，先说RoPE的位置编码计算方法：对于序列中的第m个token，它的词嵌入为 $\boldsymbol{x}_m$，计算它的 $\boldsymbol{q}_m,\boldsymbol{k}_m$：</p>
+$$\boldsymbol{q}_m=W_Q\boldsymbol{x}_m \\
+\boldsymbol{k}_m=W_K\boldsymbol{x}_m \tag 3$$
+<p>然后，对其”施加位置编码信息“：</p>
+$$\boldsymbol{qpos}_m=\boldsymbol{R}^\theta_{d,m}\boldsymbol{q}_m=\boldsymbol{R}^\theta_{d,m}W_Q\boldsymbol{x}_m \\
+\boldsymbol{kpos}_m=\boldsymbol{R}^\theta_{d,m}\boldsymbol{k}_m=\boldsymbol{R}^\theta_{d,m}W_K\boldsymbol{x}_m \tag 4$$
+<p>然后，把 $\boldsymbol{qpos}_m$和 $\boldsymbol{kpos}<em>m$当成之前的Query和Key向量进行attention计算即可。这里的 $\boldsymbol{R}^\theta</em>{d,m}$和位置m相关，这样就包含了位置的信息，但是，推导后实际上在后续self-attention计算中和绝对位置是无关的。这个公式可见：R的计算公式</p>
+$$\bm{R}^d_{\Theta,m}=\begin{equation}\scriptsize{\underbrace{\begin{pmatrix} \cos m\theta_0 & -\sin+m\theta_0+&+0+&+0+&+\cdots+&+0+&+0+\\+\sin+m\theta_0+&+\cos+m\theta_0+&+0+&+0+&+\cdots+&+0+&+0+\\+0+&+0+&+\cos+m\theta_1+&+-\sin+m\theta_1+&+\cdots+&+0+&+0+\\+0+&+0+&+\sin+m\theta_1+&+\cos+m\theta_1+&+\cdots+&+0+&+0+\\+\vdots+&+\vdots+&+\vdots+&+\vdots+&+\ddots+&+\vdots+&+\vdots+\\+0+&+0+&+0+&+0+&+\cdots+&+\cos+m\theta_{d/2-1}+&+-\sin+m\theta_{d/2-1}+\\+0+&+0+&+0+&+0+&+\cdots+&+\sin+m\theta_{d/2-1}+&+\cos+m\theta_{d/2-1}+\\+\end{pmatrix}}_{\boldsymbol{W}_m}}\end{equation}$$
+
+<p><img src="https://www.zhihu.com/equation?tex=%5Cbm%7BR%7D%5Ed_%7B%5CTheta,m%7D=%5Cbegin%7Bequation%7D%5Cscriptsize%7B%5Cunderbrace%7B%5Cbegin%7Bpmatrix%7D+%5Ccos+m%5Ctheta_0+&+-%5Csin+m%5Ctheta_0+&+0+&+0+&+%5Ccdots+&+0+&+0+%5C%5C+%5Csin+m%5Ctheta_0+&+%5Ccos+m%5Ctheta_0+&+0+&+0+&+%5Ccdots+&+0+&+0+%5C%5C+0+&+0+&+%5Ccos+m%5Ctheta_1+&+-%5Csin+m%5Ctheta_1+&+%5Ccdots+&+0+&+0+%5C%5C+0+&+0+&+%5Csin+m%5Ctheta_1+&+%5Ccos+m%5Ctheta_1+&+%5Ccdots+&+0+&+0+%5C%5C+%5Cvdots+&+%5Cvdots+&+%5Cvdots+&+%5Cvdots+&+%5Cddots+&+%5Cvdots+&+%5Cvdots+%5C%5C+0+&+0+&+0+&+0+&+%5Ccdots+&+%5Ccos+m%5Ctheta_%7Bd/2-1%7D+&+-%5Csin+m%5Ctheta_%7Bd/2-1%7D+%5C%5C+0+&+0+&+0+&+0+&+%5Ccdots+&+%5Csin+m%5Ctheta_%7Bd/2-1%7D+&+%5Ccos+m%5Ctheta_%7Bd/2-1%7D+%5C%5C+%5Cend%7Bpmatrix%7D%7D_%7B%5Cboldsymbol%7BW%7D_m%7D%7D%5Cend%7Bequation%7D%5C%5C%5Ctag%7B5%7D&consumer=ZHI_MENG" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>这个可以提前计算好放在那里。至于具体推理，原文知乎已经很清晰了。之后再写。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>浅谈位置编码（RoPE）（未完待续...）</div>
+      <div>https://jcdu.top/2024/03/25/浅谈位置编码（RoPE）（未完待续...）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/10/%E6%9F%A5%E7%9C%8B%E5%93%AA%E4%BA%9BIP%E5%B0%9D%E8%AF%95%E7%88%86%E7%A0%B4%E4%BD%A0%E7%9A%84Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="查看哪些IP尝试爆破你的Linux服务器">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">查看哪些IP尝试爆破你的Linux服务器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/22/git%E5%9B%9E%E9%80%80%E7%89%88%E6%9C%AC/" title="git回退版本">
+                        <span class="hidden-mobile">git回退版本</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

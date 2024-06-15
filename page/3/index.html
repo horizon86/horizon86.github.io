@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://jcdu.top/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/09/30/curl%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_self">
+          curl使用教程
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/30/curl%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_self">
+        <div>
+          上传文件https://www.cnblogs.com/wangbingbing/p/16596851.html普通POST文件 1curl -F &#x27;file=@img-cls.tar.gz&#x27; http://127.0.0.1/hfs-upload/ 带密码认证的POST 1curl -u user:password -F file=@info.csv http://127.0
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-30 16:14" pubdate>
+              2023-09-30
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/09/04/%E8%AE%A9linux%20shell%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C/" target="_self">
+          让linux shell显示命令执行结果
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/04/%E8%AE%A9linux%20shell%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C/" target="_self">
+        <div>
+          vscode的shell可以用颜色来标记命令执行是否成功如图，蓝色圆点表示成功，红色表示失败。但是默认的shell不可以。通过设置PS1可以实现这个功能。 在.bashrc文件中找到： 12345678910if [ -n &quot;$force_color_prompt&quot; ]; then    if [ -x /usr/bin/tput ] &amp;&amp; tput setaf
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-04 16:48" pubdate>
+              2023-09-04
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/09/01/docker%E6%9F%A5%E7%9C%8B%E9%95%9C%E5%83%8F%E3%80%81%E8%BF%90%E8%A1%8C%E5%AE%B9%E5%99%A8%E3%80%81%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" target="_self">
+          docker查看镜像、运行容器、端口映射
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/01/docker%E6%9F%A5%E7%9C%8B%E9%95%9C%E5%83%8F%E3%80%81%E8%BF%90%E8%A1%8C%E5%AE%B9%E5%99%A8%E3%80%81%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" target="_self">
+        <div>
+          查看镜像 12docker imagesdocker image ls 查看容器 1docker ps 查看所有容器 1docker ps -a 运行镜像 1234docker run [options] image-d 后台-i 交互式shell-t 为容器重新分配伪输入终端，和-i同时使用 端口映射 1-p [hostip:]host port:container port
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-01 11:34" pubdate>
+              2023-09-01
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/11/Minecraft%E7%9A%AE%E8%82%A4%E7%AB%99%E7%9A%AE%E8%82%A4%E5%B1%95%E5%BC%80%E5%9B%BE%E4%B8%8B%E8%BD%BD/" target="_self">
+          Minecraft皮肤站皮肤展开图下载
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/11/Minecraft%E7%9A%AE%E8%82%A4%E7%AB%99%E7%9A%AE%E8%82%A4%E5%B1%95%E5%BC%80%E5%9B%BE%E4%B8%8B%E8%BD%BD/" target="_self">
+        <div>
+          大部分皮肤站（或者说几乎所有）都是一套模板，以littleskin为例： 打开主页：https://littleskin.cn/点击右上角：皮肤库 然后可以搜索或者找到你喜欢的皮肤，这里以苦力怕为例，打开： 这里预览图的网址是：https://littleskin.cn/skinlib/show/218950 记住最后的编号：218950 皮肤展开图的下载地址就是：https://littlesk
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-11 17:33" pubdate>
+              2023-08-11
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/09/%E8%AE%BE%E7%BD%AE%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+          设置路由表连接服务器
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/09/%E8%AE%BE%E7%BD%AE%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+        <div>
+          添加路由规则让服务器走特定网关 1234sudo ip route add 172.19.128.224/28 via 172.24.64.1sudo ip route add 211.81.55.170 via 172.24.64.1sudo ip route add 211.81.55.176 via 172.24.64.1sudo ip route add 211.81.55.158 via
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-09 14:55" pubdate>
+              2023-08-09
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/07/18/ubuntu%E4%B8%8D%E7%94%A8root%E6%8C%82%E8%BD%BDu%E7%9B%98/" target="_self">
+          ubuntu不用root挂载u盘
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/18/ubuntu%E4%B8%8D%E7%94%A8root%E6%8C%82%E8%BD%BDu%E7%9B%98/" target="_self">
+        <div>
+          udisksctl mount -b &#x2F;dev&#x2F;sdXY
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-18 21:46" pubdate>
+              2023-07-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/07/16/ubuntu%20gnome%E5%88%B7%E6%96%B0desktop%E6%96%87%E4%BB%B6/" target="_self">
+          ubuntu gnome刷新desktop文件
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/16/ubuntu%20gnome%E5%88%B7%E6%96%B0desktop%E6%96%87%E4%BB%B6/" target="_self">
+        <div>
+          修改了/home/jcdu/.local/share/applications下的desktop文件后，使其生效的办法： 1. 重启gnome按下alt+f2，输入restart 2. 注销重新登录这样会把前台程序结束掉，不推荐
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-16 10:31" pubdate>
+              2023-07-16
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/07/13/ubuntu%E7%82%B9%E5%87%BBdock%E5%9B%BE%E6%A0%87%E6%9C%80%E5%B0%8F%E5%8C%96%E7%AA%97%E5%8F%A3/" target="_self">
+          ubuntu点击dock图标最小化窗口
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/13/ubuntu%E7%82%B9%E5%87%BBdock%E5%9B%BE%E6%A0%87%E6%9C%80%E5%B0%8F%E5%8C%96%E7%AA%97%E5%8F%A3/" target="_self">
+        <div>
+          敬请参考：https://zhuanlan.zhihu.com/p/585280693 1gsettings set org.gnome.shell.extensions.dash-to-dock click-action minimize-or-previews 这个设置 总共有几种选项 12345678910&#x27;skip&#x27;&#x27;minimize&#x27;&#x27;l
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-13 15:38" pubdate>
+              2023-07-13
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/07/07/cholesky%E5%88%86%E8%A7%A3%E5%92%8Ccholesky%E6%B1%82%E9%80%86/" target="_self">
+          cholesky分解和cholesky求逆
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/07/cholesky%E5%88%86%E8%A7%A3%E5%92%8Ccholesky%E6%B1%82%E9%80%86/" target="_self">
+        <div>
+          对于正定对称矩阵$\mathbf{H}$，可以分解为$\mathbf{H}&#x3D;\mathbf{XX}^T$，其中$\mathbf{X}$是下三角矩阵。这个分解方法就是cholesky分解，pytorch对应的函数是torch.linalg.cholesky 使用$\mathbf{X}$可以求出$\mathbf{H}^{-1}$，pytorch对应的函数是torch.cholesky_inv
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-07 17:05" pubdate>
+              2023-07-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/06/14/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E6%B1%82%E5%AF%BC/" target="_self">
+          矩阵乘法求导
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/06/14/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E6%B1%82%E5%AF%BC/" target="_self">
+        <div>
+          矩阵乘法求导pyotrch中只能是标量对矩阵求导，所以矩阵乘法结束后加个sum $$ L = sum(\bm{WX}) $$ 其中，$\bm{W}$和$\bm{X}$都是矩阵，那么 $$ \frac{\partial L}{\partial\bm{W}}_{\cdot i}=\sum\bm{X}_{i\cdot} $$ 梯度和W的形状相同，梯度中每列都是相同的，只要是第i列，梯度值就是$\bm{X
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-06-14 20:26" pubdate>
+              2023-06-14
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/#board">14</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

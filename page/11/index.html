@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://jcdu.top/page/11/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/11/21/windows%E8%8E%B7%E5%8F%96%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0/" target="_self">
+          windows获取程序参数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/21/windows%E8%8E%B7%E5%8F%96%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0/" target="_self">
+        <div>
+          例子：获取ssh的命令行参数 1wmic process where caption=&quot;ssh.exe&quot; get caption,commandline,ProcessId 想获得更多属性可以参考： 1wmic process get /?
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-21 16:00" pubdate>
+              2021-11-21
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/30/windows%20cmd%20alias%E7%BB%99%E5%91%BD%E4%BB%A4%E8%B5%B7%E5%88%AB%E5%90%8D/" target="_self">
+          windows cmd alias给命令起别名
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/30/windows%20cmd%20alias%E7%BB%99%E5%91%BD%E4%BB%A4%E8%B5%B7%E5%88%AB%E5%90%8D/" target="_self">
+        <div>
+          注册表添加： 1234Windows Registry Editor Version 5.00[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Command Processor]&quot;AutoRun&quot;=&quot;/path/to/fastkey.bat&quot; fastkey.bat: 1@doskey ls=&quot;%~dp0realls.e
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-30 19:11" pubdate>
+              2021-10-30
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/28/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/" target="_self">
+          linux常用命令笔记
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/28/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/" target="_self">
+        <div>
+          注销某个意外断网但没退出的用户：pkill -kill -t pts/1命令无回显了：stty sane
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-28 21:06" pubdate>
+              2021-10-28
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/27/%E5%A6%82%E4%BD%95%E5%8F%91%E9%80%81%E5%9E%83%E5%9C%BE%E9%82%AE%E4%BB%B6%EF%BC%9F/" target="_self">
+          如何发送垃圾邮件？
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/27/%E5%A6%82%E4%BD%95%E5%8F%91%E9%80%81%E5%9E%83%E5%9C%BE%E9%82%AE%E4%BB%B6%EF%BC%9F/" target="_self">
+        <div>
+          注意：本文仅供实验学习，请勿故意发送垃圾骚扰邮件。以QQ邮箱为例  查询邮件服务器地址123456789101112131415161718192021222324252627&gt; nslookup -qt=MX qq.comqq.com  MX preference = 10, mail exchanger = mx3.qq.comqq.com  MX preference = 20, ma
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-27 22:19" pubdate>
+              2021-10-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/19/git%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86;%20curl%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/" target="_self">
+          git使用代理; curl使用代理
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/19/git%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86;%20curl%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/" target="_self">
+        <div>
+          设置代理http代理 12git config --global http.proxy http://127.0.0.1:1080git config --global https.proxy https://127.0.0.1:1080 socks5代理 12git config --global http.proxy socks5://127.0.0.1:1080git config --gl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-19 11:12" pubdate>
+              2021-10-19
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/18/SSL%E8%AF%81%E4%B9%A6%E7%9A%84%E5%85%B7%E4%BD%93%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B/" target="_self">
+          SSL证书的具体认证过程
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/18/SSL%E8%AF%81%E4%B9%A6%E7%9A%84%E5%85%B7%E4%BD%93%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B/" target="_self">
+        <div>
+          本文假定读者已经知道什么是公钥、什么是私钥、什么是哈希值。 SSL证书的来源CA机构有一对配套的公钥和私钥，这个私钥被相当安全的保存在一个神秘的地方，没有人可以知道，这个公钥被预装在了每一台电脑、手机中。网站申请的证书包括：明文的网址、所有者、证书有效期、网站自己的公钥……，然后对这些信息计算哈希值（也叫摘要或者指纹），CA用私钥将这个摘要加密后附在上述明文信息后边，就构成了网站的证书。加密后的摘
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-18 21:43" pubdate>
+              2021-10-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/18/linux%E6%90%AD%E5%BB%BA%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20-%20postifx%20+%20SSL%20+%20465%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE/" target="_self">
+          linux搭建邮件服务器 - postifx + SSL + 465端口配置
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/18/linux%E6%90%AD%E5%BB%BA%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20-%20postifx%20+%20SSL%20+%20465%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE/" target="_self">
+        <div>
+          整体参考：https://www.cnblogs.com/chris-cp/p/4843407.html建议先看上文，照着配置完再看本文。关于25端口被封无法发邮件的解决办法在本文后半部分。 做几点补充：  /etc/dovecot/conf.d/10-ssl.conf中把 ssl = required改成ssl = no 注意设置/etc/postfix/main.cf中的mynetworks时
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-18 11:40" pubdate>
+              2021-10-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/11/forge%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%AB%98%E5%BA%A6%E5%BE%88%E7%AA%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_self">
+          forge下载页面显示高度很窄解决办法
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/11/forge%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%AB%98%E5%BA%A6%E5%BE%88%E7%AA%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_self">
+        <div>
+          我们从官网下载forge后跳转到广告页，但是这个页面显示很窄 按F12进入控制台(control)，输入以下代码即可 1(function(a)&#123;a.setAttribute(&#x27;height&#x27;,&#x27;100%&#x27;);a.getElementsByTagName(&#x27;iframe&#x27;)[0].setAttribute(&#x27;heigh
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-11 17:52" pubdate>
+              2021-10-11
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/10/%E5%8D%B7%E7%A7%AF%20-%20%E7%94%A8pytorch%E8%AE%A1%E7%AE%97/" target="_self">
+          卷积 - 用pytorch计算
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/%E5%8D%B7%E7%A7%AF%20-%20%E7%94%A8pytorch%E8%AE%A1%E7%AE%97/" target="_self">
+        <div>
+          对于一张图片，每个卷积核的通道数都和图片通道数一样，用n个卷积核进行卷积得到的结果就是一个n通道的特征图。 卷积的步长（stride）和padding决定了产生的特征图的size 对于一张7*7*3的图片（长7，宽7，3通道），使用两个3*3*3的卷积核（长3，宽3，3通道）进行卷积，如下图：  最左边一列是原始图片的3个通道的数据，中间两列红色的是2个卷积核。最右边一列是卷积得到的feature
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 12:17" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/10/01/%E5%AE%89%E5%8D%93%E6%BA%90%E7%A0%81%E5%AE%98%E6%96%B9%E5%9C%A8%E7%BA%BF%E6%9F%A5%E7%9C%8B/" target="_self">
+          安卓源码官方在线查看
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/01/%E5%AE%89%E5%8D%93%E6%BA%90%E7%A0%81%E5%AE%98%E6%96%B9%E5%9C%A8%E7%BA%BF%E6%9F%A5%E7%9C%8B/" target="_self">
+        <div>
+          在线查看可跳转：https://cs.android.com/ 在线查看只有代码本身：https://android.googlesource.com/
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-01 15:28" pubdate>
+              2021-10-01
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/10/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/#board">12</a><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><a class="extend next" rel="next" href="/page/12/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
