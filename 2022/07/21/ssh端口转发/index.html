@@ -24,7 +24,7 @@
     <meta name="description" content="看了一些文章，实在是跟婆娘的裹脚，又臭又长，解释的倒是正确，但是那么长很容易吓退看文章的人，况且写的也不那么清晰，ABC来回都混淆了。 ssh总共有3种转发模式，分别是 -D: 动态端口转发，这玩意用来做socks proxy，此处不写。 -L：访问本地端口 &#x3D;&#x3D; 远程端口 -R：访问远程端口 &#x3D;&#x3D; 访问本地端口  本地指发起ssh请求的客户端，远程指接收ssh请求的服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssh端口转发">
-<meta property="og:url" content="https://jcdu.top/2022/07/21/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2022/07/21/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="看了一些文章，实在是跟婆娘的裹脚，又臭又长，解释的倒是正确，但是那么长很容易吓退看文章的人，况且写的也不那么清晰，ABC来回都混淆了。 ssh总共有3种转发模式，分别是 -D: 动态端口转发，这玩意用来做socks proxy，此处不写。 -L：访问本地端口 &#x3D;&#x3D; 远程端口 -R：访问远程端口 &#x3D;&#x3D; 访问本地端口  本地指发起ssh请求的客户端，远程指接收ssh请求的服务器">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -370,7 +370,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>ssh端口转发</div>
-      <div>https://jcdu.top/2022/07/21/ssh端口转发/</div>
+      <div>https://horizon86.github.io/2022/07/21/ssh端口转发/</div>
     </div>
     <div class="license-meta">
       

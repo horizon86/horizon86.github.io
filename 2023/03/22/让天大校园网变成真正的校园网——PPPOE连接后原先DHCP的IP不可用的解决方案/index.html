@@ -24,7 +24,7 @@
     <meta name="description" content="20230819更新 最近tju校园网升级，已经无需拨号了，插网线就能上网，十分不错。并且，网段也发生了变化。有线网给172.23.128.0&#x2F;17，wifi给172.18.128.0&#x2F;17.但是这个操作有个很阴间的地方，在宿舍和实验室有线网给同一个网段，但是却无法互相访问；如果是在实验室，同一个网段是可以互相访问的，感觉是划分了vlan，导致同一个子网在不同物理区域也无法互相访问。 由于默认">
 <meta property="og:type" content="article">
 <meta property="og:title" content="让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案">
-<meta property="og:url" content="https://jcdu.top/2023/03/22/%E8%AE%A9%E5%A4%A9%E5%A4%A7%E6%A0%A1%E5%9B%AD%E7%BD%91%E5%8F%98%E6%88%90%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%A0%A1%E5%9B%AD%E7%BD%91%E2%80%94%E2%80%94PPPOE%E8%BF%9E%E6%8E%A5%E5%90%8E%E5%8E%9F%E5%85%88DHCP%E7%9A%84IP%E4%B8%8D%E5%8F%AF%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2023/03/22/%E8%AE%A9%E5%A4%A9%E5%A4%A7%E6%A0%A1%E5%9B%AD%E7%BD%91%E5%8F%98%E6%88%90%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%A0%A1%E5%9B%AD%E7%BD%91%E2%80%94%E2%80%94PPPOE%E8%BF%9E%E6%8E%A5%E5%90%8E%E5%8E%9F%E5%85%88DHCP%E7%9A%84IP%E4%B8%8D%E5%8F%AF%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="20230819更新 最近tju校园网升级，已经无需拨号了，插网线就能上网，十分不错。并且，网段也发生了变化。有线网给172.23.128.0&#x2F;17，wifi给172.18.128.0&#x2F;17.但是这个操作有个很阴间的地方，在宿舍和实验室有线网给同一个网段，但是却无法互相访问；如果是在实验室，同一个网段是可以互相访问的，感觉是划分了vlan，导致同一个子网在不同物理区域也无法互相访问。 由于默认">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -367,7 +367,7 @@ windows的wifi网卡，按理说那么就要相对应的更改上述路由的网
   <div class="license-box my-3">
     <div class="license-title">
       <div>让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案</div>
-      <div>https://jcdu.top/2023/03/22/让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案/</div>
+      <div>https://horizon86.github.io/2023/03/22/让天大校园网变成真正的校园网——PPPOE连接后原先DHCP的IP不可用的解决方案/</div>
     </div>
     <div class="license-meta">
       

@@ -24,7 +24,7 @@
     <meta name="description" content="我希望在一个文件夹中只追踪.cfg文件，无论它是在根目录还是子目录。 我们知道gitignore规则的一种写法是： 12*!*.txt 这样代表忽略所有文件，但是不忽略txt文件，但是这样实操发现，只有根目录的txt会被追踪，子目录的还是会被忽略。 首先要介绍一条git的规则：  如果一个文件的父文件夹已经被忽略，那么这个文件无法被重新包含  这句话的英文是  It is not">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gitignore保留特定后缀的文件，包括子文件夹中的">
-<meta property="og:url" content="https://jcdu.top/2021/11/30/gitignore%E4%BF%9D%E7%95%99%E7%89%B9%E5%AE%9A%E5%90%8E%E7%BC%80%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%8C%85%E6%8B%AC%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD%E7%9A%84/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2021/11/30/gitignore%E4%BF%9D%E7%95%99%E7%89%B9%E5%AE%9A%E5%90%8E%E7%BC%80%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%8C%85%E6%8B%AC%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD%E7%9A%84/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="我希望在一个文件夹中只追踪.cfg文件，无论它是在根目录还是子目录。 我们知道gitignore规则的一种写法是： 12*!*.txt 这样代表忽略所有文件，但是不忽略txt文件，但是这样实操发现，只有根目录的txt会被追踪，子目录的还是会被忽略。 首先要介绍一条git的规则：  如果一个文件的父文件夹已经被忽略，那么这个文件无法被重新包含  这句话的英文是  It is not">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -343,7 +343,7 @@ file is excluded.</p>
   <div class="license-box my-3">
     <div class="license-title">
       <div>gitignore保留特定后缀的文件，包括子文件夹中的</div>
-      <div>https://jcdu.top/2021/11/30/gitignore保留特定后缀的文件，包括子文件夹中的/</div>
+      <div>https://horizon86.github.io/2021/11/30/gitignore保留特定后缀的文件，包括子文件夹中的/</div>
     </div>
     <div class="license-meta">
       

@@ -24,7 +24,7 @@
     <meta name="description" content="本人网络环境： 设备：联通光猫 + TP-LINK WDR5620路由器 光猫设置：联通光猫自带路由器功能，由光猫负责拨号，光猫获得了&#x2F;60的IPV6前缀。 TP-LINK路由器设置：TP-LINK的路由器关闭了DHCP，光猫LAN连接TP-LINK的LAN，这样TP-LINK就变成了一个带无线功能的交换机。 问题现象 连接TP-LINK有时可以获得IPV6，有时无法获得，有时获得了用着">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二级路由器时而无法获取IPV6的问题排查">
-<meta property="og:url" content="https://jcdu.top/2024/12/24/%E4%BA%8C%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E6%97%B6%E8%80%8C%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96IPV6%E7%9A%84%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2024/12/24/%E4%BA%8C%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E6%97%B6%E8%80%8C%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96IPV6%E7%9A%84%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="本人网络环境： 设备：联通光猫 + TP-LINK WDR5620路由器 光猫设置：联通光猫自带路由器功能，由光猫负责拨号，光猫获得了&#x2F;60的IPV6前缀。 TP-LINK路由器设置：TP-LINK的路由器关闭了DHCP，光猫LAN连接TP-LINK的LAN，这样TP-LINK就变成了一个带无线功能的交换机。 问题现象 连接TP-LINK有时可以获得IPV6，有时无法获得，有时获得了用着">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -374,7 +374,7 @@ class="uri">https://datatracker.ietf.org/doc/html/rfc4443#page-13</a></p>
   <div class="license-box my-3">
     <div class="license-title">
       <div>二级路由器时而无法获取IPV6的问题排查</div>
-      <div>https://jcdu.top/2024/12/24/二级路由器时而无法获取IPV6的问题排查/</div>
+      <div>https://horizon86.github.io/2024/12/24/二级路由器时而无法获取IPV6的问题排查/</div>
     </div>
     <div class="license-meta">
       

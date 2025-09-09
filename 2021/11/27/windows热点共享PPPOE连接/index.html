@@ -24,19 +24,19 @@
     <meta name="description" content="windows热点无法共享PPPOE连接，只能共享以太网。我的网络环境是有线网自动获取IP，然后PPPOE拨号上网。但是用打开热点后，手机却无法上网，因为windows把来自热点的流量都从以太网发送出去了，没走PPPOE连接。 解决办法：设置HTTP代理。  电脑上开启一个HTTP代理。这里以某带HTTP代理服务器功能的软件为例  设置允许局域网的连接   image  记下底">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows热点共享PPPOE连接">
-<meta property="og:url" content="https://jcdu.top/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="windows热点无法共享PPPOE连接，只能共享以太网。我的网络环境是有线网自动获取IP，然后PPPOE拨号上网。但是用打开热点后，手机却无法上网，因为windows把来自热点的流量都从以太网发送出去了，没走PPPOE连接。 解决办法：设置HTTP代理。  电脑上开启一个HTTP代理。这里以某带HTTP代理服务器功能的软件为例  设置允许局域网的连接   image  记下底">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jcdu.top/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221252709-2143772528.png">
-<meta property="og:image" content="https://jcdu.top/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221348056-1190621184.png">
-<meta property="og:image" content="https://jcdu.top/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221646735-651052295.png">
-<meta property="og:image" content="https://jcdu.top/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221753323-532989410.png">
+<meta property="og:image" content="https://horizon86.github.io/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221252709-2143772528.png">
+<meta property="og:image" content="https://horizon86.github.io/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221348056-1190621184.png">
+<meta property="og:image" content="https://horizon86.github.io/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221646735-651052295.png">
+<meta property="og:image" content="https://horizon86.github.io/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221753323-532989410.png">
 <meta property="article:published_time" content="2021-11-27T14:20:00.000Z">
 <meta property="article:modified_time" content="2025-03-25T13:52:43.862Z">
 <meta property="article:author" content="horizon86">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jcdu.top/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221252709-2143772528.png">
+<meta name="twitter:image" content="https://horizon86.github.io/2021/11/27/windows%E7%83%AD%E7%82%B9%E5%85%B1%E4%BA%ABPPPOE%E8%BF%9E%E6%8E%A5/2228692-20211127221252709-2143772528.png">
   
   
   
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -344,7 +344,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>windows热点共享PPPOE连接</div>
-      <div>https://jcdu.top/2021/11/27/windows热点共享PPPOE连接/</div>
+      <div>https://horizon86.github.io/2021/11/27/windows热点共享PPPOE连接/</div>
     </div>
     <div class="license-meta">
       

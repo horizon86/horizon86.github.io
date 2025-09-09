@@ -24,7 +24,7 @@
     <meta name="description" content="在某公司的大模型平台上出现了几个翻译实在令人难绷的词汇，分别叫“存在惩罚”，“频率惩罚”。虽然我知道大模型生成有个“重复惩罚”，但是另外两种我还确实不了解，而某公司的平台写的帮助文档更是一坨，属于是懂的看了也不懂了。在简中互联网上搜了一下，也不知所云，大部分都是重复两句话：这三个参数都是控制模型生成重复文本的概率，数值越大重复性越低balabala。但是，对这三个参数的具体区别，基本是没有一个人给">
 <meta property="og:type" content="article">
 <meta property="og:title" content="presence_penalty, frequency_penalty以及repetition_penalty">
-<meta property="og:url" content="https://jcdu.top/2025/09/05/presence-penalty-frequency-penalty%E4%BB%A5%E5%8F%8Arepetition-penalty/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2025/09/05/presence-penalty-frequency-penalty%E4%BB%A5%E5%8F%8Arepetition-penalty/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="在某公司的大模型平台上出现了几个翻译实在令人难绷的词汇，分别叫“存在惩罚”，“频率惩罚”。虽然我知道大模型生成有个“重复惩罚”，但是另外两种我还确实不了解，而某公司的平台写的帮助文档更是一坨，属于是懂的看了也不懂了。在简中互联网上搜了一下，也不知所云，大部分都是重复两句话：这三个参数都是控制模型生成重复文本的概率，数值越大重复性越低balabala。但是，对这三个参数的具体区别，基本是没有一个人给">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -349,7 +349,7 @@ class="uri">https://github.com/vllm-project/vllm/blob/2b30afa4420cbada6dd9084de3
   <div class="license-box my-3">
     <div class="license-title">
       <div>presence_penalty, frequency_penalty以及repetition_penalty</div>
-      <div>https://jcdu.top/2025/09/05/presence-penalty-frequency-penalty以及repetition-penalty/</div>
+      <div>https://horizon86.github.io/2025/09/05/presence-penalty-frequency-penalty以及repetition-penalty/</div>
     </div>
     <div class="license-meta">
       

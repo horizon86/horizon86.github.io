@@ -24,16 +24,16 @@
     <meta name="description" content="这个说起来挺简单的，但是老忘记，搞混，记录一下。 软链接 软链接又叫符号链接。形式上完全等同于windows的快捷方式。创建一个软链接就是创建一个文本文件，该文件保存了一行字，这行字的内容是一个文件路径。当你把真实文件删了之后，软链接本身还存在，但是指向无效的路径。 那怎么知道这是保存了一行字的普通文件还是一个软链接呢？软链接会设置文件属性为l，也就是link。 linux的文件结构是这样">
 <meta property="og:type" content="article">
 <meta property="og:title" content="软链接和硬链接">
-<meta property="og:url" content="https://jcdu.top/2021/09/06/%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2021/09/06/%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="这个说起来挺简单的，但是老忘记，搞混，记录一下。 软链接 软链接又叫符号链接。形式上完全等同于windows的快捷方式。创建一个软链接就是创建一个文本文件，该文件保存了一行字，这行字的内容是一个文件路径。当你把真实文件删了之后，软链接本身还存在，但是指向无效的路径。 那怎么知道这是保存了一行字的普通文件还是一个软链接呢？软链接会设置文件属性为l，也就是link。 linux的文件结构是这样">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jcdu.top/2021/09/06/%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/2228692-20210906141309215-1204759683.png">
+<meta property="og:image" content="https://horizon86.github.io/2021/09/06/%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/2228692-20210906141309215-1204759683.png">
 <meta property="article:published_time" content="2021-09-06T06:51:00.000Z">
 <meta property="article:modified_time" content="2025-03-25T13:53:06.564Z">
 <meta property="article:author" content="horizon86">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jcdu.top/2021/09/06/%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/2228692-20210906141309215-1204759683.png">
+<meta name="twitter:image" content="https://horizon86.github.io/2021/09/06/%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/2228692-20210906141309215-1204759683.png">
   
   
   
@@ -75,7 +75,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -329,7 +329,7 @@ with the name LINK_NAME.）</p>
   <div class="license-box my-3">
     <div class="license-title">
       <div>软链接和硬链接</div>
-      <div>https://jcdu.top/2021/09/06/软链接和硬链接/</div>
+      <div>https://horizon86.github.io/2021/09/06/软链接和硬链接/</div>
     </div>
     <div class="license-meta">
       

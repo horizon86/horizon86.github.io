@@ -24,7 +24,7 @@
     <meta name="description" content="整体参考：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;chris-cp&#x2F;p&#x2F;4843407.html 建议先看上文，照着配置完再看本文。关于25端口被封无法发邮件的解决办法在本文后半部分。 做几点补充：  &#x2F;etc&#x2F;dovecot&#x2F;conf.d&#x2F;10-ssl.conf中把 ssl &#x3D; required改成ssl &#x3D; no 注意设置&#x2F;etc&#x2F;postfix&#x2F;main.cf中的myne">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux搭建邮件服务器 - postifx + SSL + 465端口配置">
-<meta property="og:url" content="https://jcdu.top/2021/10/18/linux%E6%90%AD%E5%BB%BA%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20-%20postifx%20+%20SSL%20+%20465%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2021/10/18/linux%E6%90%AD%E5%BB%BA%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20-%20postifx%20+%20SSL%20+%20465%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="整体参考：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;chris-cp&#x2F;p&#x2F;4843407.html 建议先看上文，照着配置完再看本文。关于25端口被封无法发邮件的解决办法在本文后半部分。 做几点补充：  &#x2F;etc&#x2F;dovecot&#x2F;conf.d&#x2F;10-ssl.conf中把 ssl &#x3D; required改成ssl &#x3D; no 注意设置&#x2F;etc&#x2F;postfix&#x2F;main.cf中的myne">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -499,7 +499,7 @@ class="email">而不能带@goodmail.com</a>。</p>
   <div class="license-box my-3">
     <div class="license-title">
       <div>linux搭建邮件服务器 - postifx + SSL + 465端口配置</div>
-      <div>https://jcdu.top/2021/10/18/linux搭建邮件服务器 - postifx + SSL + 465端口配置/</div>
+      <div>https://horizon86.github.io/2021/10/18/linux搭建邮件服务器 - postifx + SSL + 465端口配置/</div>
     </div>
     <div class="license-meta">
       

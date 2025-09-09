@@ -24,7 +24,7 @@
     <meta name="description" content="通用字符名（UCN） c++11引入了一种新的转义字符——通用字符名（universal character names）。表示就是\uxxxx或者\Uxxxxxxxx，xxxx是一个unicode码点。 12345678#include &lt;iostream&gt;using namespace std;int main()&#123;    const char* a &#x3D; &amp;quo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++ 字符串utf-8 通用字符名 用unicode编码表示">
-<meta property="og:url" content="https://jcdu.top/2021/09/07/c++%20%E5%AD%97%E7%AC%A6%E4%B8%B2utf-8%20%E9%80%9A%E7%94%A8%E5%AD%97%E7%AC%A6%E5%90%8D%20%E7%94%A8unicode%E7%BC%96%E7%A0%81%E8%A1%A8%E7%A4%BA/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2021/09/07/c++%20%E5%AD%97%E7%AC%A6%E4%B8%B2utf-8%20%E9%80%9A%E7%94%A8%E5%AD%97%E7%AC%A6%E5%90%8D%20%E7%94%A8unicode%E7%BC%96%E7%A0%81%E8%A1%A8%E7%A4%BA/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="通用字符名（UCN） c++11引入了一种新的转义字符——通用字符名（universal character names）。表示就是\uxxxx或者\Uxxxxxxxx，xxxx是一个unicode码点。 12345678#include &lt;iostream&gt;using namespace std;int main()&#123;    const char* a &#x3D; &amp;quo">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -297,7 +297,7 @@ names</a>）。表示就是<code>\uxxxx</code>或者<code>\Uxxxxxxxx</code>，xx
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* a = <span class="hljs-string">&quot;\u4f60&quot;</span>;<br>    <span class="hljs-comment">// const char* a = &quot;\U00004f60&quot;;</span><br>    cout &lt;&lt; a &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure></p>
 <blockquote>
 <p>要注意，代码中写的是字符的unicode编码，执行时输出的是utf-8编码，注意区分。可以在<a
-target="_blank" rel="noopener" href="https://horizon86.github.io/html/tools/codePoint.html">这里</a>查字符的Unicode编码</p>
+href="https://horizon86.github.io/html/tools/codePoint.html">这里</a>查字符的Unicode编码</p>
 </blockquote>
 <p>在windows下用g++编译执行上述代码，会输出utf-8编码的“你”（a的长度是3+1字节），g++默认使用的执行字符集是utf-8。</p>
 <p>如果用msvc编译器，执行字符集默认使用gbk，会输出gbk编码的“你”（a的长度是2+1字节）。</p>
@@ -347,7 +347,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/JackDual/article/deta
   <div class="license-box my-3">
     <div class="license-title">
       <div>c++ 字符串utf-8 通用字符名 用unicode编码表示</div>
-      <div>https://jcdu.top/2021/09/07/c++ 字符串utf-8 通用字符名 用unicode编码表示/</div>
+      <div>https://horizon86.github.io/2021/09/07/c++ 字符串utf-8 通用字符名 用unicode编码表示/</div>
     </div>
     <div class="license-meta">
       

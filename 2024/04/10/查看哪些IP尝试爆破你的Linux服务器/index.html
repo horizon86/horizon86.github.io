@@ -24,7 +24,7 @@
     <meta name="description" content="苯人有一台服务器，由于没有设置什么ssh ip过滤规则，经常被扫描，所以今天在此查看一下是哪些倒运鬼东西一直扫描的，把它们给屏蔽了。 以下是苯人服务器环境：  Ubuntu 20.04 LTS  ssh认证的日志会记录在&#x2F;var&#x2F;log&#x2F;auth.log中（在ubuntu 16.04之前似乎是&#x2F;var&#x2F;log&#x2F;secure） 一般认证失败的日志有两种格式： 12Apr  8 01:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="查看哪些IP尝试爆破你的Linux服务器">
-<meta property="og:url" content="https://jcdu.top/2024/04/10/%E6%9F%A5%E7%9C%8B%E5%93%AA%E4%BA%9BIP%E5%B0%9D%E8%AF%95%E7%88%86%E7%A0%B4%E4%BD%A0%E7%9A%84Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2024/04/10/%E6%9F%A5%E7%9C%8B%E5%93%AA%E4%BA%9BIP%E5%B0%9D%E8%AF%95%E7%88%86%E7%A0%B4%E4%BD%A0%E7%9A%84Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="苯人有一台服务器，由于没有设置什么ssh ip过滤规则，经常被扫描，所以今天在此查看一下是哪些倒运鬼东西一直扫描的，把它们给屏蔽了。 以下是苯人服务器环境：  Ubuntu 20.04 LTS  ssh认证的日志会记录在&#x2F;var&#x2F;log&#x2F;auth.log中（在ubuntu 16.04之前似乎是&#x2F;var&#x2F;log&#x2F;secure） 一般认证失败的日志有两种格式： 12Apr  8 01:">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -341,7 +341,7 @@ ip过滤规则，经常被扫描，所以今天在此查看一下是哪些倒运
   <div class="license-box my-3">
     <div class="license-title">
       <div>查看哪些IP尝试爆破你的Linux服务器</div>
-      <div>https://jcdu.top/2024/04/10/查看哪些IP尝试爆破你的Linux服务器/</div>
+      <div>https://horizon86.github.io/2024/04/10/查看哪些IP尝试爆破你的Linux服务器/</div>
     </div>
     <div class="license-meta">
       

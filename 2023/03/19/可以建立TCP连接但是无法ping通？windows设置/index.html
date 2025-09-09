@@ -24,17 +24,17 @@
     <meta name="description" content="前提 首先请确保关闭防火墙后可以ping通。否则你的路由都不通，不在本文讨论范围内。 本文解决开启防火墙发现TCP连接可达但是无法ping通的问题。 做法  启用入站规则中的文件和打印机共享（ipv4或者ipv6根据需要自己看）    尝试ping。如果还不行执行3 检查是否是同一个子网。第1步设置的这个规则要求：必须同一个子网才可以ping，如果不在一个子网，即使路由可达，也">
 <meta property="og:type" content="article">
 <meta property="og:title" content="可以建立TCP连接但是无法ping通？windows设置">
-<meta property="og:url" content="https://jcdu.top/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="前提 首先请确保关闭防火墙后可以ping通。否则你的路由都不通，不在本文讨论范围内。 本文解决开启防火墙发现TCP连接可达但是无法ping通的问题。 做法  启用入站规则中的文件和打印机共享（ipv4或者ipv6根据需要自己看）    尝试ping。如果还不行执行3 检查是否是同一个子网。第1步设置的这个规则要求：必须同一个子网才可以ping，如果不在一个子网，即使路由可达，也">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jcdu.top/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/2228692-20230319182004141-2126377266.png">
-<meta property="og:image" content="https://jcdu.top/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/2228692-20230319182712064-1009048706.png">
+<meta property="og:image" content="https://horizon86.github.io/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/2228692-20230319182004141-2126377266.png">
+<meta property="og:image" content="https://horizon86.github.io/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/2228692-20230319182712064-1009048706.png">
 <meta property="article:published_time" content="2023-03-19T10:29:00.000Z">
 <meta property="article:modified_time" content="2025-03-25T13:51:28.514Z">
 <meta property="article:author" content="horizon86">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jcdu.top/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/2228692-20230319182004141-2126377266.png">
+<meta name="twitter:image" content="https://horizon86.github.io/2023/03/19/%E5%8F%AF%E4%BB%A5%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5%E4%BD%86%E6%98%AF%E6%97%A0%E6%B3%95ping%E9%80%9A%EF%BC%9Fwindows%E8%AE%BE%E7%BD%AE/2228692-20230319182004141-2126377266.png">
   
   
   
@@ -76,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -330,7 +330,7 @@ in)的属性，可以看到默认只对本地子网有效，也就是源IP必须
   <div class="license-box my-3">
     <div class="license-title">
       <div>可以建立TCP连接但是无法ping通？windows设置</div>
-      <div>https://jcdu.top/2023/03/19/可以建立TCP连接但是无法ping通？windows设置/</div>
+      <div>https://horizon86.github.io/2023/03/19/可以建立TCP连接但是无法ping通？windows设置/</div>
     </div>
     <div class="license-meta">
       

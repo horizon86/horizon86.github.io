@@ -24,7 +24,7 @@
     <meta name="description" content="0. 概念界定 关于分布式训练&#x2F;多卡训练，我们首先明确一些概念：  并行（parallel）  多个卡训练，所有卡是一个进程或者是多个进程  分布式（Distributed）  多个卡训练，但是每张卡上都是一个单独的进程 但是，在下文中，为了表述的方便性，我们不严格区分“并行”和“分布式”两个概念，不论说并行训练还是分布式训练，都指的是使用多个显卡进行训练。 1. 简介 并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pytorch分布式训练 DDP torchrun介绍和基本使用">
-<meta property="og:url" content="https://jcdu.top/2022/11/29/pytorch%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83%20DDP%20torchrun%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2022/11/29/pytorch%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83%20DDP%20torchrun%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="0. 概念界定 关于分布式训练&#x2F;多卡训练，我们首先明确一些概念：  并行（parallel）  多个卡训练，所有卡是一个进程或者是多个进程  分布式（Distributed）  多个卡训练，但是每张卡上都是一个单独的进程 但是，在下文中，为了表述的方便性，我们不严格区分“并行”和“分布式”两个概念，不论说并行训练还是分布式训练，都指的是使用多个显卡进行训练。 1. 简介 并">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -388,7 +388,7 @@ id="需要注意的是deepspeed不能使用cuda_visible_devices来设置使用�
   <div class="license-box my-3">
     <div class="license-title">
       <div>pytorch分布式训练 DDP torchrun介绍和基本使用</div>
-      <div>https://jcdu.top/2022/11/29/pytorch分布式训练 DDP torchrun介绍和基本使用/</div>
+      <div>https://horizon86.github.io/2022/11/29/pytorch分布式训练 DDP torchrun介绍和基本使用/</div>
     </div>
     <div class="license-meta">
       

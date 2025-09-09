@@ -24,18 +24,18 @@
     <meta name="description" content="我在Windows上使用grep时发现中文会出错。 比如在cmd里执行echo 测试 | grep 测试，就没有输出，查了查说是要设置环境变量LANG&#x3D;zh_CN.GBK，我设置了之后确实可以了。但是对于这个环境变量的作用，我一直不很清楚，今天就做点实验来研究一下。 首先要清楚，cmd代码页默认是GBK，代码页分为输入代码页和输出代码页，这俩一般是一样的，可以用命令chcp查看，也可以用win">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows grep GBK编码问题">
-<meta property="og:url" content="https://jcdu.top/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="我在Windows上使用grep时发现中文会出错。 比如在cmd里执行echo 测试 | grep 测试，就没有输出，查了查说是要设置环境变量LANG&#x3D;zh_CN.GBK，我设置了之后确实可以了。但是对于这个环境变量的作用，我一直不很清楚，今天就做点实验来研究一下。 首先要清楚，cmd代码页默认是GBK，代码页分为输入代码页和输出代码页，这俩一般是一样的，可以用命令chcp查看，也可以用win">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jcdu.top/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/2228692-20210907160911972-828616137.png">
-<meta property="og:image" content="https://jcdu.top/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/2228692-20210907162555391-2046067184.png">
-<meta property="og:image" content="https://jcdu.top/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/2228692-20210907164634066-33170751.png">
+<meta property="og:image" content="https://horizon86.github.io/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/2228692-20210907160911972-828616137.png">
+<meta property="og:image" content="https://horizon86.github.io/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/2228692-20210907162555391-2046067184.png">
+<meta property="og:image" content="https://horizon86.github.io/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/2228692-20210907164634066-33170751.png">
 <meta property="article:published_time" content="2021-09-07T08:51:00.000Z">
 <meta property="article:modified_time" content="2025-03-25T13:53:04.340Z">
 <meta property="article:author" content="horizon86">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jcdu.top/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/2228692-20210907160911972-828616137.png">
+<meta name="twitter:image" content="https://horizon86.github.io/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/2228692-20210907160911972-828616137.png">
   
   
   
@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -371,7 +371,7 @@ status的输出编码是什么？执行<code>git status &gt; st.txt</code>，看
   <div class="license-box my-3">
     <div class="license-title">
       <div>windows grep GBK编码问题</div>
-      <div>https://jcdu.top/2021/09/07/windows grep GBK编码问题/</div>
+      <div>https://horizon86.github.io/2021/09/07/windows grep GBK编码问题/</div>
     </div>
     <div class="license-meta">
       

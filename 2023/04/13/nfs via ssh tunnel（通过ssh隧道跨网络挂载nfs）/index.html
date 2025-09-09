@@ -24,7 +24,7 @@
     <meta name="description" content="这篇代码段帮了大忙： https:&#x2F;&#x2F;gist.github.com&#x2F;proudlygeek&#x2F;5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的&#x2F;data1&#x2F;ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：&#x2F;etc&#x2F;exports（需要root） 123ubuntu@lthpc:~$ cat &#x2F;etc&#x2F;exports&#x2F;data1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nfs via ssh tunnel（通过ssh隧道跨网络挂载nfs）">
-<meta property="og:url" content="https://jcdu.top/2023/04/13/nfs%20via%20ssh%20tunnel%EF%BC%88%E9%80%9A%E8%BF%87ssh%E9%9A%A7%E9%81%93%E8%B7%A8%E7%BD%91%E7%BB%9C%E6%8C%82%E8%BD%BDnfs%EF%BC%89/index.html">
+<meta property="og:url" content="https://horizon86.github.io/2023/04/13/nfs%20via%20ssh%20tunnel%EF%BC%88%E9%80%9A%E8%BF%87ssh%E9%9A%A7%E9%81%93%E8%B7%A8%E7%BD%91%E7%BB%9C%E6%8C%82%E8%BD%BDnfs%EF%BC%89/index.html">
 <meta property="og:site_name" content="horizon86的博客">
 <meta property="og:description" content="这篇代码段帮了大忙： https:&#x2F;&#x2F;gist.github.com&#x2F;proudlygeek&#x2F;5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的&#x2F;data1&#x2F;ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：&#x2F;etc&#x2F;exports（需要root） 123ubuntu@lthpc:~$ cat &#x2F;etc&#x2F;exports&#x2F;data1">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"horizon86.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -347,7 +347,7 @@ umount -f -l
   <div class="license-box my-3">
     <div class="license-title">
       <div>nfs via ssh tunnel（通过ssh隧道跨网络挂载nfs）</div>
-      <div>https://jcdu.top/2023/04/13/nfs via ssh tunnel（通过ssh隧道跨网络挂载nfs）/</div>
+      <div>https://horizon86.github.io/2023/04/13/nfs via ssh tunnel（通过ssh隧道跨网络挂载nfs）/</div>
     </div>
     <div class="license-meta">
       
