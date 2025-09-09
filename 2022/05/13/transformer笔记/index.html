@@ -1,0 +1,944 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="horizon86">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="由于老是忘记transformer的细节，今天整个笔记记一下，免得又忘了  一个batch 有batch_size句话，一句话有n个单词，不够就pad到n，超出就截断 嵌入层嵌入后，输出维度是[batchsize, n, d_model] 也就是每个单词的嵌入是一个(1, d_model)的向量 进入到self-attention。先计算q, k, v，每个单词都有一个q, k,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="transformer笔记">
+<meta property="og:url" content="https://jcdu.top/2022/05/13/transformer%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="horizon86的博客">
+<meta property="og:description" content="由于老是忘记transformer的细节，今天整个笔记记一下，免得又忘了  一个batch 有batch_size句话，一句话有n个单词，不够就pad到n，超出就截断 嵌入层嵌入后，输出维度是[batchsize, n, d_model] 也就是每个单词的嵌入是一个(1, d_model)的向量 进入到self-attention。先计算q, k, v，每个单词都有一个q, k,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jcdu.top/2022/05/13/transformer%E7%AC%94%E8%AE%B0/2228692-20230404220557577-342901192.png">
+<meta property="article:published_time" content="2022-05-13T13:35:00.000Z">
+<meta property="article:modified_time" content="2025-03-25T13:52:30.027Z">
+<meta property="article:author" content="horizon86">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jcdu.top/2022/05/13/transformer%E7%AC%94%E8%AE%B0/2228692-20230404220557577-342901192.png">
+  
+  
+  
+  <title>transformer笔记 - horizon86的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>horizon86的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E6%9C%AC%E7%AB%99%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>实用工具</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="transformer笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-13 21:35" pubdate>
+          2022年5月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">transformer笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>由于老是忘记transformer的细节，今天整个笔记记一下，免得又忘了</p>
+</blockquote>
+<p>一个batch
+有<code>batch_size</code>句话，一句话有<code>n</code>个单词，不够就pad到n，超出就截断</p>
+<p>嵌入层嵌入后，输出维度是<code>[batchsize, n, d_model]</code></p>
+<p>也就是每个单词的嵌入是一个<code>(1, d_model)</code>的向量</p>
+<p>进入到self-attention。先计算<code>q, k, v</code>，每个单词都有一个<code>q, k, v</code></p>
+<p>对于一个单词的词嵌入 <span class="math display">\[
+\bm{x}_{emb} \in R^{1\times d_{model}}
+\]</span> <span class="math display">\[
+\bm{q}^{1\times d_{model}}\ \  = \bm{x}_{emb}\bm{W^{Q}}, \bm{W^{Q}}\in
+R^{d_{model\ \ \ \ } \times d_{model}}
+\]</span> <span class="math display">\[
+\bm{k}^{1\times d_{model}}\ \  = \bm{x}_{emb}\bm{W^{K}}, \bm{W^{K}}\in
+R^{d_{model\ \ \ \ } \times d_{model}}
+\]</span> <span class="math display">\[
+\bm{v}^{1\times d_{model}}\ \  = \bm{x}_{emb}\bm{W^{V}}, \bm{W^{V}}\in
+R^{d_{model\ \ \ \ } \times d_{model}}
+\]</span></p>
+<blockquote>
+<p>对所有的单词，<span
+class="math inline">\(W^Q,W^K,W^V\)</span>都是一样的</p>
+</blockquote>
+<p>然后计算每个单词和其他所有单词的注意力分数，对于一个单词的<code>q</code>和其他所有单词（包括自己）的<code>v</code>之间的相似度，每个相似度是一个标量，所以一个单词和<code>n</code>个单词的相似度是<span
+class="math inline">\(R^{1\times
+n}\)</span>的向量，然后对这个向量做softmax，得到的结果和各个单词的<code>v</code>加权和，作为一个单词的attention输出。
+<span class="math display">\[
+z_{1}^{1\times d_{model}} = softmax(q_1 \cdot k_1^T, q_1 \cdot k_2^T,
+\cdots, q_1 \cdot k_n^T)V
+\]</span></p>
+<p>整个句子的输出是 <span class="math display">\[
+Z^{n\times d_{model}}\  = softmax(QK^T/\sqrt{d_k})V
+\]</span></p>
+<h1 id="多头注意力">多头注意力</h1>
+<p>生成<code>h</code>个 <span class="math display">\[
+W^Q, W^K \in R^{d_{model\ \ \ \ }\times d_k}
+\]</span> <span class="math display">\[
+W^V \in R^{d_{model\ \ \ \ }\times d_v}
+\]</span></p>
+<p>这样，对于每个单词，可以得到h个输出，都是<span
+class="math inline">\(R^{1\times
+d_v}\)</span>的，然后把这h个输出直接拼接在一起，就变成了<span
+class="math inline">\(R^{1\times hd_v}\)</span></p>
+<p>然后经过一个全连接层<span class="math inline">\(W_0\in R^{hd_v \times
+d_{model}}\)</span>，输出的结果是<span class="math inline">\(R^{1\times
+d_{model}}\)</span></p>
+<p>这个输出结果在经过FFN，也就是先变成2048维，再变回来512维，一层就结束了。</p>
+<p>在实际中，设置了<span class="math inline">\(d_k =
+d_v\)</span>，并且<span class="math inline">\(hd_v = d_{model} =
+512\)</span>，所以<span
+class="math inline">\(W_0\)</span>变换在改变维度上没有起作用，仅仅增加了模型参数。</p>
+<p>顺便提一句，BERT的hidden_size就是指这里的<span
+class="math inline">\(d_{model}\)</span></p>
+<h1 id="多头注意力和单头的区别">多头注意力和单头的区别</h1>
+<p><strong>使用12个维度是64的头生成的结果也是768维的，那和我使用一个768维的注意力头有什么区别？</strong></p>
+<p>考虑一句话：I love you.
+使用注意力机制后，对于每个单词输出了一个768维的表征向量，这个向量是所有单词的value向量的加权和。也就是<span
+class="math inline">\(Attention_{you} = 0.3*Value_{I} + 0.4*Value_{love}
++ 0.3*Value_{you}\)</span>.
+[0.3,0.4,0.3]就是加权和使用的权重，也就是softmax后的注意力分数。</p>
+<p>把768维分成12个部分，每个部分是64维，则每个部分的加权的权重都不完全相同。也就是，对于生成的you的[0-64]维，可能I占0.3，但是在you的65-128维中，I可能是占据0.4。如果是单头注意力，0-768维的权重全是相同的。</p>
+<h1 id="mask机制">mask机制</h1>
+<p>该部分主要图片偷自：</p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/songyunli1111/article/details/108023139"
+class="uri">https://blog.csdn.net/songyunli1111/article/details/108023139</a></p>
+<figure>
+<img src="2228692-20230404220557577-342901192.png" srcset="/img/loading.gif" lazyload alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>不难看出，在mask后，对于A的attention输出，BCD没有任何贡献，对于B的attention输出，CD没有任何贡献，以此类推。</p>
+<p>mask的实现方法是，弄个mask矩阵，该矩阵上三角是负无穷，下三角是0，把mask矩阵和attention矩阵相加，这样，就得到了上图中的Masked。经过softmax后，负无穷那部分自然就变成了0.</p>
+<h1 id="past_key_value">past_key_value</h1>
+<p>在查看gpt2生成文本的例子时，发现有个past_key_value的参数，研究了一天终于明白了这个参数的作用：</p>
+<p>给定一句话，假设输入序列有10个token，那么GPT2的输出就会有10个位置，输出的logits的维度是：<code>logits.shape = [1, 10, 50526](bsz, seq_len, vocab_size)</code>。我们生成下一个词，是用的<code>logits[:, -1]</code>。而这个值，只依赖于输入序列中最后一个token的query,
+key, value以及他之前的tokens的key, value。<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+原本上，当生成第一个词后，生成的token拼接在上一次输入token的序列后，再次输入模型生成下一个词。但是，实际上，只需要输入最后一个token，以及之前的tokens的key和value即可计算。</p>
+<p>假设10个词的词嵌入分别是ABCDEFGHIJ，每个都是768维的行向量，那么模型的计算过程是：</p>
+<p><span class="math display">\[
+query=
+\begin{pmatrix}
+A \\
+B \\
+\vdots \\
+J
+\end{pmatrix}
+Q^W=
+\begin{pmatrix}
+AQ^W \\
+BQ^W \\
+\vdots \\
+JQ^W
+\end{pmatrix}
+=\begin{pmatrix}
+Q_A \\
+Q_B \\
+\vdots \\
+Q_J
+\end{pmatrix}
+\in R^{seq\_len\times hidden\_size}
+\\
+key=
+\begin{pmatrix}
+A \\
+B \\
+\vdots \\
+J
+\end{pmatrix}
+K^W=
+\begin{pmatrix}
+AK^W \\
+BK^W \\
+\vdots \\
+JK^W
+\end{pmatrix}
+=\begin{pmatrix}
+K_A \\
+K_B \\
+\vdots \\
+K_J
+\end{pmatrix}
+\\
+value=
+\begin{pmatrix}
+A \\
+B \\
+\vdots \\
+J
+\end{pmatrix}
+V^W=
+\begin{pmatrix}
+AV^W \\
+BV^W \\
+\vdots \\
+JV^W
+\end{pmatrix}
+=\begin{pmatrix}
+V_A \\
+V_B \\
+\vdots \\
+V_J
+\end{pmatrix}
+\\
+masked\_attention = softmax(\frac{(query \times key^T) }{\sqrt{d_k}}+
+attention\_mask)\\
+\]</span></p>
+<p>其中： <span class="math display">\[
+\begin{aligned}
+query \times key^T&amp;=\begin{pmatrix}
+AQ^W \\
+BQ^W \\
+\vdots \\
+JQ^W
+\end{pmatrix}
+\begin{pmatrix}
+(AK^W)^T &amp; (BK^W)^T &amp; \cdots &amp; (JK^W)^T\\
+\end{pmatrix}\\
+&amp;=\begin{pmatrix}
+Q_A{K_A}^T &amp; Q_A{K_B}^T &amp; \cdots &amp; Q_A{K_J}^T\\
+\vdots  &amp;\vdots&amp;\cdots&amp;\vdots\\
+\color{red}{Q_J{K_A}^T}&amp;\color{red}{Q_J{K_B}^T
+}&amp;\color{red}{\cdots} &amp; \color{red}{Q_J{K_J}^T}
+\end{pmatrix}
+\end{aligned}
+\\
+\]</span></p>
+<p>由于mask、除以dk等操作都是element_wise的操作，不涉及不同token的计算，softmax也是得到masked_attention后的计算，所以我们忽略这些操作。残差连接和norm等也忽略。
+<span class="math display">\[
+\begin{aligned}
+attention\_output&amp;= masked\_attention \times value\\
+&amp;=\begin{pmatrix}
+Q_A{K_A}^T &amp; Q_A{K_B}^T &amp; \cdots &amp; Q_A{K_J}^T\\
+\vdots  &amp;\vdots&amp;\cdots&amp;\vdots\\
+\color{red}{Q_J{K_A}^T}&amp;\color{red}{Q_J{K_B}^T
+}&amp;\color{red}{\cdots} &amp; \color{red}{Q_J{K_J}^T}
+\end{pmatrix}
+\begin{pmatrix}
+\color{red}{V_A} \\
+\color{red}{V_B} \\
+\color{red}\vdots \\
+\color{red}{V_J}
+\end{pmatrix}\\
+&amp;=\begin{pmatrix}
+\displaystyle\sum_{i = A}^{J}Q_A{K_i}^TV_i \\
+\displaystyle\sum_{i = A}^{J}Q_B{K_i}^TV_i \\
+\vdots \\
+\color{red}{\displaystyle\sum_{i = A}^{J}Q_J{K_i}^TV_i}
+\end{pmatrix}
+=\begin{pmatrix}
+X_A\\
+X_B\\
+\vdots\\
+\color{red}{X_J}
+\end{pmatrix}
+\in R^{10\times 768}
+\end{aligned}
+\\
+\begin{aligned}
+令X&amp;=attention\_output\\
+logits&amp;=MLP(FFN(X))\\
+&amp;=((relu(XW_1+b_1))W_2+b_2)W_3+b_3
+\end{aligned}
+\\
+而XW_1+b_1=\begin{pmatrix}
+X_A\\
+X_B\\
+\vdots\\
+\color{red}{X_J}
+\end{pmatrix}
+W_1+b_1=\begin{pmatrix}
+X_AW_1+b_{1,1}\\
+X_BW_1+b_{1,2}\\
+\vdots\\
+\color{red}{X_JW_1+b_{1,10}}
+\end{pmatrix}
+\]</span></p>
+<p>上式中，带W都是模型的参数（weight）。本来GPT有好多层，我们就假定成只有1层，多层类似。</p>
+<p>从上述不难看出，最后一个位置的logits，只需要<span
+class="math inline">\(X_J\)</span>，而<span
+class="math inline">\(X_J\)</span>只需要<span
+class="math inline">\(Q_J\)</span>以及<span
+class="math inline">\(K_i\)</span>,<span
+class="math inline">\(V_i\)</span> for <span class="math inline">\(i \in
+{A, ...
+,J}\)</span>。也就是说除了最新的token的query、key、value，之前的词只需要key和value即可，而后者已经在前一步生成时计算得到了。past_key_value存储的就是这些。对于多层的transformer结构，每层都保存自己的KV
+cache，KV
+cache的大小就是：<code>(2, L, B, S, E)</code>，<code>(2, Layers, batch_size, seq_length, embedding_dim)</code>。</p>
+<p>在生成时，生成第一个token时需要完整的Dense
+attention，之后只需要计算最后一行的attention即可。</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>注1<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>transformer笔记</div>
+      <div>https://jcdu.top/2022/05/13/transformer笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>horizon86</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/15/%E8%AF%8D%E5%B5%8C%E5%85%A5%20-%20word2vector/" title="词嵌入 - word2vector">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">词嵌入 - word2vector</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/11/linux%20ps%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="linux ps命令详解">
+                        <span class="hidden-mobile">linux ps命令详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] },
+              tags: 'ams'
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

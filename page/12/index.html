@@ -1,0 +1,861 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="horizon86">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="horizon86的博客">
+<meta property="og:url" content="https://jcdu.top/page/12/index.html">
+<meta property="og:site_name" content="horizon86的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="horizon86">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>horizon86的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>horizon86的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E6%9C%AC%E7%AB%99%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>实用工具</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="初中辍学，自学计算机"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/07/26/Minecraft%EF%BC%88MC%20%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%EF%BC%89%201.18%E6%96%B9%E5%9D%97_%E7%89%A9%E5%93%81ID%E5%AF%B9%E5%BA%94%E8%A1%A8/" target="_self">
+          Minecraft（MC 我的世界） 1.18方块/物品ID对应表
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/26/Minecraft%EF%BC%88MC%20%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%EF%BC%89%201.18%E6%96%B9%E5%9D%97_%E7%89%A9%E5%93%81ID%E5%AF%B9%E5%BA%94%E8%A1%A8/" target="_self">
+        <div>
+          查找方法：先在.minecraft\assets\index\1.18.json中查找minecraft/lang/zh_cn.json，然后根据hash在.minecraft\assets\objects里面找对应的文件。 比如这里是9fabbc798786c7b7364902b31bdb37c2c037e9b8，那么它就在9f文件夹中。找到后用文本编辑器打开，里面都是unicode编码，直接
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-26 10:21" pubdate>
+              2022-07-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B8%B8%E6%88%8F/" class="category-chain-item">游戏</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%B8%B8%E6%88%8F/Minecraft/" class="category-chain-item">Minecraft</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/07/26/ffmpeg%E7%B2%BE%E7%A1%AE%E5%88%86%E5%89%B2%E9%9F%B3%E8%A7%86%E9%A2%91/" target="_self">
+          ffmpeg精确分割音视频
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/26/ffmpeg%E7%B2%BE%E7%A1%AE%E5%88%86%E5%89%B2%E9%9F%B3%E8%A7%86%E9%A2%91/" target="_self">
+        <div>
+          参考：FFmpeg精准时间切割视频文件 - 知乎 视频+音频： 1ffmpeg -i &lt;input_file&gt; -ss &lt;start_time&gt; -t &lt;duration&gt; -c:a &lt;audio_codec&gt; -c:v &lt;video_codec&gt; &lt;output_file&gt; 仅音频： 1ffmpeg -y -i ac7
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-26 10:19" pubdate>
+              2022-07-26
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/07/21/Minecraft%E4%B8%AA%E4%BA%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%EF%BC%88MC%20%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%EF%BC%89/" target="_self">
+          Minecraft个人服务器常用插件（MC 我的世界）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/21/Minecraft%E4%B8%AA%E4%BA%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%EF%BC%88MC%20%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%EF%BC%89/" target="_self">
+        <div>
+          Paper/Spigot/Bukkit 以下插件无特殊说明仅需服务器安装 功能性插件  InteractionVisualizer  显示掉落物品消失时间的插件 此插件需要前置插件ProtocolLib 注意：此插件可能会对服务器造成较高的负担，如果卡顿建议去除  LuckPerms  权限插件，是各种需要权限的插件的不二之选。官网的Usage是个很好的入门教程。  T
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-21 12:46" pubdate>
+              2022-07-21
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/07/21/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
+          ssh端口转发
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/21/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
+        <div>
+          看了一些文章，实在是跟婆娘的裹脚，又臭又长，解释的倒是正确，但是那么长很容易吓退看文章的人，况且写的也不那么清晰，ABC来回都混淆了。 ssh总共有3种转发模式，分别是 -D: 动态端口转发，这玩意用来做socks proxy，此处不写。 -L：访问本地端口 == 远程端口 -R：访问远程端口 == 访问本地端口  本地指发起ssh请求的客户端，远程指接收ssh请求的服务器
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-21 11:10" pubdate>
+              2022-07-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/windows/" class="category-chain-item">windows</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/windows/linux/" class="category-chain-item">linux</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/windows/linux/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/07/13/tmux%E5%8F%91%E9%80%81%E5%88%B0%E6%9F%90%E4%B8%AA%E4%BC%9A%E8%AF%9D%E6%8C%87%E5%AE%9A%E5%91%BD%E4%BB%A4_%E6%8C%89%E9%94%AE/" target="_self">
+          tmux发送到某个会话指定命令/按键
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/13/tmux%E5%8F%91%E9%80%81%E5%88%B0%E6%9F%90%E4%B8%AA%E4%BC%9A%E8%AF%9D%E6%8C%87%E5%AE%9A%E5%91%BD%E4%BB%A4_%E6%8C%89%E9%94%AE/" target="_self">
+        <div>
+          发送指定按键到tmux的特定会话： 1tmux send-keys [-t &lt;session-name&gt;] &lt;key&gt; key的取值参考tmux man手册：  When specifying keys, most represent themselves (for example 'A' to 'Z'). Ctrl keys may be prefixed wit
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-13 13:30" pubdate>
+              2022-07-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/05/19/pytorch%20transformers/" target="_self">
+          pytorch transformers ....
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/19/pytorch%20transformers/" target="_self">
+        <div>
+          huggingface模型下载 transformers的预训练模型下载到本地特定位置，默认是在~/.cache/huggingface/transformers 1model = GPT2LMHeadModel.from_pretrained(&#x27;gpt2&#x27;, cache_dir=&quot;...&quot;) 想知道transformers的模型都是什么结构的，比如b
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-19 10:12" pubdate>
+              2022-05-19
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/05/17/torch.nn.CrossEntropyLoss/" target="_self">
+          torch.nn.CrossEntropyLoss
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/17/torch.nn.CrossEntropyLoss/" target="_self">
+        <div>
+          交叉熵损失，会自动给输出的logits做softmax，然后和真是标签计算交叉熵，然后再取相反数 https://zhuanlan.zhihu.com/p/383044774 CrossEntropyLoss(y_hat, y_truth) = -sum(y_truth_one_hot * log(softmax(y_hat))) 输入的y_hat是(n, C)，n是样本数，C是类别数，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-17 14:13" pubdate>
+              2022-05-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/05/16/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2list/" target="_self">
+          优秀博客list
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/16/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2list/" target="_self">
+        <div>
+          pytorch如何保存与加载训练模型 - 简书 Pytorch冻结部分层的参数 - 简书 剪枝 （论文 + 代码）_看不见我呀的博客-CSDN博客_剪枝代码 Pytorch 剪枝操作实现 - 虾野百鹤 - 博客园 pytorch官方的剪枝教程（推荐，简单明了，比看别人的博客好的多） Pruning Tutorial — PyTorch Tutorials 1.11.0+cu10
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-16 20:36" pubdate>
+              2022-05-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/05/16/bert%E7%BB%86%E8%8A%82%E8%A7%A3%E8%AF%BB%E5%92%8C%E8%AE%B0%E5%BD%95/" target="_self">
+          bert细节解读和记录
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/16/bert%E7%BB%86%E8%8A%82%E8%A7%A3%E8%AF%BB%E5%92%8C%E8%AE%B0%E5%BD%95/" target="_self">
+        <div>
+          Q&amp;A：  Q：BERT输如和输出是什么？  A：输入是句子，每个句子由n个单词组成，也就是输入的形状是[batch_size, sentence_len]。这里每个单词用一个整数来表示，输入后对每个单词进行embbding，之后的维度是[batch_size, sentence_len, emb_dim]，这里每个单词用一个emd_dim维的向量来表示。 输出是[batch
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-16 20:30" pubdate>
+              2022-05-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/05/15/%E8%AF%8D%E5%B5%8C%E5%85%A5%20-%20word2vector/" target="_self">
+          词嵌入 - word2vector
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/15/%E8%AF%8D%E5%B5%8C%E5%85%A5%20-%20word2vector/" target="_self">
+        <div>
+          推荐一篇文章：通俗理解word2vec - 简书 认真读完上文后会理解word2vec 本文做点重点解释： word2vec的输入是一个单词上下文中的 \(C\) 个单词one-hot编码，你语料库有几个单词这个one-hot向量就是几维的。假定语料库有 \(V\) 个单词，每个单词的ont-hot编码就是\(1 \times V\)的。   image  对于语料库中的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-15 20:42" pubdate>
+              2022-05-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/11/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="page-number" href="/page/11/#board">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="extend next" rel="next" href="/page/13/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="horizon86">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="官方文档：Docs  前言 本校小爱课程表导入有人适配了，但是我导入失败了。加群后很快就有大佬联系我，本着学习的目的，婉拒了大佬的帮助，赶紧学了学js准备适配。 我校是树维系统，相比其他系统尴尬就尴尬在这个系统在小爱课程表内置浏览器上兼容性垃圾，居然显示不出来课程表。 搞了几天之后，今天终于要接近成功了，吓得我赶紧发一篇CSDN。 开工 provider 因为小爱显不出来课程表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小爱课程表导入-树维系统（TJU）">
+<meta property="og:url" content="https://jcdu.top/2021/03/25/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E5%AF%BC%E5%85%A5-%E6%A0%91%E7%BB%B4%E7%B3%BB%E7%BB%9F%EF%BC%88TJU%EF%BC%89/index.html">
+<meta property="og:site_name" content="horizon86的博客">
+<meta property="og:description" content="官方文档：Docs  前言 本校小爱课程表导入有人适配了，但是我导入失败了。加群后很快就有大佬联系我，本着学习的目的，婉拒了大佬的帮助，赶紧学了学js准备适配。 我校是树维系统，相比其他系统尴尬就尴尬在这个系统在小爱课程表内置浏览器上兼容性垃圾，居然显示不出来课程表。 搞了几天之后，今天终于要接近成功了，吓得我赶紧发一篇CSDN。 开工 provider 因为小爱显不出来课程表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jcdu.top/2021/03/25/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E5%AF%BC%E5%85%A5-%E6%A0%91%E7%BB%B4%E7%B3%BB%E7%BB%9F%EF%BC%88TJU%EF%BC%89/2228692-20210325195835769-1007374467.png">
+<meta property="article:published_time" content="2021-03-25T12:08:00.000Z">
+<meta property="article:modified_time" content="2025-03-27T09:20:28.647Z">
+<meta property="article:author" content="horizon86">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jcdu.top/2021/03/25/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E5%AF%BC%E5%85%A5-%E6%A0%91%E7%BB%B4%E7%B3%BB%E7%BB%9F%EF%BC%88TJU%EF%BC%89/2228692-20210325195835769-1007374467.png">
+  
+  
+  
+  <title>小爱课程表导入-树维系统（TJU） - horizon86的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jcdu.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>horizon86的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E6%9C%AC%E7%AB%99%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>实用工具</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="小爱课程表导入-树维系统（TJU）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-03-25 20:08" pubdate>
+          2021年3月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">小爱课程表导入-树维系统（TJU）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>官方文档：<a
+target="_blank" rel="noopener" href="https://ldtu0m3md0.feishu.cn/docs/doccnhZPl8KnswEthRXUz8ivnhb">Docs</a></p>
+</blockquote>
+<h1 id="前言">前言</h1>
+<p>本校小爱课程表导入有人适配了，但是我导入失败了。加群后很快就有大佬联系我，本着学习的目的，婉拒了大佬的帮助，赶紧学了学js准备适配。</p>
+<p>我校是树维系统，相比其他系统尴尬就尴尬在这个系统在小爱课程表内置浏览器上兼容性垃圾，居然显示不出来课程表。</p>
+<p>搞了几天之后，今天终于要接近成功了，吓得我赶紧发一篇CSDN。</p>
+<h1 id="开工">开工</h1>
+<h2 id="provider">provider</h2>
+<p>因为小爱显不出来课程表页面，因此得先发请求获取课程表数据。那怎么知道发什么数据呢？只能抓包看看。在电脑和手机上打开课表页面，抓包对比之后发现，获取课程信息是通过发送POST请求来实现的。</p>
+<figure>
+<img src="2228692-20210325195835769-1007374467.png" srcset="/img/loading.gif" lazyload
+alt="电脑抓包比手机多的请求" />
+<figcaption aria-hidden="true">电脑抓包比手机多的请求</figcaption>
+</figure>
+<p>其中，第12-16号请求是电脑比手机多发送的请求，其中第15号请求获取课程信息。因此我们只要模拟第15号请求即可。
+观察15号请求，是个POST请求，其上传的数据中最重要的是semester.id和ids。前者表示学期，后者是唯一的学生ids。20212学期的semester.id是48，其他学期的id可以查看12号请求的响应来获取。（因此，之后每个学期都要改一下这个semester.id。当然也可以写进代码里判断，但是太麻烦了）</p>
+<p>因此provider分为两个部分，一个是获取ids，另一个是发送POST请求。</p>
+<h3 id="获取ids">1. 获取ids</h3>
+<p>通过在网页搜索ids的值，发现在如下片段中出现 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">searchTable</span>(<span class="hljs-params"></span>)&#123;<br>   		<span class="hljs-keyword">if</span>(<span class="hljs-title function_">jQuery</span>(<span class="hljs-string">&quot;#courseTableType&quot;</span>).<span class="hljs-title function_">val</span>()==<span class="hljs-string">&quot;std&quot;</span>)&#123;<br>   			bg.<span class="hljs-property">form</span>.<span class="hljs-title function_">addInput</span>(form,<span class="hljs-string">&quot;ids&quot;</span>,<span class="hljs-string">&quot;1234567&quot;</span>);<br>   		&#125;<span class="hljs-keyword">else</span>&#123;<br>   			bg.<span class="hljs-property">form</span>.<span class="hljs-title function_">addInput</span>(form,<span class="hljs-string">&quot;ids&quot;</span>,<span class="hljs-string">&quot;12345&quot;</span>);<br>   		&#125;<br>       	bg.<span class="hljs-property">form</span>.<span class="hljs-title function_">submit</span>(form,<span class="hljs-string">&quot;courseTableForStd!courseTable.action&quot;</span>,<span class="hljs-string">&quot;contentDiv&quot;</span>);<br>   	&#125;<br></code></pre></td></tr></table></figure>
+std表示student，我们需要的是学生课表，因此发送的ids是第一个1234567，通过正则表达式匹配得到ids即可。但是在chrome测试时发现使用document.getElementByTagName('script')方法，经常无法得到上述代码所在的js片段，有时可以，有时不行。通过查阅资料与观察，发现事实上，这个片段在一个iframe里面，这个iframe里有一个完整的网页，因此可以获取iframe中的document再来查找一定可以找到。在手机上不知道能不能把这个放到iframe中，因此为了确保查到ids，使用了两种方法进行查找，分别是直接使用document.getElementByTagName()，另一种是获取iframe里的document之后再操作。</p>
+<h3 id="post请求">2 POST请求</h3>
+<p>查找到之后就可以发送POST请求了，使用XMLHTTPrequest即可。获取其返回的网页即可。本来想用jQuery，但是居然不能用。</p>
+<h2 id="parser">parser</h2>
+<p>解析主要是搞明白数据在网页的存储格式。以一个课程为例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> teachers = [&#123; <span class="hljs-attr">id</span>: <span class="hljs-number">6484</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;施鹏鹏&quot;</span>, <span class="hljs-attr">lab</span>: <span class="hljs-literal">false</span> &#125;, &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">7357</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;罗翔&quot;</span>, <span class="hljs-attr">lab</span>: <span class="hljs-literal">false</span> &#125;];<span class="hljs-comment">//本课程所有老师</span><br><span class="hljs-keyword">var</span> actTeachers = [&#123; <span class="hljs-attr">id</span>: <span class="hljs-number">7357</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;罗翔&quot;</span>, <span class="hljs-attr">lab</span>: <span class="hljs-literal">false</span> &#125;];<span class="hljs-comment">//这节课真正上课的老师</span><br><span class="hljs-keyword">var</span> assistant = _.<span class="hljs-title function_">filter</span>(actTeachers, <span class="hljs-keyword">function</span> (<span class="hljs-params">actTeacher</span>) &#123;<br>    <span class="hljs-keyword">return</span> (_.<span class="hljs-title function_">where</span>(teachers, &#123; <span class="hljs-attr">id</span>: actTeacher.<span class="hljs-property">id</span>, <span class="hljs-attr">name</span>: actTeacher.<span class="hljs-property">name</span>, <span class="hljs-attr">lab</span>: actTeacher.<span class="hljs-property">lab</span> &#125;).<span class="hljs-property">length</span> == <span class="hljs-number">0</span>) &amp;&amp; (actTeacher.<span class="hljs-property">lab</span> == <span class="hljs-literal">true</span>);<br>&#125;);<br><span class="hljs-keyword">var</span> assistantName = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">if</span> (assistant.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>    assistantName = assistant[<span class="hljs-number">0</span>].<span class="hljs-property">name</span>;<br>    actTeachers = _.<span class="hljs-title function_">reject</span>(actTeachers, <span class="hljs-keyword">function</span> (<span class="hljs-params">actTeacher</span>) &#123;<br>        <span class="hljs-keyword">return</span> _.<span class="hljs-title function_">where</span>(assistant, &#123; <span class="hljs-attr">id</span>: actTeacher.<span class="hljs-property">id</span> &#125;).<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>;<br>    &#125;);<br>&#125;<br><span class="hljs-keyword">var</span> actTeacherId = [];<br><span class="hljs-keyword">var</span> actTeacherName = [];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; actTeachers.<span class="hljs-property">length</span>; i++) &#123;<br>    actTeacherId.<span class="hljs-title function_">push</span>(actTeachers[i].<span class="hljs-property">id</span>);<br>    actTeacherName.<span class="hljs-title function_">push</span>(actTeachers[i].<span class="hljs-property">name</span>);<br>&#125;<br>activity = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TaskActivity</span>(actTeacherId.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;,&#x27;</span>), actTeacherName.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;,&#x27;</span>), <span class="hljs-string">&quot;13015(02365)&quot;</span>, <span class="hljs-string">&quot;网络营销&quot;</span>, <span class="hljs-string">&quot;8866&quot;</span>, <span class="hljs-string">&quot;新浪总部335&quot;</span>, <span class="hljs-string">&quot;00000111100000000000000000000000000000000000000000000&quot;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&quot;&quot;</span>, assistantName, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<span class="hljs-comment">//这里包含了课程名字和上课地址，后面的53个01字符串表示该周开课否（示例表示4-8周开课）</span><br>index = <span class="hljs-number">2</span> * unitCount + <span class="hljs-number">0</span>;<span class="hljs-comment">//2 * unitCount + 0   即第2天（周三）第0节课</span><br>table0.<span class="hljs-property">activities</span>[index][table0.<span class="hljs-property">activities</span>[index].<span class="hljs-property">length</span>] = activity;<br>index = <span class="hljs-number">2</span> * unitCount + <span class="hljs-number">1</span>;<span class="hljs-comment">//  第2天（周三）第1节课</span><br>table0.<span class="hljs-property">activities</span>[index][table0.<span class="hljs-property">activities</span>[index].<span class="hljs-property">length</span>] = activity;<br></code></pre></td></tr></table></figure>
+<p>想必结合注释大家能看懂。
+搞明白了写解析就好办了。直接一通正则表达式就OK。</p>
+<p>代码地址：<a target="_blank" rel="noopener" href="https://github.com/horizon86/MI-AICourseTable"
+class="uri">https://github.com/horizon86/MI-AICourseTable</a></p>
+<p>附上semester.id <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;semesters&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;y0&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">24</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2003-2004&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">15</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2003-2004&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y1&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">32</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2004-2005&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">16</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2004-2005&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y2&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">33</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2005-2006&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">17</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2005-2006&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y3&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">34</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2006-2007&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">18</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2006-2007&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y4&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">35</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2007-2008&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">19</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2007-2008&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y5&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">36</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2008-2009&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">20</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2008-2009&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y6&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">37</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2009-2010&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">21</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2009-2010&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y7&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">3</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2010-2011&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">22</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2010-2011&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y8&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">4</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2011-2012&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">23</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2011-2012&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y9&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">5</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2012-2013&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">25</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2012-2013&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y10&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">6</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2013-2014&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">26</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2013-2014&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y11&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">7</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2014-2015&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2014-2015&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y12&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">8</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2015-2016&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">27</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2015-2016&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y13&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">9</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2016-2017&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">28</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2016-2017&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y14&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">10</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2017-2018&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">29</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2017-2018&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y15&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">11</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2018-2019&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">30</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2018-2019&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y16&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">12</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2019-2020&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">31</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2019-2020&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y17&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">47</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2020-2021&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">48</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2020-2021&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y18&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">74</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2021-2022&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">75</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2021-2022&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y19&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">76</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2022-2023&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">77</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2022-2023&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y20&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">94</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2023-2024&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">95</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2023-2024&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y21&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">114</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2024-2025&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">115</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2024-2025&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;y22&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">116</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2025-2026&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">117</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;schoolYear&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2025-2026&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>小爱课程表导入-树维系统（TJU）</div>
+      <div>https://jcdu.top/2021/03/25/小爱课程表导入-树维系统（TJU）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>horizon86</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年3月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/26/%E4%BD%BF%E7%94%A8msvc%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%BC%96%E8%AF%91%E9%9D%99%E6%80%81%E5%BA%93%E5%92%8C%E5%8A%A8%E6%80%81%E5%BA%93/" title="使用msvc命令行编译静态库和动态库">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用msvc命令行编译静态库和动态库</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] },
+              tags: 'ams'
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
