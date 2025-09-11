@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://horizon86.github.io/2022/11/03/tmux%E6%B2%A1%E6%9C%89%E9%A2%9C%E8%89%B2%20_%20linux%20PS1%E5%8F%98%E9%87%8F%E8%AF%A6%E8%A7%A3/2228692-20221104133646840-954918842.png">
 <meta property="article:published_time" content="2022-11-03T11:40:00.000Z">
-<meta property="article:modified_time" content="2025-03-25T13:51:52.748Z">
+<meta property="article:modified_time" content="2025-09-11T17:52:33.288Z">
 <meta property="article:author" content="horizon86">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://horizon86.github.io/2022/11/03/tmux%E6%B2%A1%E6%9C%89%E9%A2%9C%E8%89%B2%20_%20linux%20PS1%E5%8F%98%E9%87%8F%E8%AF%A6%E8%A7%A3/2228692-20221104133646840-954918842.png">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          559 字
+          561 字
         
       </span>
     
@@ -318,16 +318,48 @@
 <p>颜色类：</p>
 <p>背景色：40-47，前景色：30-37</p>
 <p>前景色就是字体颜色</p>
-<p>|背景色 |前景色|</p>
-<p>|-|-|</p>
-<p>|40:黑色 | 30:黑色</p>
-<p>41:红色 | 31:红色</p>
-<p>42:绿色 |32:绿色</p>
-<p>43:黄色 |33:黄色</p>
-<p>44:蓝色 |34:蓝色</p>
-<p>45:紫色 |35:紫色</p>
-<p>46:天蓝 |36:天蓝</p>
-<p>47:白色 |37:白色</p>
+<table>
+<thead>
+<tr class="header">
+<th>背景色</th>
+<th>前景色</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>40:黑色</td>
+<td>30:黑色</td>
+</tr>
+<tr class="even">
+<td>41:红色</td>
+<td>31:红色</td>
+</tr>
+<tr class="odd">
+<td>42:绿色</td>
+<td>32:绿色</td>
+</tr>
+<tr class="even">
+<td>43:黄色</td>
+<td>33:黄色</td>
+</tr>
+<tr class="odd">
+<td>44:蓝色</td>
+<td>34:蓝色</td>
+</tr>
+<tr class="even">
+<td>45:紫色</td>
+<td>35:紫色</td>
+</tr>
+<tr class="odd">
+<td>46:天蓝</td>
+<td>36:天蓝</td>
+</tr>
+<tr class="even">
+<td>47:白色</td>
+<td>37:白色</td>
+</tr>
+</tbody>
+</table>
 <p>然后可以分析PS1了。</p>
 <p>首先，所有非打印字符需要放在<code>\[</code>和<code>\]</code>之间，<code>\033</code>或者<code>\e</code>来开启一段转义字符。<code>\a</code>作为字符串终止符。</p>
 <p>先看第一段：</p>
@@ -343,9 +375,10 @@ target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man4/conso
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
 <p>剩下的部分就好理解了，都是设置终端输入提示的，设置了不同的颜色等等。</p>
-<p> 主机名</p>
-<p> 用户名</p>
-<p>: 工作目录</p>
+<!-- markdown-smart必须这么转义 -->
+<p>\h: 主机名</p>
+<p>\u: 用户名</p>
+<p>\w: 工作目录</p>
 <p>剩下的详见<a
 target="_blank" rel="noopener" href="https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html">Controlling-the-Prompt</a></p>
 <p>最后一个$是输入的标志符号</p>
@@ -500,12 +533,6 @@ target="_blank" rel="noopener" href="https://www.gnu.org/software/bash/manual/ht
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -698,50 +725,6 @@ target="_blank" rel="noopener" href="https://www.gnu.org/software/bash/manual/ht
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] },
-              tags: 'ams'
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
