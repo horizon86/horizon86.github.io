@@ -302,9 +302,7 @@
 <p>CUDA的线程模型如上图，在调用一个CUDA函数时，需要定义grid和block的形状：</p>
 <p><code>func&lt;&lt;&lt;grid, block&gt;&gt;&gt;();</code></p>
 <p>在程序里定义的<code>grid</code>和<code>block</code>都是dim3类型的变量。当调用一个函数时，该函数会启动众多<strong>线程(thread)</strong>进行执行，所有的线程称为一个<code>网格(grid)</code>。一个<code>grid</code>又分为多个<code>线程块(block)</code>，一个<code>block</code>由多个线程组成。</p>
-<p>以上内容参见：<a
-target="_blank" rel="noopener" href="https://ther-nullptr.github.io/posts/high-performance-computing/cuda/"
-class="uri">https://ther-nullptr.github.io/posts/high-performance-computing/cuda/</a></p>
+<p>以上内容参见：https://ther-nullptr.github.io/posts/high-performance-computing/cuda/</p>
 <h1 id="nvidia-gpu硬件结构">2. NVIDIA GPU硬件结构</h1>
 <p>以上所说的grid和block都是软件层面的逻辑编程模型，在硬件上，一个GPU由多个SM组成，每个SM内部包含多个CUDA核心，一个CUDA核心就是一个单精度浮点数计算单元。</p>
 <p>GPU在执行时，会把一个block调度到一个SM上，然后把block中的线程划分成<strong>线程束(wrap)</strong>，每个线程束最多包含32个线程。需要注意，一个block只能被调度到一个SM上，然后warp
@@ -323,8 +321,7 @@ Cache和Shared
 Memory。GPU计算一个数据，必须先弄HBM送到SRAM中才能让每个core计算，core是不能直接读HBM的。至于Shared
 Memory和L1 Cache，实际上是一块内存，根据需要，将一部分分给Shared
 Memory，剩余部分就作为L1 Cache使用。</p>
-<p>以上内容参见：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/677756901"
-class="uri">https://zhuanlan.zhihu.com/p/677756901</a></p>
+<p>以上内容参见：https://zhuanlan.zhihu.com/p/677756901</p>
 
                 
               </div>

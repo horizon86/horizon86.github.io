@@ -21,15 +21,15 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本人的hexo博客配置了一些选项，安装了一些插件，接下来依次介绍： 安装fluid主题 https:&#x2F;&#x2F;fluid-dev.github.io&#x2F;hexo-fluid-docs 1npm install --save hexo-theme-fluid 配置数学公式显示 根据fluid主题的指引：https:&#x2F;&#x2F;fluid-dev.github.io&#x2F;hexo-fluid-docs&#x2F;guid">
+    <meta name="description" content="本人的hexo博客配置了一些选项，安装了一些插件，接下来依次介绍： 安装fluid主题 https:&#x2F;&#x2F;fluid-dev.github.io&#x2F;hexo-fluid-docs 1npm install --save hexo-theme-fluid 配置数学公式显示 根据fluid主题的指引：https:&#x2F;&#x2F;fluid-dev.github.io&#x2F;hexo-fluid-docs&#x2F;guide">
 <meta property="og:type" content="article">
 <meta property="og:title" content="本人hexo博客配置">
 <meta property="og:url" content="https://horizon86.github.io/2025/09/06/%E6%9C%AC%E4%BA%BAhexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="本人的hexo博客配置了一些选项，安装了一些插件，接下来依次介绍： 安装fluid主题 https:&#x2F;&#x2F;fluid-dev.github.io&#x2F;hexo-fluid-docs 1npm install --save hexo-theme-fluid 配置数学公式显示 根据fluid主题的指引：https:&#x2F;&#x2F;fluid-dev.github.io&#x2F;hexo-fluid-docs&#x2F;guid">
+<meta property="og:description" content="本人的hexo博客配置了一些选项，安装了一些插件，接下来依次介绍： 安装fluid主题 https:&#x2F;&#x2F;fluid-dev.github.io&#x2F;hexo-fluid-docs 1npm install --save hexo-theme-fluid 配置数学公式显示 根据fluid主题的指引：https:&#x2F;&#x2F;fluid-dev.github.io&#x2F;hexo-fluid-docs&#x2F;guide">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-09-05T19:01:15.000Z">
-<meta property="article:modified_time" content="2025-09-05T19:04:17.424Z">
+<meta property="article:modified_time" content="2025-09-23T17:36:07.365Z">
 <meta property="article:author" content="horizon86">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -291,22 +291,16 @@
                 
                 <p>本人的hexo博客配置了一些选项，安装了一些插件，接下来依次介绍：</p>
 <h1 id="安装fluid主题">安装fluid主题</h1>
-<p><a target="_blank" rel="noopener" href="https://fluid-dev.github.io/hexo-fluid-docs"
-class="uri">https://fluid-dev.github.io/hexo-fluid-docs</a>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install --save hexo-theme-fluid<br></code></pre></td></tr></table></figure></p>
+<p>https://fluid-dev.github.io/hexo-fluid-docs <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install --save hexo-theme-fluid<br></code></pre></td></tr></table></figure></p>
 <h1 id="配置数学公式显示">配置数学公式显示</h1>
-<p>根据fluid主题的指引：<a
-target="_blank" rel="noopener" href="https://fluid-dev.github.io/hexo-fluid-docs/guide/#latex-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"
-class="uri">https://fluid-dev.github.io/hexo-fluid-docs/guide/#latex-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F</a></p>
+<p>根据fluid主题的指引：https://fluid-dev.github.io/hexo-fluid-docs/guide/#latex-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F</p>
 <ol type="1">
 <li><p>修改主题配置文件(_config.fluid.yml) <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">post:</span><br>  <span class="hljs-attr">math:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">specific:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">engine:</span> <span class="hljs-string">mathjax</span><br></code></pre></td></tr></table></figure>
 本人使用了mathjax引擎，并设置specific为true，省的每篇博客都要标记fromt-matter</p></li>
 <li><p>切换渲染器为pandoc <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm uninstall hexo-renderer-marked --save<br>npm install hexo-renderer-pandoc --save<br></code></pre></td></tr></table></figure></p></li>
 <li><p>自定义修改设置<br />
 修改文件：<code>node_modules\hexo-theme-fluid\layout\_partials\plugins\math.ejs</code>
-在Windows.MathJax.tex中添加tags配置，以支持交叉引用，参考mathjax文档：<a
-target="_blank" rel="noopener" href="https://docs.mathjax.org/en/latest/input/tex/eqnumbers.html"
-class="uri">https://docs.mathjax.org/en/latest/input/tex/eqnumbers.html</a>
+在Windows.MathJax.tex中添加tags配置，以支持交叉引用，参考mathjax文档：https://docs.mathjax.org/en/latest/input/tex/eqnumbers.html
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">window</span>.MathJax = &#123;<br>  tex: &#123;<br>    tags: <span class="hljs-string">&#x27;ams&#x27;</span><br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></p></li>
 </ol>
 <h1 id="支持自动渲染超链接">支持自动渲染超链接</h1>
@@ -328,9 +322,7 @@ _config.yml中启用资源文件夹</p>
 <p>但是这样我本地无法预览，而且不符合markdown规范，不好操作。</p>
 <p>因此我装了一个插件，在博客中直接写：</p>
 <p><code>![image](post_name/example.jpg)</code></p>
-<p>既可以本地正确用typora等识别，也可以正确渲染的插件，hexo-asset-img，链接为：<a
-target="_blank" rel="noopener" href="https://github.com/yiyungent/hexo-asset-img"
-class="uri">https://github.com/yiyungent/hexo-asset-img</a></p>
+<p>既可以本地正确用typora等识别，也可以正确渲染的插件，hexo-asset-img，链接为：https://github.com/yiyungent/hexo-asset-img</p>
 <p>基本就以上内容，这样博客就已经非常不错了，数学公式也很完善。</p>
 
                 
@@ -352,6 +344,13 @@ class="uri">https://github.com/yiyungent/hexo-asset-img</a></p>
         
   <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/hexo/" class="category-chain-item">hexo</a>
+  
+  
+
   
 
       </span>
@@ -414,6 +413,12 @@ class="uri">https://github.com/yiyungent/hexo-asset-img</a></p>
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/09/24/hexo%E7%9A%84pandoc%E6%B8%B2%E6%9F%93%E5%99%A8%E9%85%8D%E7%BD%AE/" title="hexo的pandoc渲染器配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">hexo的pandoc渲染器配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

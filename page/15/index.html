@@ -241,6 +241,60 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2021/10/18/linux%E6%90%AD%E5%BB%BA%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20-%20postifx%20+%20SSL%20+%20465%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE/" target="_self">
+          linux搭建邮件服务器 - postifx + SSL + 465端口配置
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/18/linux%E6%90%AD%E5%BB%BA%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20-%20postifx%20+%20SSL%20+%20465%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE/" target="_self">
+        <div>
+          整体参考：https://www.cnblogs.com/chris-cp/p/4843407.html 建议先看上文，照着配置完再看本文。关于25端口被封无法发邮件的解决办法在本文后半部分。 做几点补充：  /etc/dovecot/conf.d/10-ssl.conf中把 ssl = required改成ssl = no 注意设置/etc/postfix/main.cf中的myne
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-18 11:40" pubdate>
+              2021-10-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2021/10/11/forge%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%AB%98%E5%BA%A6%E5%BE%88%E7%AA%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_self">
           forge下载页面显示高度很窄解决办法
         </a>
@@ -596,39 +650,6 @@
 </span>
 
           </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/" target="_self">
-          windows grep GBK编码问题
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/09/07/windows%20grep%20GBK%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          我在Windows上使用grep时发现中文会出错。 比如在cmd里执行echo 测试 | grep 测试，就没有输出，查了查说是要设置环境变量LANG=zh_CN.GBK，我设置了之后确实可以了。但是对于这个环境变量的作用，我一直不很清楚，今天就做点实验来研究一下。 首先要清楚，cmd代码页默认是GBK，代码页分为输入代码页和输出代码页，这俩一般是一样的，可以用命令chcp查看，也可以用win
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-09-07 16:51" pubdate>
-              2021-09-07
-            </time>
-          </div>
-        
         
         
       </div>

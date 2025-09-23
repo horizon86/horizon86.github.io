@@ -317,8 +317,7 @@
 <h1 id="解决方案"><del>解决方案</del></h1>
 <p><del>这个方案实在谈不上优雅，但是也算是一个方案吧。假如你电脑连接了TP-LINK，但是没有IPV6，那么你拿手机连一下光猫的WIFI，触发一次RA通告，电脑就也有IPV6了。</del></p>
 <h1 id="更新">更新</h1>
-<p>上述方法只是偶然解决了问题，后来又不行了，<a
-href="mailto:经过@焦太羊" class="email">经过@焦太羊</a>
+<p>上述方法只是偶然解决了问题，后来又不行了，经过@焦太羊
 的猜想，大胆怀疑：</p>
 <ol type="1">
 <li><p>TP-LINK的交换机不认识IPv6的组播mac，并且他发现这个mac只收数据，不发数据，可能内部有风控策略给你直接拦下了RA/RS数据包</p></li>
@@ -326,15 +325,9 @@ href="mailto:经过@焦太羊" class="email">经过@焦太羊</a>
 </ol>
 <h1 id="最新解决方案固件问题无解">最新解决方案：固件问题，无解。</h1>
 <p>参考资料：</p>
-<p>ICMPv6每个Type的作用：<a
-target="_blank" rel="noopener" href="https://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml"
-class="uri">https://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml</a></p>
-<p>RA和RS报文所在的RFC：<a
-target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2461"
-class="uri">https://datatracker.ietf.org/doc/html/rfc2461</a></p>
-<p>ICMPv6的RFC（很不全，不如第一个链接）：<a
-target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc4443#page-13"
-class="uri">https://datatracker.ietf.org/doc/html/rfc4443#page-13</a></p>
+<p>ICMPv6每个Type的作用：https://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml</p>
+<p>RA和RS报文所在的RFC：https://datatracker.ietf.org/doc/html/rfc2461</p>
+<p>ICMPv6的RFC（很不全，不如第一个链接）：https://datatracker.ietf.org/doc/html/rfc4443#page-13</p>
 
                 
               </div>

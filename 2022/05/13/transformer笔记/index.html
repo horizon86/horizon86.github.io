@@ -355,9 +355,7 @@ class="math inline">\(Attention_{you} = 0.3*Value_{I} + 0.4*Value_{love}
 <p>把768维分成12个部分，每个部分是64维，则每个部分的加权的权重都不完全相同。也就是，对于生成的you的[0-64]维，可能I占0.3，但是在you的65-128维中，I可能是占据0.4。如果是单头注意力，0-768维的权重全是相同的。</p>
 <h1 id="mask机制">mask机制</h1>
 <p>该部分主要图片偷自：</p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/songyunli1111/article/details/108023139"
-class="uri">https://blog.csdn.net/songyunli1111/article/details/108023139</a></p>
+<p>https://blog.csdn.net/songyunli1111/article/details/108023139</p>
 <figure>
 <img src="2228692-20230404220557577-342901192.png" srcset="/img/loading.gif" lazyload alt="image" />
 <figcaption aria-hidden="true">image</figcaption>

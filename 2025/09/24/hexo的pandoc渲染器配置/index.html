@@ -21,21 +21,21 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="高版本的java不再自带javafx，需要自己添加路径，如果是java8的话直接可以使用。 本文分为两个部分：第一部分介绍如何运行javafx程序，第二部分介绍如何打包一个包含了javafx的jre环境。 运行javafx程序 下载openjfx https:&#x2F;&#x2F;gluonhq.com&#x2F;products&#x2F;javafx&#x2F; openjfx的LTS版本好像要付费才能下载，所以勾选“Includ">
+    <meta name="description" content="1. hexo的渲染器简介 hexo的渲染器（render）负责将markdown转换为html代码，各大主题（theme）负责写css等来美化网页。 hexo默认使用的渲染器marked，对应的插件是hexo-renderer-marked pandoc也可以将markdown转换为html，对应的插件是hexo-renderer-pandoc 因为marked对markdown的支持并">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java11及以上版本运行javafx程序">
-<meta property="og:url" content="https://horizon86.github.io/2023/01/27/java11%E5%8F%8A%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8Cjavafx%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:title" content="hexo的pandoc渲染器配置">
+<meta property="og:url" content="https://horizon86.github.io/2025/09/24/hexo%E7%9A%84pandoc%E6%B8%B2%E6%9F%93%E5%99%A8%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="高版本的java不再自带javafx，需要自己添加路径，如果是java8的话直接可以使用。 本文分为两个部分：第一部分介绍如何运行javafx程序，第二部分介绍如何打包一个包含了javafx的jre环境。 运行javafx程序 下载openjfx https:&#x2F;&#x2F;gluonhq.com&#x2F;products&#x2F;javafx&#x2F; openjfx的LTS版本好像要付费才能下载，所以勾选“Includ">
+<meta property="og:description" content="1. hexo的渲染器简介 hexo的渲染器（render）负责将markdown转换为html代码，各大主题（theme）负责写css等来美化网页。 hexo默认使用的渲染器marked，对应的插件是hexo-renderer-marked pandoc也可以将markdown转换为html，对应的插件是hexo-renderer-pandoc 因为marked对markdown的支持并">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-27T09:56:00.000Z">
-<meta property="article:modified_time" content="2025-09-22T17:11:21.640Z">
+<meta property="article:published_time" content="2025-09-23T17:29:33.000Z">
+<meta property="article:modified_time" content="2025-09-23T17:51:36.729Z">
 <meta property="article:author" content="horizon86">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>java11及以上版本运行javafx程序 - horizon86的博客</title>
+  <title>hexo的pandoc渲染器配置 - horizon86的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="java11及以上版本运行javafx程序"></span>
+            <span id="subtitle" data-typed-text="hexo的pandoc渲染器配置"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-27 17:56" pubdate>
-          2023年1月27日 下午
+        <time datetime="2025-09-24 01:29" pubdate>
+          2025年9月24日 凌晨
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          534 字
+          1.1k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          5 分钟
+          9 分钟
         
       </span>
     
@@ -284,33 +284,55 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">java11及以上版本运行javafx程序</h1>
+            <h1 id="seo-header">hexo的pandoc渲染器配置</h1>
             
             
               <div class="markdown-body">
                 
-                <p>高版本的java不再自带javafx，需要自己添加路径，如果是java8的话直接可以使用。</p>
-<p>本文分为两个部分：第一部分介绍如何运行javafx程序，第二部分介绍如何打包一个包含了javafx的jre环境。</p>
-<h1 id="运行javafx程序">运行javafx程序</h1>
-<p>下载openjfx</p>
-<p><a target="_blank" rel="noopener" href="https://gluonhq.com/products/javafx/"
-class="uri">https://gluonhq.com/products/javafx/</a></p>
-<p>openjfx的LTS版本好像要付费才能下载，所以勾选“Include older
-versions”下载一个非LTS的。</p>
-<p>下载后解压到一个地方，我解压到了<code>D:\软件\Java\jfx\javafx-sdk-17</code></p>
-<p>执行jar文件时按如下命令执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">java --module-path <span class="hljs-string">&quot;D:\软件\Java\jfx\javafx-sdk-17\lib&quot;</span> --add-modules javafx.controls -jar mcaselector-2.1.jar<br></code></pre></td></tr></table></figure>
-<p>注意替换自己的解压路径和程序名称。</p>
-<h1 id="自己打包一个包含javafx的jre">自己打包一个包含javafx的jre</h1>
-<p>下载并解压javafx-17-jmods，我在<code>D:\软件\Java\jfx\javafx-jmods-17</code></p>
-<p>注意区分jmods和上一步用的sdk！</p>
-<p>使用jdk-17的java执行： <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">java <span class="hljs-params">--module-path</span> <span class="hljs-string">&quot;D:\软件\Java\jfx\javafx-sdk-17\lib&quot;</span> <span class="hljs-params">--list-modules</span><br></code></pre></td></tr></table></figure></p>
-<p>会输出一堆modules，待会创建一个包含了这些所有modules的jre，当然你也可以精简一些，只保留你需要的。</p>
-<p>然后打包jre，</p>
-<p>打包jre的命令语法： <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal">jlink --<span class="hljs-class"><span class="hljs-keyword">module</span>-<span class="hljs-title">path</span> &lt;<span class="hljs-title">javafx</span>-<span class="hljs-title">path</span>\<span class="hljs-title">lib</span>&gt; --<span class="hljs-title">add</span>-<span class="hljs-title">modules</span> &lt;<span class="hljs-title">module1</span>[,<span class="hljs-title">module2</span>[, ...]]&gt; --<span class="hljs-title">output</span> &lt;<span class="hljs-title">output</span>-<span class="hljs-title">path</span>&gt;</span><br></code></pre></td></tr></table></figure></p>
-<p>所以我这里就是执行： <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">jlink <span class="hljs-attr">--module-path</span> <span class="hljs-string">&quot;D:\软件\Java\jfx\javafx-jmods-17&quot;</span> <span class="hljs-attr">--add-modules</span> java<span class="hljs-selector-class">.base</span>,java<span class="hljs-selector-class">.compiler</span>,java<span class="hljs-selector-class">.datatransfer</span>,java<span class="hljs-selector-class">.desktop</span>,java<span class="hljs-selector-class">.instrument</span>,java<span class="hljs-selector-class">.logging</span>,java<span class="hljs-selector-class">.management</span>,java<span class="hljs-selector-class">.management</span><span class="hljs-selector-class">.rmi</span>,java<span class="hljs-selector-class">.naming</span>,java<span class="hljs-selector-class">.net</span><span class="hljs-selector-class">.http</span>,java<span class="hljs-selector-class">.prefs</span>,java<span class="hljs-selector-class">.rmi</span>,java<span class="hljs-selector-class">.scripting</span>,java<span class="hljs-selector-class">.se</span>,java<span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.jgss</span>,java<span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.sasl</span>,java<span class="hljs-selector-class">.smartcardio</span>,java<span class="hljs-selector-class">.sql</span>,java<span class="hljs-selector-class">.sql</span><span class="hljs-selector-class">.rowset</span>,java<span class="hljs-selector-class">.transaction</span><span class="hljs-selector-class">.xa</span>,java<span class="hljs-selector-class">.xml</span>,java<span class="hljs-selector-class">.xml</span><span class="hljs-selector-class">.crypto</span>,jdk<span class="hljs-selector-class">.accessibility</span>,jdk<span class="hljs-selector-class">.charsets</span>,jdk<span class="hljs-selector-class">.crypto</span><span class="hljs-selector-class">.cryptoki</span>,jdk<span class="hljs-selector-class">.crypto</span><span class="hljs-selector-class">.ec</span>,jdk<span class="hljs-selector-class">.crypto</span><span class="hljs-selector-class">.mscapi</span>,jdk<span class="hljs-selector-class">.dynalink</span>,jdk<span class="hljs-selector-class">.httpserver</span>,jdk<span class="hljs-selector-class">.incubator</span><span class="hljs-selector-class">.foreign</span>,jdk<span class="hljs-selector-class">.incubator</span><span class="hljs-selector-class">.vector</span>,jdk<span class="hljs-selector-class">.internal</span><span class="hljs-selector-class">.vm</span><span class="hljs-selector-class">.ci</span>,jdk<span class="hljs-selector-class">.internal</span><span class="hljs-selector-class">.vm</span><span class="hljs-selector-class">.compiler</span>,jdk<span class="hljs-selector-class">.internal</span><span class="hljs-selector-class">.vm</span><span class="hljs-selector-class">.compiler</span><span class="hljs-selector-class">.management</span>,jdk<span class="hljs-selector-class">.jdwp</span><span class="hljs-selector-class">.agent</span>,jdk<span class="hljs-selector-class">.jfr</span>,jdk<span class="hljs-selector-class">.jsobject</span>,jdk<span class="hljs-selector-class">.localedata</span>,jdk<span class="hljs-selector-class">.management</span>,jdk<span class="hljs-selector-class">.management</span><span class="hljs-selector-class">.agent</span>,jdk<span class="hljs-selector-class">.management</span><span class="hljs-selector-class">.jfr</span>,jdk<span class="hljs-selector-class">.naming</span><span class="hljs-selector-class">.dns</span>,jdk<span class="hljs-selector-class">.naming</span><span class="hljs-selector-class">.rmi</span>,jdk<span class="hljs-selector-class">.net</span>,jdk<span class="hljs-selector-class">.nio</span><span class="hljs-selector-class">.mapmode</span>,jdk<span class="hljs-selector-class">.sctp</span>,jdk<span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.auth</span>,jdk<span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.jgss</span>,jdk<span class="hljs-selector-class">.unsupported</span>,jdk<span class="hljs-selector-class">.xml</span><span class="hljs-selector-class">.dom</span>,jdk<span class="hljs-selector-class">.zipfs</span>,javafx<span class="hljs-selector-class">.base</span>,javafx<span class="hljs-selector-class">.controls</span>,javafx<span class="hljs-selector-class">.fxml</span>,javafx<span class="hljs-selector-class">.graphics</span>,javafx<span class="hljs-selector-class">.media</span>,javafx<span class="hljs-selector-class">.swing</span>,javafx<span class="hljs-selector-class">.web</span> <span class="hljs-attr">--output</span> C:\Users\Jcun\Desktop\myjre17<br></code></pre></td></tr></table></figure></p>
-<p>javafx.swt无法被添加，看了一下是因为javafx.swt.jar中没有module-info.class，所以无法被识别为一个模块，就先不添加了。</p>
-<p>这样打包出的jre就可以直接运行javafx的程序了。</p>
+                <h1 id="hexo的渲染器简介">1. hexo的渲染器简介</h1>
+<p>hexo的渲染器（render）负责将markdown转换为html代码，各大主题（theme）负责写css等来美化网页。</p>
+<p>hexo默认使用的渲染器<a
+target="_blank" rel="noopener" href="https://github.com/markedjs/marked">marked</a>，对应的插件是hexo-renderer-marked<br />
+<a
+target="_blank" rel="noopener" href="https://pandoc.org/">pandoc</a>也可以将markdown转换为html，对应的插件是hexo-renderer-pandoc</p>
+<p>因为marked对markdown的支持并不够好，pandoc更强大，为了博客的完美性，我选用了pandoc作为renderer。</p>
+<p>只有知己知彼才能百战不殆，使用hexo-renderer-pandoc，就要对pandoc有所了解，知道各种设定，才能用最佳姿势书写博客。因此本文将介绍pandoc中关于markdown的一些设置，以及hexo-renderer-pandoc插件的部分设置。</p>
+<h1 id="hexo-renderer-pandoc的设置">2. hexo-renderer-pandoc的设置</h1>
+<p>首先区分一下，pandoc和hexo-renderer-pandoc：<br />
+pandoc是一个用haskell语言写的开源项目，可以在多种文本标记格式之间互相转换，包括markdown和html。<br />
+hexo-renderer-pandoc是hexo的一个插件，这个插件将接管hexo的渲染过程，调用pandoc执行渲染。</p>
+<p>hexo渲染博客的流程是一个pipeline，hexo-renderer-pandoc就是其中一个环节，它的作用只有一个，调用<code>pandoc.exe</code>将markdown代码转换为html代码，然后将转换后的html代码送给流水线的下一个环节处理。hexo-renderer-pandoc默认调用的pandoc命令是：<code>pandoc.exe -M pagetitle=dummy -f markdown-smart -t html-smart --mathjax</code>，可见hexo-renderer-pandoc的作用就是给pandoc拼接参数。</p>
+<p>在配置文件中，可以设置传递给pandoc的参数，修改<code>_config.yml</code>，你可以自定义pandoc的参数
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">pandoc:</span><br>  <span class="hljs-attr">pandoc_path:</span> <span class="hljs-string">/path/to/pandoc.exe</span><br>  <span class="hljs-attr">args:</span> [<span class="hljs-string">&#x27;-M&#x27;</span>, <span class="hljs-string">&#x27;pagetitle=dummy&#x27;</span>, <span class="hljs-string">&quot;-f&quot;</span>, <span class="hljs-string">&quot;markdown-smart&quot;</span>, <span class="hljs-string">&quot;-t&quot;</span>, <span class="hljs-string">&quot;html-smart&quot;</span>, <span class="hljs-string">&quot;--mathjax&quot;</span>]<br></code></pre></td></tr></table></figure> 除了直接写明所有参数，还有一种将被废弃的写法 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">pandoc:</span><br>  <span class="hljs-attr">pandoc_path:</span> <span class="hljs-string">/path/to/pandoc.exe</span><br>  <span class="hljs-attr">extensions:</span> []<br>  <span class="hljs-attr">filters:</span> []<br>  <span class="hljs-attr">extra:</span> []<br></code></pre></td></tr></table></figure>
+分别指定extensions、filters以及额外的参数</p>
+<h1 id="pandoc的参数"><strong>3. pandoc的参数</strong></h1>
+<p>本节将介绍pandoc的一些参数，以下内容均来自本人研读pandoc的文档：<a
+target="_blank" rel="noopener" href="https://pandoc.org/MANUAL.html"
+class="uri">https://pandoc.org/MANUAL.html</a></p>
+<p>术语约定：
+pandoc提供了丰富的extension，下文“拓展、扩展、插件”均指extension</p>
+<p>pandoc的命令格式为： <figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sas">C:\blog&gt;pandoc --help<br>pandoc [<span class="hljs-keyword">OPTIONS</span>] [FILES]<br>  -f <span class="hljs-keyword">FORMAT</span>, -r <span class="hljs-keyword">FORMAT</span>  --<span class="hljs-keyword">from</span>=<span class="hljs-keyword">FORMAT</span>, --read=<span class="hljs-keyword">FORMAT</span><br>  -t <span class="hljs-keyword">FORMAT</span>, -w <span class="hljs-keyword">FORMAT</span>  --to=<span class="hljs-keyword">FORMAT</span>, --write=<span class="hljs-keyword">FORMAT</span><br>...<br></code></pre></td></tr></table></figure>
+pandoc提供了丰富的扩展，各种语法的启用/禁用都通过扩展来实现</p>
+<p><code>FORMAT</code>的格式为<code>&lt;format&gt;[&lt;+|-&gt;&lt;extension&gt;...]</code></p>
+<p>通过在<code>FORMAT</code>插件前写<code>+/-</code>来启用/禁用各种扩展（extension），比如<code>-f markdown-smart</code>就在输入是markdown的基础上禁用了<code>smart</code>扩展。</p>
+<p>pandoc内置支持以下markdown格式： - markdown_strict
+最基本、严格的markdown语法 - markdown 这是Pandoc's Markdown,
+扩展了部分语法 - markdown_github 这是GitHub支持的markdown语法<br />
+还有一些markdown格式，由于不常用，在此不列出。</p>
+<h2 id="不同模式默认启用的插件">不同模式默认启用的插件</h2>
+<p><code>markdown_strict</code>默认启用的插件： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs haskell">+raw_html<br>+shortcut_reference_links<br>+spaced_reference_links<br></code></pre></td></tr></table></figure></p>
+<p><code>markdown</code>默认启用的插件 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-addition">+all_symbols_escapable</span><br><span class="hljs-addition">+auto_identifiers</span><br><span class="hljs-addition">+backtick_code_blocks</span><br><span class="hljs-addition">+blank_before_blockquote</span><br><span class="hljs-addition">+blank_before_header</span><br><span class="hljs-addition">+bracketed_spans</span><br><span class="hljs-addition">+citations</span><br><span class="hljs-addition">+definition_lists</span><br><span class="hljs-addition">+escaped_line_breaks</span><br><span class="hljs-addition">+example_lists</span><br><span class="hljs-addition">+fancy_lists</span><br><span class="hljs-addition">+fenced_code_attributes</span><br><span class="hljs-addition">+fenced_code_blocks</span><br><span class="hljs-addition">+fenced_divs</span><br><span class="hljs-addition">+footnotes</span><br><span class="hljs-addition">+grid_tables</span><br><span class="hljs-addition">+header_attributes</span><br><span class="hljs-addition">+implicit_figures</span><br><span class="hljs-addition">+implicit_header_references</span><br><span class="hljs-addition">+inline_code_attributes</span><br><span class="hljs-addition">+inline_notes</span><br><span class="hljs-addition">+intraword_underscores</span><br><span class="hljs-addition">+latex_macros</span><br><span class="hljs-addition">+line_blocks</span><br><span class="hljs-addition">+link_attributes</span><br><span class="hljs-addition">+markdown_in_html_blocks</span><br><span class="hljs-addition">+multiline_tables</span><br><span class="hljs-addition">+native_divs</span><br><span class="hljs-addition">+native_spans</span><br><span class="hljs-addition">+pandoc_title_block</span><br><span class="hljs-addition">+pipe_tables</span><br><span class="hljs-addition">+raw_attribute</span><br><span class="hljs-addition">+raw_html</span><br><span class="hljs-addition">+raw_tex</span><br><span class="hljs-addition">+shortcut_reference_links</span><br><span class="hljs-addition">+simple_tables</span><br><span class="hljs-addition">+smart</span><br><span class="hljs-addition">+space_in_atx_header</span><br><span class="hljs-addition">+startnum</span><br><span class="hljs-addition">+strikeout</span><br><span class="hljs-addition">+subscript</span><br><span class="hljs-addition">+superscript</span><br><span class="hljs-addition">+task_lists</span><br><span class="hljs-addition">+table_captions</span><br><span class="hljs-addition">+tex_math_dollars</span><br><span class="hljs-addition">+yaml_metadata_block</span><br></code></pre></td></tr></table></figure></p>
+<p>Pandoc's
+markdown格式固然好，但是有部分语法我并不喜欢，所以需要禁用相关扩展。markdown_strict虽然禁用了大部分扩展，但是也导致部分好用的语法失效，因此，我根据自己的习惯深度定制了扩展的启用/禁用。</p>
+<p>接下来将建议Pandoc's markdown格式下一些建议禁用/启用的插件。</p>
+<p>建议的设置： <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">pandoc:</span><br>  <span class="hljs-attr">args:</span> [<span class="hljs-string">&#x27;-f&#x27;</span>, <span class="hljs-string">&#x27;markdown-smart+autolink_bare_uris+gfm_auto_identifiers-blank_before_blockquote-blank_before_header&#x27;</span>, <span class="hljs-string">&#x27;-t&#x27;</span>, <span class="hljs-string">&#x27;html-smart&#x27;</span>, <span class="hljs-string">&#x27;--mathjax&#x27;</span>]<br></code></pre></td></tr></table></figure></p>
+<p><code>+gfm_auto_identifiers</code>：修改identifier的格式，这种格式和博客园支持的格式相同，保证和博客园的兼容性。identifier是给标题生成的唯一标识符，用于建立针对具体段落超链接。</p>
+<p><code>-blank_before_blockquote</code>：该插件要求
+一个引用（<code>&gt;</code>）段落 之前必须有空行。</p>
+<p><code>-blank_before_header</code>：该插件要求
+一个标题（<code># xxx</code>）之前必须有空行。</p>
+<p><code>-autolink_bare_uris</code>：即使不被尖括号&lt;...&gt;包围，也使所有绝对的URI都转为链接。
+该插件将把URL渲染为为可点击的超链接，即直接写<code>https://....</code>，就会渲染为链接。若关闭，则需要写<code>[xxx](https://....)</code>或者<code>&lt;https://...&gt;</code>。但是该插件的坏处是：会错误地识别<code>@</code>符号，比如写个a@b，都会渲染为<code>mailto:a@b</code></p>
 
                 
               </div>
@@ -329,12 +351,12 @@ versions”下载一个非LTS的。</p>
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E5%BC%80%E5%8F%91/" class="category-chain-item">学开发</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%AD%A6%E5%BC%80%E5%8F%91/java/" class="category-chain-item">java</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/hexo/" class="category-chain-item">hexo</a>
   
   
 
@@ -356,8 +378,8 @@ versions”下载一个非LTS的。</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>java11及以上版本运行javafx程序</div>
-      <div>https://horizon86.github.io/2023/01/27/java11及以上版本运行javafx程序/</div>
+      <div>hexo的pandoc渲染器配置</div>
+      <div>https://horizon86.github.io/2025/09/24/hexo的pandoc渲染器配置/</div>
     </div>
     <div class="license-meta">
       
@@ -369,7 +391,7 @@ versions”下载一个非LTS的。</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月27日</div>
+          <div>2025年9月24日</div>
         </div>
       
       
@@ -401,18 +423,12 @@ versions”下载一个非LTS的。</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/11/ipv6%E5%9C%B0%E5%90%8D%E8%AF%8D%EF%BC%9A%E6%9C%89%E7%8A%B6%E6%80%81%EF%BC%88dhcpv6%EF%BC%89%EF%BC%8C%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%88slaac%EF%BC%89%EF%BC%8C%E5%89%8D%E7%BC%80%E4%BB%A3%E7%90%86%EF%BC%88pd%EF%BC%89%E7%AD%89%E8%A7%A3%E9%87%8A/" title="ipv6地名词：有状态（dhcpv6），无状态（slaac），前缀代理（pd）等解释">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ipv6地名词：有状态（dhcpv6），无状态（slaac），前缀代理（pd）等解释</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/22/gradle%E7%BA%AF%E7%BA%AF%E5%B0%8F%E7%99%BD%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="gradle纯纯小白使用教程">
-                        <span class="hidden-mobile">gradle纯纯小白使用教程</span>
+                      <a href="/2025/09/06/%E6%9C%AC%E4%BA%BAhexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/" title="本人hexo博客配置">
+                        <span class="hidden-mobile">本人hexo博客配置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

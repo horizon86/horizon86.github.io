@@ -307,9 +307,7 @@
 <ol type="1">
 <li>让linux的dhcp的ip可以被连接</li>
 </ol>
-<p><a
-target="_blank" rel="noopener" href="https://support.huaweicloud.com/trouble-ecs/ecs_trouble_0307.html"
-class="uri">https://support.huaweicloud.com/trouble-ecs/ecs_trouble_0307.html</a>
+<p>https://support.huaweicloud.com/trouble-ecs/ecs_trouble_0307.html
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/iproute2/rt_tables<br>添加：32000 djc<br>sudo ip route add default via 172.24.64.1 dev eno1 table djc<br>sudo ip rule add from 172.24.67.11 lookup djc prio 32000<br><span class="hljs-comment"># sudo ip rule add from $(ip -j -4 addr show eno1 | jq -r &#x27;.[0].addr_info[0].local&#x27;) lookup djc prio 32000</span><br></code></pre></td></tr></table></figure></p>
 <p>简洁版： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ip route add default via 172.24.64.1 dev eno1 table djc<br>sudo ip rule add from $(ip -j -4 addr show eno1 | jq -r <span class="hljs-string">&#x27;.[0].addr_info[0].local&#x27;</span>) lookup djc prio 32000<br></code></pre></td></tr></table></figure></p>
 <p>让来自不同的网卡的数据包查阅不同的路由表，这样，就不会出现收到来自非默认接口(PPP)的数据包，但是从默认接口(eno1)发出去响应包，导致对方无法接收的情况。</p>

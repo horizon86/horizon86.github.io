@@ -241,6 +241,60 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/01/16/iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
+          iptables端口转发
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/16/iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
+        <div>
+          用一个例子说明： 服务器：192.168.0.121:27896 中转机：192.168.0.163:27896 在192.168.0.121的端口27896上开启了一个服务器，我希望访问中转机192.168.0.163的27896也可以访问到192.168.0.121:27896。 需要在163这台机器上配置两条iptables规则： 123iptables -t nat -A PRE
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-16 12:58" pubdate>
+              2023-01-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/01/15/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
           adb常用命令
         </a>
@@ -720,60 +774,6 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2022-12-02 18:05" pubdate>
-              2022-12-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2022/12/02/linux%20awk%E5%91%BD%E4%BB%A4/" target="_self">
-          linux awk命令
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/02/linux%20awk%E5%91%BD%E4%BB%A4/" target="_self">
-        <div>
-          awk的命令格式是： 1awk [options] &lt;script&gt; [file] 遍历file中的每行，并执行&lt;script&gt;中指定的命令。不指定file时默认从stdin读取。 1awk -F &#x27;:&#x27; &#x27;&#123;print $1&#125;&#x27; /etc/passwd 这里-F ':'是options，指定字符串使用逗号切
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-12-02 11:46" pubdate>
               2022-12-02
             </time>
           </div>

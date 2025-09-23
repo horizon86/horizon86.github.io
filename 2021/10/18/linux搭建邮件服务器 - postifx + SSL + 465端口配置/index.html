@@ -289,8 +289,7 @@
             
               <div class="markdown-body">
                 
-                <p>整体参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chris-cp/p/4843407.html"
-class="uri">https://www.cnblogs.com/chris-cp/p/4843407.html</a></p>
+                <p>整体参考：https://www.cnblogs.com/chris-cp/p/4843407.html</p>
 <p>建议先看上文，照着配置完再看本文。关于25端口被封无法发邮件的解决办法在本文后半部分。</p>
 <p>做几点补充：</p>
 <ol type="1">
@@ -453,11 +452,8 @@ to configure email autoconfiguration for a domain? - Server
 Fault</a></p></li>
 </ul>
 <p>关于windows 10 mail APP无法登录dovecot pop3邮箱的解决办法：</p>
-<p><a href="mailto:假如你的邮箱地址是apple@goodmail.com"
-class="email">假如你的邮箱地址是apple@goodmail.com</a>，在windows 10
-邮件app添加账户时有个“用户名”，这里只写apple，<a
-href="mailto:而不能带@goodmail.com"
-class="email">而不能带@goodmail.com</a>。</p>
+<p>假如你的邮箱地址是apple@goodmail.com，在windows 10
+邮件app添加账户时有个“用户名”，这里只写apple，而不能带@goodmail.com。</p>
 <p>可以使用openssl测试能否登录： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">openssl s_client -connect goodmail.com:995<br>....<br>+OK Dovecot (Ubuntu) ready.<br>user apple<br>+OK<br>pass yourpassword<br>+OK Logged in<br></code></pre></td></tr></table></figure></p>
 <p>密码是明文密码。</p>
 

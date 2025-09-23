@@ -297,8 +297,7 @@
 <h2
 id="方法一使用系统全局的cuda和cudnn一般是nvidia的驱动包带的">方法一、使用系统全局的cuda和cudnn（一般是nvidia的驱动包带的）</h2>
 <p>注意tensorflow有严格的cuda对应关系，这里是最低的cuda版本要求。也就是安装tensorflow2.3.0最低要cuda10.1</p>
-<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/install/source#gpu"
-class="uri">https://tensorflow.google.cn/install/source#gpu</a></p>
+<p>https://tensorflow.google.cn/install/source#gpu</p>
 <p>先查看本机安装的cuda版本，我这里是10.1 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">user@ubuntu:~$ <span class="hljs-built_in">ls</span> -l /usr/local/cuda<br>lrwxrwxrwx 1 root root 21 Nov 11  2020 /usr/local/cuda -&gt; /usr/local/cuda-10.1/<br>user@ubuntu:~$ <span class="hljs-built_in">cat</span> /usr/local/cuda/version.txt<br>CUDA Version 10.1.105<br></code></pre></td></tr></table></figure></p>
 <blockquote>
 <p>nvidia-smi也可以看到一个CUDA
