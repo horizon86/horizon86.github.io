@@ -303,7 +303,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2021/08/20/c++%20vector%E7%94%A8%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%8E%9F%E7%90%86/" target="_self">
         <div>
-          c++ vector有个很神奇的初始化方法： 1vector&lt;int&gt; a = &#123;1, 2, 3, 4, 5&#125;; 这种方法让我感到很是惊奇，这是什么操作？ 我知道初始化数组是这样写的，但是vector虽然是类似于数组，但是本身是个类，是要用构造函数初始化的，也不是什么原生数据类型啊，花括号初始化是什么操作？ 然后，我就去看了看vector的源码，模板给我看的好
+          c++ vector有个很神奇的初始化方法： 1vector&lt;int&gt; a = &#123;1, 2, 3, 4, 5&#125;; 这种方法让我感到很是惊奇，这是什么操作？ 我知道初始化数组是这样写的，但是vector虽然是类似于数组，但是本身是个类，是要用构造函数初始化的，也不是什么原生数据类型啊，花括号初始化是什么操作？ 然后，我就去看了看vector的源码，模板给我看的
         </div>
       </a>
 
@@ -357,7 +357,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2021/08/15/Windows%20%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0cmd%E7%AE%A1%E7%90%86%E5%91%98%20vscode%E7%BC%96%E8%BE%91%E7%AD%89/" target="_self">
         <div>
-          开局提醒：本文所有都需要保存为.reg文件后导入，如果你直接在注册表编辑器中新建相关项，务必注意字符串中的引号是转义过的，也就是要将\"替换为"，\\替换为\。  文件右键添加编辑功能 效果：   image  给任意后缀的文件都加了这个菜单项 注册表需导入项： 123456789101112131415161718192021Windows Registry Editor
+          开局提醒：本文所有都需要保存为.reg文件后导入，如果你直接在注册表编辑器中新建相关项，务必注意字符串中的引号是转义过的，也就是要将\"替换为"，\\替换为\。  文件右键添加编辑功能 效果：   image  给任意后缀的文件都加了这个菜单项 注册表需导入项： 123456789101112131415161718192021Windows Registry Editor
         </div>
       </a>
 
@@ -411,7 +411,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2021/06/18/%E7%94%A8chrono%E5%BA%93%E5%86%99%E4%B8%AA%E6%96%B9%E4%BE%BF%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%A1%E6%97%B6%E5%99%A8/" target="_self">
         <div>
-          chrono库功能挺强大的，但是太长了不方便记忆使用，写个简单的计时工具库。 libjc 123456789101112131415161718192021222324252627282930313233343536373839404142434445#pragma once#ifndef LIBJC_H#define LIBJC_H#include &lt;chrono&gt;namespac
+          chrono库功能挺强大的，但是太长了不方便记忆使用，写个简单的计时工具库。 libjc 123456789101112131415161718192021222324252627282930313233343536373839404142434445#pragma once#ifndef LIBJC_H#define LIBJC_H#include &lt;chrono&gt;namespa
         </div>
       </a>
 
@@ -552,7 +552,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2021/06/08/Git%E5%9C%A8cmd%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
         <div>
-          注意：使用PortableGit-2.30.0.2-64-bit进行测试，在windows cmd命令行中测试（非git bash）  设置环境变量，LANG之后的.UTF-8必不可少，否则git log 的输出是utf-8编码，但是会按照GBK进行字符解码显示 12set LANG=zh_CN.UTF-8set LESSCHARSET=utf-8 commitencoding 可
+          注意：使用PortableGit-2.30.0.2-64-bit进行测试，在windows cmd命令行中测试（非git bash）  设置环境变量，LANG之后的.UTF-8必不可少，否则git log 的输出是utf-8编码，但是会按照GBK进行字符解码显示 12set LANG=zh_CN.UTF-8set LESSCHARSET=utf-8 commitencoding
         </div>
       </a>
 
@@ -606,7 +606,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2021/05/26/%E4%BD%BF%E7%94%A8msvc%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%BC%96%E8%AF%91%E9%9D%99%E6%80%81%E5%BA%93%E5%92%8C%E5%8A%A8%E6%80%81%E5%BA%93/" target="_self">
         <div>
-          因为最近园子在审核，先发在了CSDN。但我更喜欢博客园，现在搬运过来  编写一个静态库 编写要打包为静态库的函数，内容如下： 12345// jclib.cppint func(int a, int b)&#123;    return a + b;&#125; 在msvc开发人员命令提示符中执行 1cl /c jclib.cpp 生成jclib.obj，这是编译产生的中间文件。然后
+          因为最近园子在审核，先发在了CSDN。但我更喜欢博客园，现在搬运过来  编写一个静态库 编写要打包为静态库的函数，内容如下： 12345// jclib.cppint func(int a, int b)&#123;    return a + b;&#125; 在msvc开发人员命令提示符中执行 1cl /c jclib.cpp 生成jclib.obj，这是编译产生的中间文件。
         </div>
       </a>
 

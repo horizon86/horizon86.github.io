@@ -324,24 +324,30 @@ APP直播功能有限、无法自定义直播间布局，且直播控制窗口�
 <li><p>用USB数据线连接手机和电脑</p></li>
 <li><p>确保手机和电脑处于同一局域网</p></li>
 <li><p>获取手机IP（在系统设置中查看或执行<code>adb shell ip route</code>）</p></li>
-<li><p>允许手机使用TCP/IP连接adb： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs batch">adb tcpip 5555<br></code></pre></td></tr></table></figure></p></li>
+<li><p>允许手机使用TCP/IP连接adb：<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs batch">adb tcpip 5555<br></code></pre></td></tr></table></figure></p></li>
 <li><p>拔掉USB线</p></li>
-<li><p>通过无线网络连接手机，注意使用手机IP替换<em>DEVICE_IP</em>
+<li><p>通过无线网络连接手机，注意使用手机IP替换<em>DEVICE_IP</em><br />
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs batch">adb connect DEVICE_IP:5555<br></code></pre></td></tr></table></figure></p></li>
 <li><p>正常运行scrcpy（具体见下文）</p></li>
-<li><p>投屏结束后，断开连接： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs batch">adb disconnect<br></code></pre></td></tr></table></figure></p></li>
+<li><p>投屏结束后，断开连接：<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs batch">adb disconnect<br></code></pre></td></tr></table></figure></p></li>
 </ol>
 <blockquote>
 <p>注意：手机会弹出USB控制权限申请，点击“同意”</p>
 </blockquote>
 <h3 id="启动投屏">2.2 启动投屏</h3>
-<p>执行命令： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs batch">scrcpy --video-codec=h265 --max-fps=60 --no-control --window-borderless<br></code></pre></td></tr></table></figure></p>
-<p>参数说明： - <code>--video-codec=h265</code>：启用H.265编码 -
-<code>--max-fps=60</code>：设置60帧率上限 -
-<code>--no-control</code>：禁用电脑控制功能 -
-<code>--window-borderless</code>：隐藏软件边框</p>
-<p>音频支持： - Android 12+：自动传输音频 - Android 11：需保持手机亮屏 -
-Android 10：不支持音频传输</p>
+<p>执行命令：<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs batch">scrcpy --video-codec=h265 --max-fps=60 --no-control --window-borderless<br></code></pre></td></tr></table></figure></p>
+<p>参数说明：<br />
+- <code>--video-codec=h265</code>：启用H.265编码<br />
+- <code>--max-fps=60</code>：设置60帧率上限<br />
+- <code>--no-control</code>：禁用电脑控制功能<br />
+- <code>--window-borderless</code>：隐藏软件边框</p>
+<p>音频支持：<br />
+- Android 12+：自动传输音频<br />
+- Android 11：需保持手机亮屏<br />
+- Android 10：不支持音频传输</p>
 <h3 id="开始直播">3. 开始直播</h3>
 <p>成功投屏后，在直播软件中添加手机屏幕窗口即可开始直播。</p>
 

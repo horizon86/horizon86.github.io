@@ -310,7 +310,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/04/13/nfs%20via%20ssh%20tunnel%EF%BC%88%E9%80%9A%E8%BF%87ssh%E9%9A%A7%E9%81%93%E8%B7%A8%E7%BD%91%E7%BB%9C%E6%8C%82%E8%BD%BDnfs%EF%BC%89/" target="_self">
         <div>
-          这篇代码段帮了大忙： https://gist.github.com/proudlygeek/5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的/data1/ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：/etc/exports（需要root） 123ubuntu@lthpc:~$ cat /etc/exports/data1
+          这篇代码段帮了大忙： https://gist.github.com/proudlygeek/5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的/data1/ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：/etc/exports（需要root） 123ubuntu@lthpc:~$ cat /etc/exports/data
         </div>
       </a>
 
@@ -364,7 +364,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/03/24/iptables%E8%A7%84%E5%88%99%E6%8C%81%E4%B9%85%E5%8C%96/" target="_self">
         <div>
-          命令修改iptables后重启会丢失。持久化文件在： 12/etc/iptables/rules.v4/etc/iptables/rules.v6 存储和恢复命令： 123456789101112netfilter-persistent savenetfilter-persistent startiptables-save  &gt; /etc/iptables/rules.v4ip6table
+          命令修改iptables后重启会丢失。持久化文件在： 12/etc/iptables/rules.v4/etc/iptables/rules.v6 存储和恢复命令： 123456789101112netfilter-persistent savenetfilter-persistent startiptables-save  &gt; /etc/iptables/rules.v4ip6tab
         </div>
       </a>
 
@@ -505,7 +505,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/03/12/linux%20sed/" target="_self">
         <div>
-          sed按行处理文件，处理方式为每次读取一行，放在缓冲区（pattern space）中，根据指定的命令处理该行，然后再读取下一行处理。 语法格式 sed [options] script [input_file or stdin default] 选项： 12-n # 不要自动输出pattern space中的内容-i # 直接编辑原文件 脚本：  正则替换：  's/&lt;p
+          sed按行处理文件，处理方式为每次读取一行，放在缓冲区（pattern space）中，根据指定的命令处理该行，然后再读取下一行处理。 语法格式 sed [options] script [input_file or stdin default] 选项： 12-n # 不要自动输出pattern space中的内容-i # 直接编辑原文件 脚本：  正则替换：  's/&lt;
         </div>
       </a>
 
@@ -613,7 +613,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/03/06/find%E5%91%BD%E4%BB%A4/" target="_self">
         <div>
-          查找多种后缀文件： 1find &lt;path&gt; [-name &lt;pattern&gt;] [-or -name &lt;pattern&gt;] 以查找所有.c和.cpp为例： 12345678910111213 ubuntu@VM-24-13-ubuntu:~/apps/ddns-serv/server$ find ../ -name &quot;*.c&quot; -o -n
+          查找多种后缀文件： 1find &lt;path&gt; [-name &lt;pattern&gt;] [-or -name &lt;pattern&gt;] 以查找所有.c和.cpp为例： 12345678910111213 ubuntu@VM-24-13-ubuntu:~/apps/ddns-serv/server$ find ../ -name &quot;*.c&quot; -o
         </div>
       </a>
 
@@ -667,7 +667,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/02/28/%E5%BA%94%E7%94%A8%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%94%E8%AE%B0/" target="_self">
         <div>
-          次序统计量与经验分布函数 经验分布函数是一个样本的分布函数，根据样本的频率计算得到，分布函数是总体的分布函数，是概率决定的。 经验分布函数的期望是总体分布函数。 gamma分布族 gamma分布的定义 密度函数： \[ f(x:\alpha, \lambda)=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda
+          次序统计量与经验分布函数 经验分布函数是一个样本的分布函数，根据样本的频率计算得到，分布函数是总体的分布函数，是概率决定的。 经验分布函数的期望是总体分布函数。 gamma分布族 gamma分布的定义 密度函数： \[ f(x:\alpha, \lambda)=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda
         </div>
       </a>
 

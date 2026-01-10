@@ -21,12 +21,12 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="我们从官网下载forge后跳转到广告页，但是这个页面显示很窄   image  按F12进入控制台(control)，输入以下代码即可 1(function(a)&#123;a.setAttribute(&#x27;height&#x27;,&#x27;100%&#x27;);a.getElementsByTagName(&#x27;iframe&#x27;)[0].setAttribu">
+    <meta name="description" content="我们从官网下载forge后跳转到广告页，但是这个页面显示很窄   image  按F12进入控制台(control)，输入以下代码即可 1(function(a)&#123;a.setAttribute(&#x27;height&#x27;,&#x27;100%&#x27;);a.getElementsByTagName(&#x27;iframe&#x27;)[0].setAttrib">
 <meta property="og:type" content="article">
 <meta property="og:title" content="forge下载页面显示高度很窄解决办法">
 <meta property="og:url" content="https://horizon86.github.io/2021/10/11/forge%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%AB%98%E5%BA%A6%E5%BE%88%E7%AA%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="我们从官网下载forge后跳转到广告页，但是这个页面显示很窄   image  按F12进入控制台(control)，输入以下代码即可 1(function(a)&#123;a.setAttribute(&#x27;height&#x27;,&#x27;100%&#x27;);a.getElementsByTagName(&#x27;iframe&#x27;)[0].setAttribu">
+<meta property="og:description" content="我们从官网下载forge后跳转到广告页，但是这个页面显示很窄   image  按F12进入控制台(control)，输入以下代码即可 1(function(a)&#123;a.setAttribute(&#x27;height&#x27;,&#x27;100%&#x27;);a.getElementsByTagName(&#x27;iframe&#x27;)[0].setAttrib">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://horizon86.github.io/2021/10/11/forge%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%AB%98%E5%BA%A6%E5%BE%88%E7%AA%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/2228692-20211011174928575-1873351899.png">
 <meta property="og:image" content="https://horizon86.github.io/2021/10/11/forge%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E9%AB%98%E5%BA%A6%E5%BE%88%E7%AA%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/2228692-20211011175044211-667925675.png">
@@ -297,7 +297,8 @@
 <img src="2228692-20211011174928575-1873351899.png" srcset="/img/loading.gif" lazyload alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<p>按F12进入控制台(control)，输入以下代码即可 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">(<span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>)&#123;a.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;height&#x27;</span>,<span class="hljs-string">&#x27;100%&#x27;</span>);a.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;iframe&#x27;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;height&#x27;</span>,<span class="hljs-string">&#x27;100%&#x27;</span>);&#125;(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;interstitial&#x27;</span>).<span class="hljs-title function_">getElementsByClassName</span>(<span class="hljs-string">&#x27;content&#x27;</span>)[<span class="hljs-number">0</span>]))<br></code></pre></td></tr></table></figure></p>
+<p>按F12进入控制台(control)，输入以下代码即可<br />
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">(<span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>)&#123;a.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;height&#x27;</span>,<span class="hljs-string">&#x27;100%&#x27;</span>);a.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;iframe&#x27;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;height&#x27;</span>,<span class="hljs-string">&#x27;100%&#x27;</span>);&#125;(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;interstitial&#x27;</span>).<span class="hljs-title function_">getElementsByClassName</span>(<span class="hljs-string">&#x27;content&#x27;</span>)[<span class="hljs-number">0</span>]))<br></code></pre></td></tr></table></figure></p>
 <figure>
 <img src="2228692-20211011175044211-667925675.png" srcset="/img/loading.gif" lazyload alt="image" />
 <figcaption aria-hidden="true">image</figcaption>

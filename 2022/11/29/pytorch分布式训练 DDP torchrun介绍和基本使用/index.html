@@ -335,12 +335,13 @@ target="_blank" rel="noopener" href="https://zerolovesea.github.io/2024/05/12/%E
 <h1 id="使用方法">2. 使用方法</h1>
 <p>最简单的办法是结合Huggingface的Transformers库的<code>Trainer</code>使用，Trainer帮我们做好了多进程数据切分，以及并行训练引擎初始化的过程，可以让多卡和单卡训练一样简单。</p>
 <p>假如你有一个训练脚本<a
-target="_blank" rel="noopener" href="https://github.com/huggingface/transformers/blob/main/examples/pytorch/language-modeling/run_clm.py"><code>run_clm.py</code></a>（提示一下，这里是可以点击跳转到Github查看代码的），你使用<code>Trainer</code>训练模型，你原始调用的脚本是<code>python train_model.py --outputdir ...</code>，那么，你只需要改成：
+target="_blank" rel="noopener" href="https://github.com/huggingface/transformers/blob/main/examples/pytorch/language-modeling/run_clm.py"><code>run_clm.py</code></a>（提示一下，这里是可以点击跳转到Github查看代码的），你使用<code>Trainer</code>训练模型，你原始调用的脚本是<code>python train_model.py --outputdir ...</code>，那么，你只需要改成：<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">deepspeed --include <span class="hljs-string">&quot;localhost:1,2,3,4&quot;</span> train_model.py \<br>	--deepspeed ds_config.json \<br>	--output_dir ...<br></code></pre></td></tr></table></figure></p>
 <p>这里改了两个地方，一个是将python改为了deepspeed，并指定使用1,2,3,4号显卡，另一个是给训练脚本添加了deepspeed参数，Huggingface的trainer会自动解析这个参数并使用deepspeed。</p>
 <h1
 id="需要注意的是deepspeed不能使用cuda_visible_devices来设置使用的gpu务必不要设置cuda_visible_devices"><strong>需要注意的是，deepspeed不能使用CUDA_VISIBLE_DEVICES来设置使用的GPU，务必不要设置CUDA_VISIBLE_DEVICES</strong></h1>
-<p>当然，也可以使用torchrun： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">CUDA_VISIBLE_DEVICES=1,2,3,4 torchrun --nproc-per-node 4 run_clm.py \<br>	--deepspeed ds_config.json \<br>	--output_dir ...<br></code></pre></td></tr></table></figure></p>
+<p>当然，也可以使用torchrun：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">CUDA_VISIBLE_DEVICES=1,2,3,4 torchrun --nproc-per-node 4 run_clm.py \<br>	--deepspeed ds_config.json \<br>	--output_dir ...<br></code></pre></td></tr></table></figure></p>
 <p>=================================</p>
 <p>分割线</p>
 <p>=================================</p>
@@ -348,7 +349,8 @@ id="需要注意的是deepspeed不能使用cuda_visible_devices来设置使用�
 <p>pytorch ddp用法:</p>
 <p>master的端口默认是29500，如果被占用了就换一个</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">torchrun <span class="hljs-attr">--master_port</span> <span class="hljs-number">61234</span> <span class="hljs-attr">--nproc_per_node</span> <span class="hljs-variable">$gpu_num</span> train<span class="hljs-selector-class">.py</span> ...<br></code></pre></td></tr></table></figure>
-<p>shell脚本： <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">CUDA_VISIBLE_DEVICES</span>=<span class="hljs-variable">$1</span><br><span class="hljs-attribute">gpu_num</span>=$(echo <span class="hljs-variable">$CUDA_VISIBLE_DEVICES</span> | awk -F <span class="hljs-string">&#x27;,&#x27;</span> <span class="hljs-string">&#x27;&#123;print NF&#125;&#x27;</span>)<br><br>torchrun --master_port 61234 --nproc_per_node <span class="hljs-variable">$gpu_num</span> hf_train.py <span class="hljs-built_in">..</span>.<br></code></pre></td></tr></table></figure></p>
+<p>shell脚本：<br />
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">CUDA_VISIBLE_DEVICES</span>=<span class="hljs-variable">$1</span><br><span class="hljs-attribute">gpu_num</span>=$(echo <span class="hljs-variable">$CUDA_VISIBLE_DEVICES</span> | awk -F <span class="hljs-string">&#x27;,&#x27;</span> <span class="hljs-string">&#x27;&#123;print NF&#125;&#x27;</span>)<br><br>torchrun --master_port 61234 --nproc_per_node <span class="hljs-variable">$gpu_num</span> hf_train.py <span class="hljs-built_in">..</span>.<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>

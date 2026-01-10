@@ -293,7 +293,7 @@
 <p>服务器：192.168.0.121:27896</p>
 <p>中转机：192.168.0.163:27896</p>
 <p>在<code>192.168.0.121</code>的端口27896上开启了一个服务器，我希望访问中转机<code>192.168.0.163</code>的27896也可以访问到<code>192.168.0.121:27896</code>。</p>
-<p>需要在<code>163</code>这台机器上配置两条iptables规则：
+<p>需要在<code>163</code>这台机器上配置两条iptables规则：<br />
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">iptables</span> -t nat -A PREROUTING -p tcp -d <span class="hljs-number">192.168.0.163</span> --dport <span class="hljs-number">27896</span> -j DNAT --to-destination <span class="hljs-number">192.168.0.121:27896</span><br><br><span class="hljs-attribute">iptables</span> -t nat -A POSTROUTING -p tcp -d <span class="hljs-number">192.168.0.121</span> --dport <span class="hljs-number">27896</span> -j SNAT --to-source <span class="hljs-number">192.168.0.163</span><br></code></pre></td></tr></table></figure></p>
 <p>第一条规则是，对于目的地址是<code>192.168.0.163</code>并且目的端口是27896的数据包，将其目的地址改为<code>192.168.0.121:27896</code>，然后再路由转发出去。</p>
 <p>第二条规则是，对于目的地址是<code>192.168.0.121</code>并且目标端口是27896的数据包，将其源地址改为<code>192.168.0.163</code>。</p>

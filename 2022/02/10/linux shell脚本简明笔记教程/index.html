@@ -291,15 +291,16 @@
                 
                 <h1 id="变量定义和引用">1. 变量定义和引用</h1>
 <p><code>=</code>两边不能有空格</p>
-<p>使用<code>$变量名</code>来引用变量值，也可以用<code>$&#123;变量名&#125;</code>
+<p>使用<code>$变量名</code>来引用变量值，也可以用<code>$&#123;变量名&#125;</code><br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">a=1<br>b=<span class="hljs-string">&#x27;str&#x27;</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span> <span class="hljs-variable">$b</span> <span class="hljs-variable">$&#123;a&#125;</span> <span class="hljs-variable">$&#123;b&#125;</span><br></code></pre></td></tr></table></figure></p>
 <h1 id="if语句">2. IF语句</h1>
 <h2 id="基本格式">2.1 基本格式</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> &lt;测试条件&gt;<br><span class="hljs-keyword">then</span> &lt;语句1&gt;<br><span class="hljs-keyword">else</span> &lt;语句2&gt;<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> &lt;测试条件1&gt;<br><span class="hljs-keyword">then</span> &lt;语句1&gt;<br><span class="hljs-keyword">elif</span> &lt;测试条件2&gt;<br><span class="hljs-keyword">then</span> &lt;语句2&gt;<br><span class="hljs-keyword">else</span> &lt;语句3&gt;<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
-<p>一个分支执行多条命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> &lt;测试条件&gt;<br><span class="hljs-keyword">then</span><br>语句1<br>语句2<br><span class="hljs-keyword">else</span><br>语句3<br>...<br>语句n<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
+<p>一个分支执行多条命令<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> &lt;测试条件&gt;<br><span class="hljs-keyword">then</span><br>语句1<br>语句2<br><span class="hljs-keyword">else</span><br>语句3<br>...<br>语句n<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
 <p>if, then, else,
-fi等都是关键字，不能放在同一行，如果在同一行要用<code>;</code>隔开，如下
+fi等都是关键字，不能放在同一行，如果在同一行要用<code>;</code>隔开，如下<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> 测试条件 ; <span class="hljs-keyword">then</span> 语句1 ;<span class="hljs-keyword">else</span> 语句2; <span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
 <h2 id="测试条件">2.2 测试条件</h2>
 <blockquote>
@@ -320,7 +321,8 @@ fi等都是关键字，不能放在同一行，如果在同一行要用<code>;</
 <h3 id="普通命令">2.2.1 普通命令</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> <span class="hljs-built_in">ls</span> | grep hello; <span class="hljs-keyword">then</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;hello exist.&quot;</span><br><span class="hljs-keyword">else</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;no file contanis hello&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
 <h3 id="test命令和方括号">2.2.1 test命令和方括号</h3>
-<p>test命令和方括号是等价的，比如 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">test</span> <span class="hljs-variable">$a</span> = <span class="hljs-variable">$b</span><br><span class="hljs-comment"># 等价于</span><br>[ <span class="hljs-variable">$a</span> = <span class="hljs-variable">$b</span> ]<br></code></pre></td></tr></table></figure></p>
+<p>test命令和方括号是等价的，比如<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">test</span> <span class="hljs-variable">$a</span> = <span class="hljs-variable">$b</span><br><span class="hljs-comment"># 等价于</span><br>[ <span class="hljs-variable">$a</span> = <span class="hljs-variable">$b</span> ]<br></code></pre></td></tr></table></figure></p>
 <blockquote>
 <p>实际上左方括号[
 也是一个普通的可执行程序，中间都是他的参数，只是最后一个参数必须是右方括号。test命令根据条件做出判断，决定返回0或者非0，在if条件中实际上还是在看该命令的返回值。</p>
@@ -333,7 +335,8 @@ fi等都是关键字，不能放在同一行，如果在同一行要用<code>;</
 <p><code>-r 文件名</code> 是否有读权限</p>
 <p><code>-w 文件名</code> 是否有写权限</p>
 <p><code>-x 文件名</code> 是否有执行权限</p>
-<p>举例子： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ -f <span class="hljs-string">&quot;/etc/hosts&quot;</span> ];<span class="hljs-keyword">then</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;File exists.&quot;</span><br><span class="hljs-keyword">else</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;File not exists.&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
+<p>举例子：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ -f <span class="hljs-string">&quot;/etc/hosts&quot;</span> ];<span class="hljs-keyword">then</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;File exists.&quot;</span><br><span class="hljs-keyword">else</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;File not exists.&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
 <h4 id="字符串判断">字符串判断：</h4>
 <p><code>s1 = s2</code> s1与s2相等，则true</p>
 <p><code>-n s1</code> 字符串不空则true</p>
@@ -342,9 +345,10 @@ fi等都是关键字，不能放在同一行，如果在同一行要用<code>;</
 ASCII比较，<code>[]</code>需要把<code>&lt;</code>转义为<code>\&lt;</code>,
 <code>[[]]</code>中无需转义</p>
 <p><code>s1 &lt; s2</code> 同上</p>
-<p>举例子： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;a&#125;</span>&quot;</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;b&#125;</span>&quot;</span> ];<br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Str equal&quot;</span><br><span class="hljs-keyword">else</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Str not equal&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
+<p>举例子：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;a&#125;</span>&quot;</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;b&#125;</span>&quot;</span> ];<br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Str equal&quot;</span><br><span class="hljs-keyword">else</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Str not equal&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
 <p>注意：判断是否相等可以是=，也可以是==。但注意两边必须有空格。如果=是赋值，则=两边不能有空格。</p>
-<p>大于小于号在test表达式中需要转义，在[[]]表达式中不用转义
+<p>大于小于号在test表达式中需要转义，在[[]]表达式中不用转义<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[ <span class="hljs-variable">$a</span> \&lt; <span class="hljs-variable">$b</span>]<br>[[ <span class="hljs-variable">$a</span> &lt; <span class="hljs-variable">$b</span> ]]<br></code></pre></td></tr></table></figure></p>
 <h4 id="整数判断">整数判断</h4>
 <p><code>int1 -eq int2</code> 两个整数相等，则true</p>
@@ -352,22 +356,27 @@ ASCII比较，<code>[]</code>需要把<code>&lt;</code>转义为<code>\&lt;</cod
 <p><code>-lt</code> 小于</p>
 <p><code>-ge</code> 大于等于</p>
 <p><code>-gt</code> 大于</p>
-<p>整数判断千万不要直接用大于小于号，要是想用需要用双括号括起来，如：
+<p>整数判断千万不要直接用大于小于号，要是想用需要用双括号括起来，如：<br />
 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gams">a=<span class="hljs-number">105</span><br>b=<span class="hljs-number">15</span><br><span class="hljs-keyword">if</span> ((<span class="hljs-symbol">$</span>a &lt; <span class="hljs-symbol">$</span>b))<br><span class="hljs-function"><span class="hljs-title">then</span></span> ...<br><span class="hljs-function"><span class="hljs-title">else</span></span> ...<br>fi<br><br><span class="hljs-keyword">if</span> [ <span class="hljs-symbol">$</span>a -<span class="hljs-keyword">gt</span> <span class="hljs-symbol">$</span>b ];<span class="hljs-keyword">then</span> ...;fi<br></code></pre></td></tr></table></figure></p>
 <h3 id="逻辑运算">逻辑运算</h3>
 <p>! 非</p>
 <p>-a 逻辑与（and）</p>
-<p>-o 逻辑或（or） <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[ -f <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> -a -x <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> ]<br></code></pre></td></tr></table></figure></p>
+<p>-o 逻辑或（or）<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[ -f <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> -a -x <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> ]<br></code></pre></td></tr></table></figure></p>
 <h3 id="正则表达式">正则表达式</h3>
 <p><a
 target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/340440/bash-test-what-does-do">=~</a>用来正则表达式匹配，左边是字符串，需要用引号，右边是正则表达式，不要引号。只要能匹配就是true。详见<a
 target="_blank" rel="noopener" href="https://www.man7.org/linux/man-pages/man1/bash.1.html">man
 bash</a></p>
-<p>例如： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [[ <span class="hljs-string">&quot; MRPC RTE STSB CoLA &quot;</span> =~ MRPC ]]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> .....<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
+<p>例如：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> [[ <span class="hljs-string">&quot; MRPC RTE STSB CoLA &quot;</span> =~ MRPC ]]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> .....<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
 <h1 id="数组">3. 数组</h1>
-<p>定义数组： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">glue_low=(MRPC RTE STSB CoLA)<br></code></pre></td></tr></table></figure></p>
-<p>获取数组元素： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 赋值</span><br>glue_low[0]<br>glue_low[1]=SST<br><span class="hljs-comment"># 读取</span><br>task=<span class="hljs-variable">$&#123;glue_low[2]&#125;</span><br></code></pre></td></tr></table></figure></p>
-<p>获取数组所有元素： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-variable">$&#123;glue_low[@]&#125;</span><br><span class="hljs-variable">$&#123;glue_low[*]&#125;</span><br></code></pre></td></tr></table></figure></p>
+<p>定义数组：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">glue_low=(MRPC RTE STSB CoLA)<br></code></pre></td></tr></table></figure></p>
+<p>获取数组元素：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 赋值</span><br>glue_low[0]<br>glue_low[1]=SST<br><span class="hljs-comment"># 读取</span><br>task=<span class="hljs-variable">$&#123;glue_low[2]&#125;</span><br></code></pre></td></tr></table></figure></p>
+<p>获取数组所有元素：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-variable">$&#123;glue_low[@]&#125;</span><br><span class="hljs-variable">$&#123;glue_low[*]&#125;</span><br></code></pre></td></tr></table></figure></p>
 <h1 id="set">set</h1>
 <p>set -...: 开启某选项</p>
 <p>set +...: 关闭某选项</p>
@@ -381,9 +390,10 @@ bash</a></p>
 <h1 id="数学算数表达式">4. 数学算数表达式</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">let</span> a=3+3<br>或<br>a=$((<span class="hljs-number">3</span>+<span class="hljs-number">3</span>))<br><span class="hljs-comment"># a=6</span><br><br>b=8<br>a=$((<span class="hljs-variable">$b</span>+<span class="hljs-number">1</span>))<br><span class="hljs-comment"># a=9</span><br></code></pre></td></tr></table></figure>
 <h1 id="单引号中转义单引号">5. 单引号中转义单引号</h1>
-<p>由于反斜杠在单引号里面变成了普通字符，所以如果单引号之中，还要使用单引号，不能使用转义，需要在外层的单引号前面加上一个美元符号（$），然后再对里层的单引号转义。
+<p>由于反斜杠在单引号里面变成了普通字符，所以如果单引号之中，还要使用单引号，不能使用转义，需要在外层的单引号前面加上一个美元符号（$），然后再对里层的单引号转义。<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 不正确</span><br>$ <span class="hljs-built_in">echo</span> it<span class="hljs-string">&#x27;s</span><br><span class="hljs-string"># 不正确</span><br><span class="hljs-string">$ echo &#x27;</span>it\&#x27;s<span class="hljs-string">&#x27;</span><br><span class="hljs-string"> </span><br><span class="hljs-string"># 正确</span><br><span class="hljs-string">$ echo $&#x27;</span>it\&#x27;s<span class="hljs-string">&#x27;</span><br></code></pre></td></tr></table></figure></p>
-<p>不过，更合理的方法是改在双引号之中使用单引号。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;it&#x27;s&quot;</span></span><br>it&#x27;s<br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> $<span class="hljs-string">&#x27;it\&#x27;</span>s<span class="hljs-string">&#x27;</span></span><br>it&#x27;s<br><span class="hljs-meta prompt_">$</span><br></code></pre></td></tr></table></figure></p>
+<p>不过，更合理的方法是改在双引号之中使用单引号。<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;it&#x27;s&quot;</span></span><br>it&#x27;s<br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> $<span class="hljs-string">&#x27;it\&#x27;</span>s<span class="hljs-string">&#x27;</span></span><br>it&#x27;s<br><span class="hljs-meta prompt_">$</span><br></code></pre></td></tr></table></figure></p>
 
                 
               </div>

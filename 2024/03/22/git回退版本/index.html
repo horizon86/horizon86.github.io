@@ -305,7 +305,7 @@
 <p>Does not touch the index file or the working tree at all (but resets
 the head to <commit>, just like all modes do). This leaves all your
 changed files "Changes to be committed", as git status would put it.</p>
-<p>回退到之前的commit，并将修改放在<strong>暂存区</strong>。（这意味着你的暂存区如果有同名文件，那么暂存的修改会被冲刷掉），工作区不会有影响。
+<p>回退到之前的commit，并将修改放在<strong>暂存区</strong>。（这意味着你的暂存区如果有同名文件，那么暂存的修改会被冲刷掉），工作区不会有影响。<br />
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git reset --soft <span class="hljs-title class_">HEAD</span>^<span class="hljs-number">1</span><br><span class="hljs-variable">$ </span>git status<br>位于分支 main<br>您的分支与上游分支 <span class="hljs-string">&#x27;origin/main&#x27;</span> 一致。<br><br>要提交的变更：<br>  （使用 <span class="hljs-string">&quot;git restore --staged &lt;文件&gt;...&quot;</span> 以取消暂存）<br>        修改：     changed.sh<br></code></pre></td></tr></table></figure></p>
 <ol start="2" type="1">
 <li><strong>mixed</strong></li>
@@ -334,7 +334,8 @@ directories in the way of writing any tracked files are simply
 deleted.</p>
 </blockquote>
 <p>这样直接把HEAD指针回退，并且不会将两次commit的差异保存在工作区/暂存区中。会清空你的工作区和暂存区，应当慎用。一旦回退，除非记得之前的commit
-id，不然看不到之前的commit内容了。 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git reset --hard <span class="hljs-title class_">HEAD</span>^<span class="hljs-number">1</span><br><span class="hljs-variable">$ </span>git status<br>位于分支 main<br>您的分支与上游分支 <span class="hljs-string">&#x27;origin/main&#x27;</span> 一致。<br></code></pre></td></tr></table></figure></p>
+id，不然看不到之前的commit内容了。<br />
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git reset --hard <span class="hljs-title class_">HEAD</span>^<span class="hljs-number">1</span><br><span class="hljs-variable">$ </span>git status<br>位于分支 main<br>您的分支与上游分支 <span class="hljs-string">&#x27;origin/main&#x27;</span> 一致。<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>

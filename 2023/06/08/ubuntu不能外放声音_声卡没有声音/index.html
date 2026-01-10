@@ -290,7 +290,7 @@
               <div class="markdown-body">
                 
                 <p>解决办法：</p>
-<p><code>/etc/modprobe.d/alsa-base.conf</code>文件加一行：
+<p><code>/etc/modprobe.d/alsa-base.conf</code>文件加一行：<br />
 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-keyword">options</span> snd-hda-intel <span class="hljs-keyword">model</span>=dell-headset-multi<br></code></pre></td></tr></table></figure></p>
 <p>然后设置里就可以选内置音频了，之前没有。</p>
 <p>参考资料：https://askubuntu.com/questions/1258583/install-realtek-audio-drivers-in-ubuntu-20-04-intel-nuc-nuc10i7fnh</p>

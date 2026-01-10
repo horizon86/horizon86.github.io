@@ -21,12 +21,12 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="USB连接电脑，打开USB调试模式。 12345678910111213adb devices # 列出设备，包含SERIAL和设备型号adb devices -l # 列出详细信息，包含transport idadb shell &lt;cmd&gt; # 在手机shell中执行命令adb -t &lt;transport_id&gt; shell &lt;cmd&gt; # 用transpor">
+    <meta name="description" content="USB连接电脑，打开USB调试模式。 12345678910111213adb devices # 列出设备，包含SERIAL和设备型号adb devices -l # 列出详细信息，包含transport idadb shell &lt;cmd&gt; # 在手机shell中执行命令adb -t &lt;transport_id&gt; shell &lt;cmd&gt; # 用transpo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="adb常用命令">
 <meta property="og:url" content="https://horizon86.github.io/2023/01/15/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="USB连接电脑，打开USB调试模式。 12345678910111213adb devices # 列出设备，包含SERIAL和设备型号adb devices -l # 列出详细信息，包含transport idadb shell &lt;cmd&gt; # 在手机shell中执行命令adb -t &lt;transport_id&gt; shell &lt;cmd&gt; # 用transpor">
+<meta property="og:description" content="USB连接电脑，打开USB调试模式。 12345678910111213adb devices # 列出设备，包含SERIAL和设备型号adb devices -l # 列出详细信息，包含transport idadb shell &lt;cmd&gt; # 在手机shell中执行命令adb -t &lt;transport_id&gt; shell &lt;cmd&gt; # 用transpo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-15T10:32:00.000Z">
 <meta property="article:modified_time" content="2025-03-25T13:51:38.274Z">
@@ -289,7 +289,8 @@
             
               <div class="markdown-body">
                 
-                <p>USB连接电脑，打开USB调试模式。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb devices <span class="hljs-comment"># 列出设备，包含SERIAL和设备型号</span><br>adb devices -l <span class="hljs-comment"># 列出详细信息，包含transport id</span><br><br>adb shell &lt;cmd&gt; <span class="hljs-comment"># 在手机shell中执行命令</span><br>adb -t &lt;transport_id&gt; shell &lt;cmd&gt; <span class="hljs-comment"># 用transport id指定设备（适用于连接了多个设备时）</span><br>adb -s &lt;SERIAL&gt; shell &lt;cmd&gt; <span class="hljs-comment"># 用serial指定设备</span><br><br>adb shell <span class="hljs-comment"># 进入shell</span><br>adb push &lt;<span class="hljs-built_in">local</span>&gt;... &lt;remote&gt; <span class="hljs-comment"># 从电脑复制文件到手机 remote是手机上的路径</span><br>adb pull &lt;remote&gt;... &lt;<span class="hljs-built_in">local</span>&gt; <span class="hljs-comment"># 从手机上复制文件到电脑</span><br><br>adb install xxx.apk <span class="hljs-comment"># 安装软件（需要手机确认或者开启权限）</span><br>adb shell pm list packages <span class="hljs-comment"># 列出软件包</span><br></code></pre></td></tr></table></figure></p>
+                <p>USB连接电脑，打开USB调试模式。<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb devices <span class="hljs-comment"># 列出设备，包含SERIAL和设备型号</span><br>adb devices -l <span class="hljs-comment"># 列出详细信息，包含transport id</span><br><br>adb shell &lt;cmd&gt; <span class="hljs-comment"># 在手机shell中执行命令</span><br>adb -t &lt;transport_id&gt; shell &lt;cmd&gt; <span class="hljs-comment"># 用transport id指定设备（适用于连接了多个设备时）</span><br>adb -s &lt;SERIAL&gt; shell &lt;cmd&gt; <span class="hljs-comment"># 用serial指定设备</span><br><br>adb shell <span class="hljs-comment"># 进入shell</span><br>adb push &lt;<span class="hljs-built_in">local</span>&gt;... &lt;remote&gt; <span class="hljs-comment"># 从电脑复制文件到手机 remote是手机上的路径</span><br>adb pull &lt;remote&gt;... &lt;<span class="hljs-built_in">local</span>&gt; <span class="hljs-comment"># 从手机上复制文件到电脑</span><br><br>adb install xxx.apk <span class="hljs-comment"># 安装软件（需要手机确认或者开启权限）</span><br>adb shell pm list packages <span class="hljs-comment"># 列出软件包</span><br></code></pre></td></tr></table></figure></p>
 <p>附录：</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89060003"
 class="uri">https://zhuanlan.zhihu.com/p/89060003</a></p>
@@ -311,6 +312,16 @@ class="uri">https://zhuanlan.zhihu.com/p/89060003</a></p>
     
       <span class="category-chain">
         
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
   <a href="/categories/%E5%AD%A6%E5%BC%80%E5%8F%91/" class="category-chain-item">学开发</a>
   
   
@@ -320,16 +331,6 @@ class="uri">https://zhuanlan.zhihu.com/p/89060003</a></p>
   
   
 
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
-  
   
 
       </span>

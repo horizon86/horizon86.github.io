@@ -21,12 +21,12 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 查看环境变量 根据进程pid看，以121927号进程为例： 1cat &#x2F;proc&#x2F;121927&#x2F;environ | tr &#x27;\0&#x27; &#x27;\n&#x27; 每个环境变量都以&#39;\0&#39;结束，直接cat会不方便查看，将&#39;\0&#39;替换为&#39;&#39;可以方便查看。注意，tr后必须加单引号，不然参数会被shell转义为0和n。或者可以： 1cat &#x2F;proc&#x2F;121927&#x2F;envi">
+    <meta name="description" content="1. 查看环境变量 根据进程pid看，以121927号进程为例： 1cat &#x2F;proc&#x2F;121927&#x2F;environ | tr &#x27;\0&#x27; &#x27;\n&#x27; 每个环境变量都以&#39;\0&#39;结束，直接cat会不方便查看，将&#39;\0&#39;替换为&#39;&#39;可以方便查看。注意，tr后必须加单引号，不然参数会被shell转义为0和n。或者可以： 1cat &#x2F;proc&#x2F;121927&#x2F;env">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux查看某个进程的环境变量，以及重定向后的输出">
 <meta property="og:url" content="https://horizon86.github.io/2024/07/15/Linux%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%8C%E4%BB%A5%E5%8F%8A%E9%87%8D%E5%AE%9A%E5%90%91%E5%90%8E%E7%9A%84%E8%BE%93%E5%87%BA/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="1. 查看环境变量 根据进程pid看，以121927号进程为例： 1cat &#x2F;proc&#x2F;121927&#x2F;environ | tr &#x27;\0&#x27; &#x27;\n&#x27; 每个环境变量都以&#39;\0&#39;结束，直接cat会不方便查看，将&#39;\0&#39;替换为&#39;&#39;可以方便查看。注意，tr后必须加单引号，不然参数会被shell转义为0和n。或者可以： 1cat &#x2F;proc&#x2F;121927&#x2F;envi">
+<meta property="og:description" content="1. 查看环境变量 根据进程pid看，以121927号进程为例： 1cat &#x2F;proc&#x2F;121927&#x2F;environ | tr &#x27;\0&#x27; &#x27;\n&#x27; 每个环境变量都以&#39;\0&#39;结束，直接cat会不方便查看，将&#39;\0&#39;替换为&#39;&#39;可以方便查看。注意，tr后必须加单引号，不然参数会被shell转义为0和n。或者可以： 1cat &#x2F;proc&#x2F;121927&#x2F;env">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-15T11:31:00.000Z">
 <meta property="article:modified_time" content="2025-03-25T13:50:32.499Z">
@@ -290,8 +290,9 @@
               <div class="markdown-body">
                 
                 <h1 id="查看环境变量">1. 查看环境变量</h1>
-<p>根据进程pid看，以121927号进程为例： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /proc/121927/environ | <span class="hljs-built_in">tr</span> <span class="hljs-string">&#x27;\0&#x27;</span> <span class="hljs-string">&#x27;\n&#x27;</span><br></code></pre></td></tr></table></figure></p>
-<p>每个环境变量都以'\0'结束，直接cat会不方便查看，将'\0'替换为''可以方便查看。注意，tr后必须加单引号，不然参数会被shell转义为0和n。或者可以：
+<p>根据进程pid看，以121927号进程为例：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /proc/121927/environ | <span class="hljs-built_in">tr</span> <span class="hljs-string">&#x27;\0&#x27;</span> <span class="hljs-string">&#x27;\n&#x27;</span><br></code></pre></td></tr></table></figure></p>
+<p>每个环境变量都以'\0'结束，直接cat会不方便查看，将'\0'替换为''可以方便查看。注意，tr后必须加单引号，不然参数会被shell转义为0和n。或者可以：<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /proc/121927/environ | <span class="hljs-built_in">tr</span> \\0 \\n<br></code></pre></td></tr></table></figure></p>
 <h1 id="查看重定向的输出">2. 查看重定向的输出</h1>
 <p>我经常使用nohup跑程序并重定向输出，并且不会像<a

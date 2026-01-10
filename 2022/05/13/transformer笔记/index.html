@@ -299,15 +299,19 @@
 <p>嵌入层嵌入后，输出维度是<code>[batchsize, n, d_model]</code></p>
 <p>也就是每个单词的嵌入是一个<code>(1, d_model)</code>的向量</p>
 <p>进入到self-attention。先计算<code>q, k, v</code>，每个单词都有一个<code>q, k, v</code></p>
-<p>对于一个单词的词嵌入 <span class="math display">\[
+<p>对于一个单词的词嵌入<br />
+<span class="math display">\[
 \bm{x}_{emb} \in R^{1\times d_{model}}
-\]</span> <span class="math display">\[
+\]</span><br />
+<span class="math display">\[
 \bm{q}^{1\times d_{model}}\ \  = \bm{x}_{emb}\bm{W^{Q}}, \bm{W^{Q}}\in
 R^{d_{model\ \ \ \ } \times d_{model}}
-\]</span> <span class="math display">\[
+\]</span><br />
+<span class="math display">\[
 \bm{k}^{1\times d_{model}}\ \  = \bm{x}_{emb}\bm{W^{K}}, \bm{W^{K}}\in
 R^{d_{model\ \ \ \ } \times d_{model}}
-\]</span> <span class="math display">\[
+\]</span><br />
+<span class="math display">\[
 \bm{v}^{1\times d_{model}}\ \  = \bm{x}_{emb}\bm{W^{V}}, \bm{W^{V}}\in
 R^{d_{model\ \ \ \ } \times d_{model}}
 \]</span></p>
@@ -317,18 +321,21 @@ class="math inline">\(W^Q,W^K,W^V\)</span>都是一样的</p>
 </blockquote>
 <p>然后计算每个单词和其他所有单词的注意力分数，对于一个单词的<code>q</code>和其他所有单词（包括自己）的<code>v</code>之间的相似度，每个相似度是一个标量，所以一个单词和<code>n</code>个单词的相似度是<span
 class="math inline">\(R^{1\times
-n}\)</span>的向量，然后对这个向量做softmax，得到的结果和各个单词的<code>v</code>加权和，作为一个单词的attention输出。
+n}\)</span>的向量，然后对这个向量做softmax，得到的结果和各个单词的<code>v</code>加权和，作为一个单词的attention输出。<br />
 <span class="math display">\[
 z_{1}^{1\times d_{model}} = softmax(q_1 \cdot k_1^T, q_1 \cdot k_2^T,
 \cdots, q_1 \cdot k_n^T)V
 \]</span></p>
-<p>整个句子的输出是 <span class="math display">\[
+<p>整个句子的输出是<br />
+<span class="math display">\[
 Z^{n\times d_{model}}\  = softmax(QK^T/\sqrt{d_k})V
 \]</span></p>
 <h1 id="多头注意力">多头注意力</h1>
-<p>生成<code>h</code>个 <span class="math display">\[
+<p>生成<code>h</code>个<br />
+<span class="math display">\[
 W^Q, W^K \in R^{d_{model\ \ \ \ }\times d_k}
-\]</span> <span class="math display">\[
+\]</span><br />
+<span class="math display">\[
 W^V \in R^{d_{model\ \ \ \ }\times d_v}
 \]</span></p>
 <p>这样，对于每个单词，可以得到h个输出，都是<span
@@ -437,7 +444,8 @@ V_J
 masked\_attention = softmax(\frac{(query \times key^T) }{\sqrt{d_k}}+
 attention\_mask)\\
 \]</span></p>
-<p>其中： <span class="math display">\[
+<p>其中：<br />
+<span class="math display">\[
 \begin{aligned}
 query \times key^T&amp;=\begin{pmatrix}
 AQ^W \\
@@ -457,7 +465,7 @@ Q_A{K_A}^T &amp; Q_A{K_B}^T &amp; \cdots &amp; Q_A{K_J}^T\\
 \end{aligned}
 \\
 \]</span></p>
-<p>由于mask、除以dk等操作都是element_wise的操作，不涉及不同token的计算，softmax也是得到masked_attention后的计算，所以我们忽略这些操作。残差连接和norm等也忽略。
+<p>由于mask、除以dk等操作都是element_wise的操作，不涉及不同token的计算，softmax也是得到masked_attention后的计算，所以我们忽略这些操作。残差连接和norm等也忽略。<br />
 <span class="math display">\[
 \begin{aligned}
 attention\_output&amp;= masked\_attention \times value\\

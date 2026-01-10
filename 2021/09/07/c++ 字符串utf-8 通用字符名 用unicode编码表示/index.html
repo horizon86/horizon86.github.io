@@ -293,7 +293,7 @@
 <p>c++11引入了一种新的转义字符——通用字符名（<a
 target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/escape">universal
 character
-names</a>）。表示就是<code>\uxxxx</code>或者<code>\Uxxxxxxxx</code>，xxxx是一个unicode码点。
+names</a>）。表示就是<code>\uxxxx</code>或者<code>\Uxxxxxxxx</code>，xxxx是一个unicode码点。<br />
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* a = <span class="hljs-string">&quot;\u4f60&quot;</span>;<br>    <span class="hljs-comment">// const char* a = &quot;\U00004f60&quot;;</span><br>    cout &lt;&lt; a &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure></p>
 <blockquote>
 <p>要注意，代码中写的是字符的unicode编码，执行时输出的是utf-8编码，注意区分。可以在<a
@@ -304,7 +304,7 @@ href="https://horizon86.github.io/2025/04/03/char-code-converter/">这里</a>查
 <p>对于【执行字符集和源文件字符集】，可以看<a
 target="_blank" rel="noopener" href="https://blog.csdn.net/JackDual/article/details/115376134">我的另一篇博客</a>。</p>
 <h1 id="u8前缀">u8前缀</h1>
-<p>如果字符串用u8前缀，则表示这段字符串用utf-8编码执行。
+<p>如果字符串用u8前缀，则表示这段字符串用utf-8编码执行。<br />
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* a = <span class="hljs-string">&quot;\u4f60&quot;</span>;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* b = <span class="hljs-string">u8&quot;好&quot;</span>;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* c = <span class="hljs-string">&quot;啊&quot;</span>;<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    cout &lt;&lt; b &lt;&lt; endl;<br>    cout &lt;&lt; c &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure></p>
 <p>上述代码以utf-8格式保存，用g++编译，会输出utf-8编码的“你好啊”。因为g++默认使用的执行字符集就是utf-8。</p>
 <p>如果以GBK格式保存并用msvc编译，由于默认执行字符集是GBK，会将“你”和“啊”用GBK编码输出，将“好”用utf-8编码输出。（再次提醒注意，这里源码保存为GBK和执行字符集是GBK无关。）</p>

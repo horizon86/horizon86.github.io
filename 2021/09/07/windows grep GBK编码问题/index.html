@@ -311,7 +311,7 @@ file.txt，file.txt是utf-8编码的文件，可以正常显示，这说明cat�
 <p>那git
 status的输出编码是什么？执行<code>git status &gt; st.txt</code>，看文件编码是utf-8.显然git也应该会受到LANG的影响。也就是git在936代码页正常显示了utf-8，那只能是git程序内部临时改了输出代码页为65001，执行完后又改了回来。这点很重要：【会根据LANG调用<code>SetConsoleOutputCP(65001)</code>，结束再改回来】。</p>
 <p>而grep看到LANG是utf-8，就把输出代码页改成了65001，并将参数“文件”的编码从GBK改成utf-8.也就是说，grep会把参数按utf-8进行编码。为了测试上述猜想的正确性，我们做这么个实验：</p>
-<p><code>测试</code>这两个字的utf-8编码和<code>娴嬭瘯</code>这三个字的GBK编码是一样的。你问我怎么知道？
+<p><code>测试</code>这两个字的utf-8编码和<code>娴嬭瘯</code>这三个字的GBK编码是一样的。你问我怎么知道？<br />
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust">cout&lt;&lt;<span class="hljs-type">u8</span><span class="hljs-string">&quot;测试&quot;</span><br></code></pre></td></tr></table></figure></p>
 <p>编译并在936代码页执行就可。</p>
 <p>然后我在936代码页执行<code>echo "娴嬭瘯utf-8" | grep "测试"</code>，结果如下：</p>

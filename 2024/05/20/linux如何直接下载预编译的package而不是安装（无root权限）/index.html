@@ -312,7 +312,7 @@ target="_blank" rel="noopener" href="https://pkgs.org">这个网站</a>，在右
 <p>往下拉，找到下载地址：https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/a/axel-2.4-9.el7.x86_64.rpm</p>
 <p>下载后解压出来，解压命令是<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="https://chatgpt.com">[1]</span></a></sup>：
+aria-label="https://chatgpt.com">[1]</span></a></sup>：<br />
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">mkdir</span> axel-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>-<span class="hljs-number">9</span>.el7.x86_64<br><span class="hljs-attribute">bsdtar</span> -xf axel-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>-<span class="hljs-number">9</span>.el7.x86_64.rpm -C axel-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>-<span class="hljs-number">9</span>.el7.x86_64<br></code></pre></td></tr></table></figure></p>
 <p>然后你就可以看到<code>axel-2.4-9.el7.x86_64</code>文件夹内出现了<code>etc</code>和<code>usr</code>目录，从中找到我们需要的二进制文件：<code>axel-2.4-9.el7.x86_64/usr/bin/axel</code>，使用即可。</p>
 <h1 id="limitations">5. Limitations</h1>

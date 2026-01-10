@@ -292,8 +292,10 @@
                 <h1 id="更新">20230819更新</h1>
 <p>最近tju校园网升级，已经无需拨号了，插网线就能上网，十分不错。并且，网段也发生了变化。有线网给172.23.128.0/17，wifi给172.18.128.0/17.但是这个操作有个很阴间的地方，在宿舍和实验室有线网给同一个网段，但是却无法互相访问；如果是在实验室，同一个网段是可以互相访问的，感觉是划分了vlan，导致同一个子网在不同物理区域也无法互相访问。</p>
 <p>由于默认的访问一个子网的路由是on-link，也就是不走网关的，直接arp协议走交换机。所以需要设置路由规则才行。</p>
-<p>windows（管理员）： <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">route</span> change <span class="hljs-number">172.23.128.0</span> mask <span class="hljs-number">255.255.128.0</span> <span class="hljs-number">172.23.128.1</span><br></code></pre></td></tr></table></figure></p>
-<p>linux： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ip route add 172.23.128.0/17 via 172.23.128.1<br></code></pre></td></tr></table></figure></p>
+<p>windows（管理员）：<br />
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">route</span> change <span class="hljs-number">172.23.128.0</span> mask <span class="hljs-number">255.255.128.0</span> <span class="hljs-number">172.23.128.1</span><br></code></pre></td></tr></table></figure></p>
+<p>linux：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ip route add 172.23.128.0/17 via 172.23.128.1<br></code></pre></td></tr></table></figure></p>
 <h1 id="以下原文">以下原文</h1>
 <p>首先说明我的场景：</p>
 <p>一台电脑安装windows，一台安装linux。两台电脑都连接校园网，并且插网线，拨号。这样获取了两个IP：一个是校园网DHCP的IP，一个是PPPOE的IP。</p>
@@ -307,9 +309,10 @@
 <ol type="1">
 <li>让linux的dhcp的ip可以被连接</li>
 </ol>
-<p>https://support.huaweicloud.com/trouble-ecs/ecs_trouble_0307.html
+<p>https://support.huaweicloud.com/trouble-ecs/ecs_trouble_0307.html<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/iproute2/rt_tables<br>添加：32000 djc<br>sudo ip route add default via 172.24.64.1 dev eno1 table djc<br>sudo ip rule add from 172.24.67.11 lookup djc prio 32000<br><span class="hljs-comment"># sudo ip rule add from $(ip -j -4 addr show eno1 | jq -r &#x27;.[0].addr_info[0].local&#x27;) lookup djc prio 32000</span><br></code></pre></td></tr></table></figure></p>
-<p>简洁版： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ip route add default via 172.24.64.1 dev eno1 table djc<br>sudo ip rule add from $(ip -j -4 addr show eno1 | jq -r <span class="hljs-string">&#x27;.[0].addr_info[0].local&#x27;</span>) lookup djc prio 32000<br></code></pre></td></tr></table></figure></p>
+<p>简洁版：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ip route add default via 172.24.64.1 dev eno1 table djc<br>sudo ip rule add from $(ip -j -4 addr show eno1 | jq -r <span class="hljs-string">&#x27;.[0].addr_info[0].local&#x27;</span>) lookup djc prio 32000<br></code></pre></td></tr></table></figure></p>
 <p>让来自不同的网卡的数据包查阅不同的路由表，这样，就不会出现收到来自非默认接口(PPP)的数据包，但是从默认接口(eno1)发出去响应包，导致对方无法接收的情况。</p>
 <p>此时，在windows发起ssh连接，连接linux，使用的是windows的PPPOE接口。同时linux
 ping不通windows的有线网IP和无线网IP，只能ping宽带IP。</p>
@@ -319,12 +322,13 @@ ping不通windows的有线网IP和无线网IP，只能ping宽带IP。</p>
 <li>使用dhcp的ip发起传出连接</li>
 </ol>
 <p>但是，windows的路由设置没有不同网卡使用不同的路由表的功能，这样就会出现：外部发送到非默认网卡的数据包，从默认网卡发送了响应。一个尴尬的解决办法是，添加一条路由，让目的地是外部的ip路由到DHCP。</p>
-<p>代码： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">route add 172.24.0.0 mask 255.255.0.0 172.24.8.1 <span class="hljs-keyword">if</span> 16<br>route add 172.26.0.0 mask 255.255.0.0 172.24.8.1 <span class="hljs-keyword">if</span> 16<br></code></pre></td></tr></table></figure></p>
+<p>代码：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">route add 172.24.0.0 mask 255.255.0.0 172.24.8.1 <span class="hljs-keyword">if</span> 16<br>route add 172.26.0.0 mask 255.255.0.0 172.24.8.1 <span class="hljs-keyword">if</span> 16<br></code></pre></td></tr></table></figure></p>
 <p>这样，让去往172.24.0.0/16和172.26.0.0/16的数据包网关是172.24.8.1，接口是有线网卡。这样linux的两块网卡就可以互相ping通windows的两块网卡了。</p>
 <p>这里有点不理解的问题：linux的默认路由是走PPPOE(172.26.x.x)，从这里访问windows的有线网卡和PPPOE接口，响应数据包都会通过172.24.x.x发送出去。linux访问windows的pppoe，数据包来自接口pppoe，但是响应包从有线网卡接口发送出去，仍然能正常工作。感觉是把两个接口当成了一个接口在用？或者说windows的rp_filter机制是，PPPOE的响应数据包走物理网卡不会被丢弃，物理网卡的响应数据包走PPPOE会被丢弃。都是猜测。</p>
 <p>如果需要让linux ping
 windows的wifi网卡，按理说那么就要相对应的更改上述路由的网关为wifi的网关。</p>
-<p>如果想让来自别人wifi的可以ping通有线网卡，则需要添加一条：
+<p>如果想让来自别人wifi的可以ping通有线网卡，则需要添加一条：<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">route add 172.23.0.0 mask 255.255.0.0 172.24.8.1 <span class="hljs-keyword">if</span> 16<br></code></pre></td></tr></table></figure></p>
 
                 

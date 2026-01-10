@@ -249,7 +249,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/29/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%92%8CGLU/" target="_self">
         <div>
-          LLaMA系列用的FFN层现在是SwishGLU，这里Swish是个激活函数，GLU是个线性单元，二者合起来是SwishGLU。 FFN Transformer中原始的FFN长这样： \[ FFN(x) = ReLU(xW_1+b_1)W_2+b_2 \] 两个线性层中间夹了个relu激活函数 写成模型代码就是： 123x = up_proj(x)x = relu(x)x = dow
+          LLaMA系列用的FFN层现在是SwishGLU，这里Swish是个激活函数，GLU是个线性单元，二者合起来是SwishGLU。 FFN Transformer中原始的FFN长这样： \[ FFN(x) = ReLU(xW_1+b_1)W_2+b_2 \] 两个线性层中间夹了个relu激活函数 写成模型代码就是： 123x = up_proj(x)x = relu(x)x = do
         </div>
       </a>
 
@@ -472,7 +472,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/09/08/%E4%BD%BF%E7%94%A8docker%E8%BF%90%E8%A1%8Canyconnect/" target="_self">
         <div>
-          某司的专用虚拟网络是用的思科公司的anyconnect，我在docker中安装他，以免干扰我的环境。 步骤：  拉取docker镜像 1docker pull ubuntu 运行docker容器 1docker exec -itd --cap-add NET_ADMIN --privileged --name vpn ubuntu bash 进入docker容器，安装必要的依赖包 123
+          某司的专用虚拟网络是用的思科公司的anyconnect，我在docker中安装他，以免干扰我的环境。 步骤：  拉取docker镜像 1docker pull ubuntu 运行docker容器 1docker exec -itd --cap-add NET_ADMIN --privileged --name vpn ubuntu bash 进入docker容器，安装必要的依赖包
         </div>
       </a>
 
@@ -721,7 +721,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/02/vscode%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E9%A2%98%E6%A0%8F%E5%86%85%E5%AE%B9/" target="_self">
         <div>
-          在vscode中，标题栏显示当前打开的文件名，但是对我来说，我不关心文件名，更关心是打开了哪个workspace/host，因此，意图修改。 在vscode中配置window.title这一项 首先默认的配置如下： 1$&#123;dirty&#125;$&#123;activeEditorShort&#125;$&#123;separator&#125;$&#123;rootName&#12
+          在vscode中，标题栏显示当前打开的文件名，但是对我来说，我不关心文件名，更关心是打开了哪个workspace/host，因此，意图修改。 在vscode中配置window.title这一项 首先默认的配置如下： 1$&#123;dirty&#125;$&#123;activeEditorShort&#125;$&#123;separator&#125;$&#123;rootName&#1
         </div>
       </a>
 

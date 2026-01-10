@@ -302,13 +302,13 @@
 <ol start="2" type="1">
 <li><code>dist.broadcast</code>超时</li>
 </ol>
-<p>答：分布式操作必须在所有的卡上都进行才可以，不能只有部分进程执行了这条代码。假如写了如下代码就会超时：
+<p>答：分布式操作必须在所有的卡上都进行才可以，不能只有部分进程执行了这条代码。假如写了如下代码就会超时：<br />
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> local_rank == <span class="hljs-number">0</span>:<br>    torch.distributed.broadcast(tensor, src=<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure></p>
 <p>必须在所有卡上调用<code>broadcast(tensor, src=0)</code>，只不过其他卡执行的是“recv”操作，0号卡执行的是“send”操作，不然0卡发送出去后会一直等待其他进程接收，结果其他进程一直不接收，就会超时。</p>
 <ol start="3" type="1">
 <li><code>zero-3</code>将模型切分后，在一张卡上的<code>model.parameters()</code>返回的是什么？</li>
 </ol>
-<p>写一段代码测试一下哈。实测返回的是一个空参数，并不是模型的实际参数，打印结果如下：
+<p>写一段代码测试一下哈。实测返回的是一个空参数，并不是模型的实际参数，打印结果如下：<br />
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">tensor([], <span class="hljs-attribute">device</span>=<span class="hljs-string">&#x27;cuda:3&#x27;</span>, <span class="hljs-attribute">requires_grad</span>=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure></p>
 
                 

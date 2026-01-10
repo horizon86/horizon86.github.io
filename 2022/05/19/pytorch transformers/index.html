@@ -290,11 +290,12 @@
               <div class="markdown-body">
                 
                 <h1 id="huggingface模型下载">huggingface模型下载</h1>
-<p>transformers的预训练模型下载到本地特定位置，默认是在<code>~/.cache/huggingface/transformers</code>
+<p>transformers的预训练模型下载到本地特定位置，默认是在<code>~/.cache/huggingface/transformers</code><br />
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">model</span> = GPT2LMHeadModel.from_pretrained(<span class="hljs-string">&#x27;gpt2&#x27;</span>, cache_dir=<span class="hljs-string">&quot;...&quot;</span>)<br></code></pre></td></tr></table></figure></p>
-<p>想知道transformers的模型都是什么结构的，比如bert模型：
+<p>想知道transformers的模型都是什么结构的，比如bert模型：<br />
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">transformers/models/bert/<span class="hljs-emphasis">__init__</span>.py<br></code></pre></td></tr></table></figure></p>
-<p>这里可以看到导入了 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> .modeling_bert <span class="hljs-keyword">import</span> (<br>            BERT_PRETRAINED_MODEL_ARCHIVE_LIST,<br>            BertForMaskedLM,<br>            BertForMultipleChoice,<br>            BertForNextSentencePrediction,<br>            BertForPreTraining,<br>            BertForQuestionAnswering,<br>            BertForSequenceClassification,<br>            BertForTokenClassification,<br>            BertLayer,<br>            BertLMHeadModel,<br>            BertModel,<br>            BertPreTrainedModel,<br>            load_tf_weights_in_bert,<br>        )<br></code></pre></td></tr></table></figure></p>
+<p>这里可以看到导入了<br />
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> .modeling_bert <span class="hljs-keyword">import</span> (<br>            BERT_PRETRAINED_MODEL_ARCHIVE_LIST,<br>            BertForMaskedLM,<br>            BertForMultipleChoice,<br>            BertForNextSentencePrediction,<br>            BertForPreTraining,<br>            BertForQuestionAnswering,<br>            BertForSequenceClassification,<br>            BertForTokenClassification,<br>            BertLayer,<br>            BertLMHeadModel,<br>            BertModel,<br>            BertPreTrainedModel,<br>            load_tf_weights_in_bert,<br>        )<br></code></pre></td></tr></table></figure></p>
 <p>然后点进去就可以看了，可以看他们的forward函数等</p>
 <h1 id="trainer">Trainer</h1>
 <p>Trainer提供了训练、验证、预测的功能，可以通过继承Trainer并覆写其中一些方法来自定义。</p>
@@ -305,7 +306,7 @@
 <ul>
 <li>参数 <code>compute_metrics(eval_pred: EvalPrediction)</code></li>
 </ul>
-<p>该参数指定的函数在tranier.evaluate()时会调用，该函数的参数是<code>EvalPrediction</code>类型，必须返回一个字典，类型是<code>string-&gt; value</code>。比如
+<p>该参数指定的函数在tranier.evaluate()时会调用，该函数的参数是<code>EvalPrediction</code>类型，必须返回一个字典，类型是<code>string-&gt; value</code>。比如<br />
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;<br>	<span class="hljs-string">&#x27;accuracy&#x27;</span>: <span class="hljs-number">0.98</span>, <br>	<span class="hljs-string">&#x27;sensitivity&#x27;</span>: <span class="hljs-number">0.65</span><br>&#125;<br></code></pre></td></tr></table></figure></p>
 <p><code>EvalPrediction</code>包括<code>self.predictions</code>和<code>self.label_ids</code>，以及可能有的<code>self.inputs</code>。</p>
 <ul>

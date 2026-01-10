@@ -21,12 +21,12 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这篇代码段帮了大忙： https:&#x2F;&#x2F;gist.github.com&#x2F;proudlygeek&#x2F;5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的&#x2F;data1&#x2F;ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：&#x2F;etc&#x2F;exports（需要root） 123ubuntu@lthpc:~$ cat &#x2F;etc&#x2F;exports&#x2F;data1">
+    <meta name="description" content="这篇代码段帮了大忙： https:&#x2F;&#x2F;gist.github.com&#x2F;proudlygeek&#x2F;5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的&#x2F;data1&#x2F;ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：&#x2F;etc&#x2F;exports（需要root） 123ubuntu@lthpc:~$ cat &#x2F;etc&#x2F;exports&#x2F;data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nfs via ssh tunnel（通过ssh隧道跨网络挂载nfs）">
 <meta property="og:url" content="https://horizon86.github.io/2023/04/13/nfs%20via%20ssh%20tunnel%EF%BC%88%E9%80%9A%E8%BF%87ssh%E9%9A%A7%E9%81%93%E8%B7%A8%E7%BD%91%E7%BB%9C%E6%8C%82%E8%BD%BDnfs%EF%BC%89/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="这篇代码段帮了大忙： https:&#x2F;&#x2F;gist.github.com&#x2F;proudlygeek&#x2F;5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的&#x2F;data1&#x2F;ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：&#x2F;etc&#x2F;exports（需要root） 123ubuntu@lthpc:~$ cat &#x2F;etc&#x2F;exports&#x2F;data1">
+<meta property="og:description" content="这篇代码段帮了大忙： https:&#x2F;&#x2F;gist.github.com&#x2F;proudlygeek&#x2F;5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的&#x2F;data1&#x2F;ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：&#x2F;etc&#x2F;exports（需要root） 123ubuntu@lthpc:~$ cat &#x2F;etc&#x2F;exports&#x2F;data">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-13T10:01:00.000Z">
 <meta property="article:modified_time" content="2025-03-25T13:51:24.504Z">
@@ -294,14 +294,19 @@
 <p>下面给出我的设置：</p>
 <p>我要在机器97上访问机器231上的硬盘，需要把231上的/data1/ubuntu挂载到97上</p>
 <h1 id="共享nfs文件夹">1. 共享nfs文件夹</h1>
-<p>在231上编辑：/etc/exports（需要root） <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">ubuntu@lthpc:~$ <span class="hljs-built_in">cat</span> /etc/exports<br>/data1/ubuntu localhost(insecure,rw,<span class="hljs-built_in">sync</span>,no_subtree_check,all_squash,anonuid=1026,anongid=1026)<br>ubuntu@lthpc:~$<br></code></pre></td></tr></table></figure></p>
+<p>在231上编辑：/etc/exports（需要root）<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">ubuntu@lthpc:~$ <span class="hljs-built_in">cat</span> /etc/exports<br>/data1/ubuntu localhost(insecure,rw,<span class="hljs-built_in">sync</span>,no_subtree_check,all_squash,anonuid=1026,anongid=1026)<br>ubuntu@lthpc:~$<br></code></pre></td></tr></table></figure></p>
 <p>关键是insecure，ssh不能访问特权端口，所以需要设置。<code>anonuid=1026,anongid=1026</code>需要根据你自己的用户id设置。</p>
-<p>刷新nfs共享（root）： <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">exportfs -<span class="hljs-selector-tag">a</span><br></code></pre></td></tr></table></figure></p>
+<p>刷新nfs共享（root）：<br />
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">exportfs -<span class="hljs-selector-tag">a</span><br></code></pre></td></tr></table></figure></p>
 <h1 id="设置ssh隧道">2. 设置ssh隧道</h1>
-<p>在97上开启ssh隧道 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -NL 3049:localhost:2049 231<br></code></pre></td></tr></table></figure></p>
+<p>在97上开启ssh隧道<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -NL 3049:localhost:2049 231<br></code></pre></td></tr></table></figure></p>
 <h1 id="挂载nfs">3. 挂载nfs</h1>
-<p>在97上创建挂载文件夹： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> /home/ubuntu/231data1<br></code></pre></td></tr></table></figure></p>
-<p>设置挂载（root）： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mount -t nfs -o port=3049 -o proto=tcp localhost:/data1/ubuntu /home/ubuntu/231data1<br></code></pre></td></tr></table></figure></p>
+<p>在97上创建挂载文件夹：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> /home/ubuntu/231data1<br></code></pre></td></tr></table></figure></p>
+<p>设置挂载（root）：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mount -t nfs -o port=3049 -o proto=tcp localhost:/data1/ubuntu /home/ubuntu/231data1<br></code></pre></td></tr></table></figure></p>
 <p>OK！</p>
 <h1 id="断线查看">断线查看：</h1>
 <p>mount -l</p>

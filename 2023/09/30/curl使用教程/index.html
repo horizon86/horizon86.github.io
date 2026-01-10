@@ -21,12 +21,12 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="上传文件 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wangbingbing&#x2F;p&#x2F;16596851.html 普通POST文件 1curl -F &#x27;file&#x3D;@img-cls.tar.gz&#x27; http:&#x2F;&#x2F;127.0.0.1&#x2F;hfs-upload&#x2F; 带密码认证的POST 1curl -u user:password -F file&#x3D;@info.csv http:&#x2F;&#x2F;">
+    <meta name="description" content="上传文件 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wangbingbing&#x2F;p&#x2F;16596851.html 普通POST文件 1curl -F &#x27;file&#x3D;@img-cls.tar.gz&#x27; http:&#x2F;&#x2F;127.0.0.1&#x2F;hfs-upload&#x2F; 带密码认证的POST 1curl -u user:password -F file&#x3D;@info.csv http:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="curl使用教程">
 <meta property="og:url" content="https://horizon86.github.io/2023/09/30/curl%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="上传文件 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wangbingbing&#x2F;p&#x2F;16596851.html 普通POST文件 1curl -F &#x27;file&#x3D;@img-cls.tar.gz&#x27; http:&#x2F;&#x2F;127.0.0.1&#x2F;hfs-upload&#x2F; 带密码认证的POST 1curl -u user:password -F file&#x3D;@info.csv http:&#x2F;&#x2F;">
+<meta property="og:description" content="上传文件 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wangbingbing&#x2F;p&#x2F;16596851.html 普通POST文件 1curl -F &#x27;file&#x3D;@img-cls.tar.gz&#x27; http:&#x2F;&#x2F;127.0.0.1&#x2F;hfs-upload&#x2F; 带密码认证的POST 1curl -u user:password -F file&#x3D;@info.csv http:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-30T08:14:00.000Z">
 <meta property="article:modified_time" content="2025-09-22T17:09:59.863Z">
@@ -292,8 +292,10 @@
                 <h1 id="上传文件">上传文件</h1>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangbingbing/p/16596851.html"
 class="uri">https://www.cnblogs.com/wangbingbing/p/16596851.html</a></p>
-<p>普通POST文件 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -F <span class="hljs-string">&#x27;file=@img-cls.tar.gz&#x27;</span> http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><span class="hljs-regexp">/hfs-upload/</span><br></code></pre></td></tr></table></figure></p>
-<p>带密码认证的POST <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel">curl -u user:password -F <span class="hljs-keyword">file</span>=@info.csv http:<span class="hljs-comment">//127.0.0.1/hfs-upload/</span><br></code></pre></td></tr></table></figure></p>
+<p>普通POST文件<br />
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -F <span class="hljs-string">&#x27;file=@img-cls.tar.gz&#x27;</span> http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><span class="hljs-regexp">/hfs-upload/</span><br></code></pre></td></tr></table></figure></p>
+<p>带密码认证的POST<br />
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel">curl -u user:password -F <span class="hljs-keyword">file</span>=@info.csv http:<span class="hljs-comment">//127.0.0.1/hfs-upload/</span><br></code></pre></td></tr></table></figure></p>
 <h1 id="下载文件选项">下载文件选项</h1>
 <div class="line-block">选项 | 作用 |</div>
 <p>|------------------|-------------------|</p>

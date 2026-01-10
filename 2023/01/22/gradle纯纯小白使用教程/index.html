@@ -306,7 +306,8 @@ target="_blank" rel="noopener" href="https://www.jianshu.com/p/7ccdca8199b8">gra
 <p><code>api</code>：该依赖，其他项目在编译期也可见。</p>
 <p><code>compileOnly</code>：只在编译期使用，不打包进jar文件，运行时使用其他的库。</p>
 <p><code>runtimeOnly</code>：编译时不用，但是打包进jar文件里。不知道是干啥的。</p>
-<p>自定义依赖类型： <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> localImplementation = configurations.create(<span class="hljs-string">&quot;localImplementation&quot;</span>) &#123;<br>    description = <span class="hljs-string">&quot;Dependencies used locally, but provided by the runtime Bukkit implementation&quot;</span><br>    isCanBeConsumed = <span class="hljs-literal">false</span><br>    isCanBeResolved = <span class="hljs-literal">false</span><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>自定义依赖类型：<br />
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> localImplementation = configurations.create(<span class="hljs-string">&quot;localImplementation&quot;</span>) &#123;<br>    description = <span class="hljs-string">&quot;Dependencies used locally, but provided by the runtime Bukkit implementation&quot;</span><br>    isCanBeConsumed = <span class="hljs-literal">false</span><br>    isCanBeResolved = <span class="hljs-literal">false</span><br>&#125;<br></code></pre></td></tr></table></figure></p>
 <p>这是一个例子，感觉跟compileOnly差不多。</p>
 
                 

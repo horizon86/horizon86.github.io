@@ -368,11 +368,13 @@ f(x)=f(x_{0})+\nabla f(x_{0})^{\mathrm {T} }\Delta x+{\frac
 </blockquote>
 <blockquote>
 <p>其中，<br />
+<br />
 <span class="math display">\[
 \nabla f(x_{0})={\begin{bmatrix}{\frac {\partial f}{\partial
 x_{1}}}&amp;{\frac {\partial f}{\partial x_{2}}}&amp;\cdots &amp;{\frac
 {\partial f}{\partial x_{n}}}\end{bmatrix}}_{x_{0}}^{T}
-\]</span> 为函数<span class="math inline">\(f(x)\)</span>在<span
+\]</span><br />
+为函数<span class="math inline">\(f(x)\)</span>在<span
 class="math inline">\(x_0(x_1,x_2,\cdots,x_n)\)</span>点的梯度，<br />
 <span class="math display">\[
 G(x_{0})={\begin{bmatrix}{\frac {\partial ^{2}f}{\partial
@@ -385,8 +387,9 @@ x_{1}}}&amp;{\frac {\partial ^{2}f}{\partial x_{2}^{2}}}&amp;\cdots
 x_{n}\,\partial x_{1}}}&amp;{\frac {\partial ^{2}f}{\partial
 x_{n}\,\partial x_{2}}}&amp;\cdots &amp;{\frac {\partial ^{2}f}{\partial
 x_{n}^{2}}}\end{bmatrix}}_{x_{0}}
-\]</span> 将<span class="math inline">\({\frac {1}{2}}\Delta x^{\mathrm
-{T} }G(x_{0})\Delta x\)</span>拆解开计算，如下图（为了简便，直接把<span
+\]</span><br />
+将<span class="math inline">\({\frac {1}{2}}\Delta x^{\mathrm {T}
+}G(x_{0})\Delta x\)</span>拆解开计算，如下图（为了简便，直接把<span
 class="math inline">\(G(x_{0})_{11}\)</span>简写为了<span
 class="math inline">\(G_{11}\)</span></p>
 </blockquote>
@@ -413,8 +416,8 @@ G_{n1} &amp; G_{n2} &amp; \cdots &amp; G_{nn}
 \end{equation}
 \]</span></p>
 <p>其中，<span class="math inline">\({\frac {1}{2}}\Delta x^{\mathrm {T}
-}G(x_{0})\Delta x\)</span>可以分解为两项的和（如上式推导）： <span
-class="math display">\[
+}G(x_{0})\Delta x\)</span>可以分解为两项的和（如上式推导）：<br />
+<span class="math display">\[
 {\frac {1}{2}}\sum_{i=1}^n (\Delta x_i)^2G_{ii} +{\frac {1}{2}}
 \sum_{i!=j} \Delta x_i \Delta x_jG_{ij}
 \]</span></p>
@@ -474,15 +477,18 @@ L_q&amp;=\frac{1}{2}\frac{w_q^2}{\mathbf{H}^{-1}_{qq}}
 \]</span></p>
 <blockquote>
 <p>求解过程：<br />
+<br />
 联立方程组求解，使得偏导数为0，求出<span class="math inline">\(\Delta
 W\)</span>即可。<br />
+<br />
 <span class="math display">\[
 \begin{aligned}
 \frac{\partial L}{\partial \Delta W} &amp; = 0 \\
 \frac{\partial L}{\partial \lambda} &amp; = 0
 \end{aligned}
-\]</span> 要求解这个方程组，我们首先求<span
-class="math inline">\(\frac{\partial L}{\partial \Delta
+\]</span><br />
+要求解这个方程组，我们首先求<span class="math inline">\(\frac{\partial
+L}{\partial \Delta
 W}\)</span>。由于本人矩阵论比较烂，不会直接求解矩阵导数，因此我们拆开来看。<br />
 我们看对一个元素的导数，<span class="math inline">\(\frac{\partial
 L}{\partial \Delta W_{i}}\)</span>。要求解这个问题，先要从<span

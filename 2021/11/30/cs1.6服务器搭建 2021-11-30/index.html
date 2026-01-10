@@ -309,30 +309,42 @@ CS1.6,CZERO,CSGO 等游戏服务器教程</a></p>
 <p>第一篇文章已经比较旧了，很多命令不能用，但是讲的还是不错的。第二篇文章对rehlds的搭建讲的很好。再次向两篇文章的作者致敬。第三篇总结了一些常见mod的命令</p>
 <h2 id="安装steamcmd">2.1 安装steamcmd</h2>
 <p>这一步建议直接看官方文档来</p>
-<p>添加一个用户 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo useradd -m steam<br></code></pre></td></tr></table></figure></p>
-<p>设置密码 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo passwd steam<br></code></pre></td></tr></table></figure></p>
-<p>安装依赖项 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install lib32gcc1<br></code></pre></td></tr></table></figure></p>
-<p>切换到steam用户 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su steam<br></code></pre></td></tr></table></figure></p>
-<p>创建安装文件夹 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir ~/Steam &amp;&amp; cd ~/Steam<br></code></pre></td></tr></table></figure></p>
-<p>下载并解压SteamCMD <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl -sqL &quot;https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz&quot; | tar zxf -<br></code></pre></td></tr></table></figure></p>
+<p>添加一个用户<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo useradd -m steam<br></code></pre></td></tr></table></figure></p>
+<p>设置密码<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo passwd steam<br></code></pre></td></tr></table></figure></p>
+<p>安装依赖项<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install lib32gcc1<br></code></pre></td></tr></table></figure></p>
+<p>切换到steam用户<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su steam<br></code></pre></td></tr></table></figure></p>
+<p>创建安装文件夹<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir ~/Steam &amp;&amp; cd ~/Steam<br></code></pre></td></tr></table></figure></p>
+<p>下载并解压SteamCMD<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl -sqL &quot;https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz&quot; | tar zxf -<br></code></pre></td></tr></table></figure></p>
 <ul>
 <li>官方给的中国内地链接居然是无法访问的真是.......</li>
 </ul>
 <h2 id="运行steamcmd">2.1 运行steamcmd</h2>
-<p>这一步将下载cs1.6服务端 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./steamcmd.sh<br></code></pre></td></tr></table></figure></p>
-<p>这一步可能会报错： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./steamcmd.sh: line 37: /home/steam/Steam/linux32/steamcmd: No such file or directory<br></code></pre></td></tr></table></figure></p>
+<p>这一步将下载cs1.6服务端<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./steamcmd.sh<br></code></pre></td></tr></table></figure></p>
+<p>这一步可能会报错：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./steamcmd.sh: line 37: /home/steam/Steam/linux32/steamcmd: No such file or directory<br></code></pre></td></tr></table></figure></p>
 <p>这是因为之前让你装<code>lib32gcc1</code>你没装。装了就好了。</p>
 <p>进入steamcmd命令行后</p>
-<p>指定安装路径 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">force_install_dir ./cs1.6/<br></code></pre></td></tr></table></figure></p>
-<p>登录 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">login anonymous<br></code></pre></td></tr></table></figure></p>
-<p>安装cs1.6服务器 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">app_set_config 90 mod cstrike<br>app_update 90 validate<br></code></pre></td></tr></table></figure></p>
+<p>指定安装路径<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">force_install_dir ./cs1.6/<br></code></pre></td></tr></table></figure></p>
+<p>登录<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">login anonymous<br></code></pre></td></tr></table></figure></p>
+<p>安装cs1.6服务器<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">app_set_config 90 mod cstrike<br>app_update 90 validate<br></code></pre></td></tr></table></figure></p>
 <p>多执行几次，直到出现Success</p>
 <h1 id="安装rehlds和各种插件">3 安装rehlds和各种插件</h1>
 <p>下载<a target="_blank" rel="noopener" href="https://github.com/dreamstalker/rehlds">rehlds</a></p>
 <p>这个链接在Github，国内访问性可能不好。可以自行查找Github镜像等方式。</p>
 <p>最新的rehlds不知道为什么没有提供windows的编译版本，可能需要自己编译</p>
 <p>用<code>bin\linux32</code>下的文件替换cs1.6文件夹下的同名文件</p>
-<p>替换后添加执行权限 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod a+x core.so demoplayer.so engine_i486.so filesystem_stdio.so hlds_linux hltv proxy.so valve/dlls/director.so<br></code></pre></td></tr></table></figure></p>
+<p>替换后添加执行权限<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod a+x core.so demoplayer.so engine_i486.so filesystem_stdio.so hlds_linux hltv proxy.so valve/dlls/director.so<br></code></pre></td></tr></table></figure></p>
 <h1 id="启动">4 启动</h1>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./hlds_run -console -game cstrike -port 27015 +maxplayers 16 +map de_dust2 +sv_lan 0 -nomaster -nojoy -noipx -nohltv -pingboost 3<br></code></pre></td></tr></table></figure>
 

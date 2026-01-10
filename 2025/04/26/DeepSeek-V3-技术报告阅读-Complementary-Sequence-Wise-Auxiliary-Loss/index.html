@@ -333,12 +333,13 @@ class="math inline">\(\infty\)</span>]</li>
 <p>首先看公式<span class="math inline">\(\eqref{eq:2}\)</span>，<span
 class="math inline">\(f_i\)</span>的含义是：<strong>第<span
 class="math inline">\(i\)</span>个专家的“相对负载”</strong>。实际上<span
-class="math inline">\(f_i\)</span>就等于： <span class="math display">\[
+class="math inline">\(f_i\)</span>就等于：<br />
+<span class="math display">\[
 f_i =
 \frac{\mathrm{专家}i\mathrm{实际分配到的token的比例}}{理想情况下\mathrm{专家}i\mathrm{分配到的token的比例}}
 \]</span></p>
-<p>为了理解原始公式的含义，将原始公式写成如下形式： <span
-class="math display">\[
+<p>为了理解原始公式的含义，将原始公式写成如下形式：<br />
+<span class="math display">\[
 f_i = \frac{\frac{1}{T} \cdot \sum_{t=1}^{T} \mathbb{1} \left( s_{i,t}
 \in \operatorname{Topk} ( \{ s_{j, t} | 1 \leq j \leq N_r \}, K_{r} )
 \right)}{\frac{K_r}{N_r}}
@@ -351,16 +352,18 @@ class="math inline">\(\frac{1}{T}\)</span>就是该专家分配到的token的比
 class="math inline">\(\frac{N_r}{K_r}\)</span>是：理想情况下专家<span
 class="math inline">\(i\)</span>的负载。为什么是这个呢？</p>
 <p>我们先来考虑一个数学问题：<br />
+<br />
 <strong>问：</strong>一共有<span
 class="math inline">\(T\)</span>个token，<span
 class="math inline">\(N_r\)</span>个专家，每个token都需要从中随机选择<span
 class="math inline">\(K_r\)</span>个专家，请问对于token <span
 class="math inline">\(t\)</span>，它选择专家<span
 class="math inline">\(i\)</span>的概率是多少？<br />
+<br />
 <strong>答：</strong><span class="math inline">\(K_r /
 N_r\)</span>。</p>
 <blockquote>
-<p>你问我为什么？那我问你，你从10个美女中随机选择3个做女朋友，请问1号美女被选中的概率是多少？当然是3/10。还不理解？那我用组合数给你证明一下：
+<p>你问我为什么？那我问你，你从10个美女中随机选择3个做女朋友，请问1号美女被选中的概率是多少？当然是3/10。还不理解？那我用组合数给你证明一下：<br />
 <span class="math display">\[
 \begin{equation*}
 P = \frac{\mathrm{C}_{N_r - 1}^{K_r - 1}}{\mathrm{C}_{N_r}^{K_r}} =
@@ -386,11 +389,13 @@ class="math inline">\(\frac{E_i}{T} =
 class="math inline">\(f_i \equiv 1, \forall i \in
 \{1,\cdots,N_r\}\)</span>，不论<span
 class="math inline">\(K_r\)</span>的取值是多少，负载都是完全均衡的。</p>
-<p>此时，<span class="math inline">\(f_i\)</span>的意义就呼之欲出了：
+<p>此时，<span
+class="math inline">\(f_i\)</span>的意义就呼之欲出了：<br />
 <span class="math display">\[
 f_i =
 \frac{\mathrm{专家}i\mathrm{实际分配到的token}}{理想情况下\mathrm{专家}i\mathrm{分配到的token}}
-\]</span> 也就是：第<span
+\]</span><br />
+也就是：第<span
 class="math inline">\(i\)</span>个专家实际承受的负载与最佳负载的倍数比，承受最佳负载的1倍是最好的。<span
 class="math inline">\(f_i\)</span>越接近1，在该专家上的负载就越均衡，<span
 class="math inline">\(f_i &gt; 1\)</span>，则说明该专家负载过重，<span
@@ -444,9 +449,10 @@ Transformer的论文中只说了一句话：</p>
 is minimized under a uniform distribution.<br />
 公式4的辅助损失鼓励均匀路由，因为它在均匀分布下取得最小值</p>
 </blockquote>
-<p><del>真是说了等于没说，跟放屁一样。</del> 证明如下：</p>
-<p>先将证明问题转化为一个完整的数学问题，易知 <span
-class="math display">\[
+<p><del>真是说了等于没说，跟放屁一样。</del><br />
+证明如下：</p>
+<p>先将证明问题转化为一个完整的数学问题，易知<br />
+<span class="math display">\[
 \begin{equation}
 \begin{aligned}
 \sum_{i=1}^{N_r} P_i &amp;= 1 \\
@@ -459,24 +465,27 @@ class="math display">\[
 </blockquote>
 <p>那么，需要证明的问题就变成了以下数学问题：</p>
 <blockquote>
-<p>已知： <span class="math display">\[
+<p>已知：<br />
+<span class="math display">\[
 \begin{equation}
 \begin{aligned}
 \sum_{i=1}^{N_r} P_i &amp;= 1, 其中 0 \le P_i \le 1\\
 \sum_{i=1}^{N_r} f_i &amp;= N_r, 其中 0 \le f_i \le N_r
 \end{aligned}\label{eq:6}
 \end{equation}
-\]</span> 问，<span class="math inline">\(\sum_{i=1}^{N_r}{f_i
+\]</span><br />
+问，<span class="math inline">\(\sum_{i=1}^{N_r}{f_i
 P_i}\)</span>的最小值是多少？在什么时候取得最小值？</p>
 </blockquote>
 <p>解：</p>
-<p>使用拉格朗日乘数法求解上述问题，构造拉格朗日函数： <span
-class="math display">\[
+<p>使用拉格朗日乘数法求解上述问题，构造拉格朗日函数：<br />
+<span class="math display">\[
 L(f_i; P_i; \lambda_1, \lambda_2) = \sum_{i=1}^{N_r}{f_i P_i} +
 \lambda_1(\sum_{i=1}^{N_r}f_i - N_r) + \lambda_2(\sum_{i=1}^{N_r}P_i -
 1)
 \]</span></p>
-<p>令其对各变量的偏导为0，可得方程组： <span class="math display">\[
+<p>令其对各变量的偏导为0，可得方程组：<br />
+<span class="math display">\[
 \begin{equation*}
 \left\{
 \begin{aligned}

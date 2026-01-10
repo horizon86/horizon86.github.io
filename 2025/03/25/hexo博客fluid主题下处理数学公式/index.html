@@ -21,12 +21,12 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="fluid主题自带了mathjax渲染器，该渲染器需要适当的配置 修改主题配置 修改_config.fluid.yml： 123456789math:  # 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 &#96;math: true&#96;  enable: true  # 开启后，只有在文章 Front-matter 里指定 &#96;math: true&#96; 才会在文章页启动公">
+    <meta name="description" content="fluid主题自带了mathjax渲染器，该渲染器需要适当的配置 修改主题配置 修改_config.fluid.yml： 123456789math:  # 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 &#96;math: true&#96;  enable: true  # 开启后，只有在文章 Front-matter 里指定 &#96;math: true&#96; 才会在文章页启动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo博客fluid主题下处理数学公式">
 <meta property="og:url" content="https://horizon86.github.io/2025/03/25/hexo%E5%8D%9A%E5%AE%A2fluid%E4%B8%BB%E9%A2%98%E4%B8%8B%E5%A4%84%E7%90%86%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="fluid主题自带了mathjax渲染器，该渲染器需要适当的配置 修改主题配置 修改_config.fluid.yml： 123456789math:  # 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 &#96;math: true&#96;  enable: true  # 开启后，只有在文章 Front-matter 里指定 &#96;math: true&#96; 才会在文章页启动公">
+<meta property="og:description" content="fluid主题自带了mathjax渲染器，该渲染器需要适当的配置 修改主题配置 修改_config.fluid.yml： 123456789math:  # 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 &#96;math: true&#96;  enable: true  # 开启后，只有在文章 Front-matter 里指定 &#96;math: true&#96; 才会在文章页启动">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-25T12:24:00.000Z">
 <meta property="article:modified_time" content="2025-09-23T17:36:54.787Z">
@@ -291,25 +291,31 @@
                 
                 <p>fluid主题自带了mathjax渲染器，该渲染器需要适当的配置</p>
 <h3 id="修改主题配置">修改主题配置</h3>
-<p>修改_config.fluid.yml： <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">math:</span><br>  <span class="hljs-comment"># 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 `math: true`</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br><br>  <span class="hljs-comment"># 开启后，只有在文章 Front-matter 里指定 `math: true` 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度</span><br>  <span class="hljs-attr">specific:</span> <span class="hljs-literal">false</span><br><br>  <span class="hljs-comment"># Options: mathjax | katex</span><br>  <span class="hljs-attr">engine:</span> <span class="hljs-string">mathjax</span><br></code></pre></td></tr></table></figure></p>
+<p>修改_config.fluid.yml：<br />
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">math:</span><br>  <span class="hljs-comment"># 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 `math: true`</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br><br>  <span class="hljs-comment"># 开启后，只有在文章 Front-matter 里指定 `math: true` 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度</span><br>  <span class="hljs-attr">specific:</span> <span class="hljs-literal">false</span><br><br>  <span class="hljs-comment"># Options: mathjax | katex</span><br>  <span class="hljs-attr">engine:</span> <span class="hljs-string">mathjax</span><br></code></pre></td></tr></table></figure></p>
 <p>启用math并设置引擎为mathjax</p>
 <h3 id="hexo-交叉引用">hexo 交叉引用</h3>
 <p>mathjax的数学公式支持自动编号并交叉引用，但是hexo的fluid主题默认没有开交叉引用，需要修改源代码。参考mathjax官方文档：<a
 target="_blank" rel="noopener" href="https://docs.mathjax.org/en/latest/input/tex/eqnumbers.html"
 class="uri">https://docs.mathjax.org/en/latest/input/tex/eqnumbers.html</a></p>
-<p>需要给mathjax添加配置： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">window</span>.<span class="hljs-property">MathJax</span> = &#123;<br>  <span class="hljs-attr">tex</span>: &#123;<br>    <span class="hljs-attr">tags</span>: <span class="hljs-string">&#x27;ams&#x27;</span><br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></p>
+<p>需要给mathjax添加配置：<br />
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">window</span>.<span class="hljs-property">MathJax</span> = &#123;<br>  <span class="hljs-attr">tex</span>: &#123;<br>    <span class="hljs-attr">tags</span>: <span class="hljs-string">&#x27;ams&#x27;</span><br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></p>
 <p>找到<code>node_modules\hexo-theme-fluid\layout\_partials\plugins\math.ejs</code>，将上面的配置选项添加到mathjax的配置中即可。</p>
 <h3 id="书写数学公式的方法">书写数学公式的方法</h3>
 <p>markdown有几种数学公式书写方法，但是hexo和博客园的公式不完全兼容，有一些踩坑点，接下来会逐一介绍。</p>
 <h5 id="行内公式">1. 行内公式</h5>
 <p>直接用<code>$...$</code>包裹即可</p>
 <h5 id="行间公式">2. 行间公式</h5>
-<p><strong>写法一：</strong> 直接用<code>$$</code>包围公式
+<p><strong>写法一：</strong><br />
+直接用<code>$$</code>包围公式<br />
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span><span class="hljs-variable">$</span><br>\boldsymbol&#123;<span class="hljs-built_in">R</span>&#125;=x<br><span class="hljs-variable">$</span><span class="hljs-variable">$</span><br></code></pre></td></tr></table></figure></p>
-<p>渲染结果如下： <span class="math display">\[
+<p>渲染结果如下：<br />
+<span class="math display">\[
 \boldsymbol{R}=x
 \]</span></p>
-<p><strong>写法二：</strong> 直接写latex公式环境 <figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">\begin</span><span class="hljs-template-variable">&#123;equation&#125;</span><span class="language-xml"></span><br><span class="language-xml">\boldsymbol</span><span class="hljs-template-variable">&#123;R&#125;</span><span class="language-xml">=x</span><br><span class="language-xml">\end</span><span class="hljs-template-variable">&#123;equation&#125;</span><br></code></pre></td></tr></table></figure></p>
+<p><strong>写法二：</strong><br />
+直接写latex公式环境<br />
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">\begin</span><span class="hljs-template-variable">&#123;equation&#125;</span><span class="language-xml"></span><br><span class="language-xml">\boldsymbol</span><span class="hljs-template-variable">&#123;R&#125;</span><span class="language-xml">=x</span><br><span class="language-xml">\end</span><span class="hljs-template-variable">&#123;equation&#125;</span><br></code></pre></td></tr></table></figure></p>
 <p>渲染结果如下：</p>
 <p><span class="math display">\[\begin{equation}
 
@@ -318,14 +324,16 @@ class="uri">https://docs.mathjax.org/en/latest/input/tex/eqnumbers.html</a></p>
 \end{equation}\]</span></p>
 <p>这两种写法在博客园和hexo都没问题，写法二可以加标签，进行交叉引用。</p>
 <p><strong>注意：写法二是不符合MathJax标准的，但是MathJax可以处理，关于这点将在后面做出讨论。</strong></p>
-<p><strong>写法三：</strong> latex公式环境包围在<code>$$</code>中
+<p><strong>写法三：</strong><br />
+latex公式环境包围在<code>$$</code>中<br />
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span><span class="hljs-variable">$</span><br>\begin&#123;equation&#125;<br>\boldsymbol&#123;<span class="hljs-built_in">R</span>&#125;=x<br>\end&#123;equation&#125;<br><span class="hljs-variable">$</span><span class="hljs-variable">$</span><br></code></pre></td></tr></table></figure></p>
 <blockquote>
 <p>即使是写法二可以渲染，但是也建议将latex的公式包围在<code>$$</code>环境中。原因将稍后解释。</p>
 </blockquote>
 <p><strong>交叉引用的写法</strong></p>
 <p>使用<code>\label</code>进行交叉引用</p>
-<p>举个例子 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\begin&#123;equation&#125;<br>\boldsymbol&#123;R&#125;=x<br>\label&#123;eq1&#125;<br>\end&#123;equation&#125;<br><br>我们在公式\eqref&#123;eq1&#125;中提到了balabala<br></code></pre></td></tr></table></figure></p>
+<p>举个例子<br />
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\begin&#123;equation&#125;<br>\boldsymbol&#123;R&#125;=x<br>\label&#123;eq1&#125;<br>\end&#123;equation&#125;<br><br>我们在公式\eqref&#123;eq1&#125;中提到了balabala<br></code></pre></td></tr></table></figure></p>
 <p>渲染结果如下：</p>
 <p><span class="math display">\[\begin{equation}
 
@@ -347,6 +355,7 @@ class="uri">https://pandoc.org/MANUAL.html#extension-tex_math_dollars</a>，有�
 delimiters may be separated from the formula by whitespace. However,
 there can be no blank lines between the opening and closing
 <code>$$</code> delimiters.)<br />
+<br />
 为了显示数学公式，请使用 <code>$$</code>
 作为分隔符。<strong>（在这种情况下，分隔符与公式之间可以用空格隔开。但是，在开头的
 <code>$$</code> 分隔符和结尾的 <code>$$</code>
@@ -357,7 +366,8 @@ there can be no blank lines between the opening and closing
 在latex公式体前后用不用写<code>$$</code>？</h4>
 <p>A:
 可以不写，但是建议写。原因是，不写的时候能成功渲染全得益于pandoc的<code>raw_tex</code>扩展以及MathJax的包容。</p>
-<p>本人之前写公式就这么写： <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><br><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br>...<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><br></code></pre></td></tr></table></figure></p>
+<p>本人之前写公式就这么写：<br />
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><br><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br>...<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><br></code></pre></td></tr></table></figure></p>
 <p>这种写法在博客园和hexo都可以完美支持，也是最标准的写法。同时MathJax也建议这么写，根据<a
 target="_blank" rel="noopener" href="https://docs.mathjax.org/en/latest/input/tex/delimiters.html">MathJax文档</a>描述：</p>
 <blockquote>
@@ -379,15 +389,17 @@ processEnvironments option in the tex configuration options.<br />
 <p>继续看pandoc文档，pandoc处理markdown自动会加入一个<code>raw_tex</code>扩展<a
 target="_blank" rel="noopener" href="https://pandoc.org/MANUAL.html#extension-raw_tex"
 class="uri">https://pandoc.org/MANUAL.html#extension-raw_tex</a><br />
+<br />
 官方文档有这么一句介绍</p>
 <blockquote>
 <p>... pandoc allows raw LaTeX, TeX, and ConTeXt to be included in a
 document.<br />
+<br />
 ... pandoc还允许在文档中包含原始LaTeX、TeX和ConTeXt内容。</p>
 </blockquote>
 <p>启用该扩展意味着，当pandoc遇到<code>\begin&#123;equation&#125;</code>等latex代码时，会自动把它保留原样，交给数学引擎（mathjax）处理，而mathjax恰好允许latex不在<code>$$</code>中。所以上述方法二才可行，<strong>同时，由于这个特殊的机制，绕开了<code>$$</code>的限制，方法二的公式中是可以有空行的。</strong></p>
 <p>我们查看hexo-render-pandoc的源代码即可发现，它采用了pandoc默认的markdown格式来解析，而该格式默认启用了<code>raw_tex</code>扩展。得益于这个扩展，博客中才可以直接写latex公式。</p>
-<p>如果我们禁用<code>raw_tex</code>扩展，方法二就不可用了。禁用方法如下：
+<p>如果我们禁用<code>raw_tex</code>扩展，方法二就不可用了。禁用方法如下：<br />
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># _config.yml</span><br><span class="hljs-attr">pandoc:</span><br>  <span class="hljs-attr">extensions:</span> [<span class="hljs-string">&quot;-raw_tex&quot;</span>]<br></code></pre></td></tr></table></figure></p>
 <h4 id="加粗命令">4. 加粗命令</h4>
 <p>latex中加粗公式有<code>\bold</code>, <code>\boldsymbol</code>,
@@ -396,6 +408,7 @@ document.<br />
 <p>\mathbf：<span
 class="math inline">\(a\rightarrow\mathbf{a}\)</span>， <span
 class="math inline">\(\alpha\rightarrow\mathbf{\alpha}\)</span><br />
+<br />
 \boldsymbol: <span
 class="math inline">\(a\rightarrow\boldsymbol{a}\)</span>， <span
 class="math inline">\(\alpha\rightarrow\boldsymbol{\alpha}\)</span></p>

@@ -21,12 +21,12 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最近阅读论文，再回顾一些基础的线性代数知识 1. 行列式  转置不改变行列式的值 \[ |A|&#x3D;|A^T| \] 对某一行加上另外一行的K倍，不改变行列式的值 只要矩阵有一行为0，行列式就是0。因为行列式等于任意一行&#x2F;列的元素和其代数余子式的乘积之和，元素本身是0，行列式就是0 \[ |A|&#x3D;a_{i0}M_{i0}+a_{i1}M_{i1}+\dots+a_{in}M_{in}">
+    <meta name="description" content="最近阅读论文，再回顾一些基础的线性代数知识 1. 行列式  转置不改变行列式的值 \[ |A|&#x3D;|A^T| \] 对某一行加上另外一行的K倍，不改变行列式的值 只要矩阵有一行为0，行列式就是0。因为行列式等于任意一行&#x2F;列的元素和其代数余子式的乘积之和，元素本身是0，行列式就是0 \[ |A|&#x3D;a_{i0}M_{i0}+a_{i1}M_{i1}+\dots+a_{in}M_{in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数知识回顾">
 <meta property="og:url" content="https://horizon86.github.io/2024/06/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="最近阅读论文，再回顾一些基础的线性代数知识 1. 行列式  转置不改变行列式的值 \[ |A|&#x3D;|A^T| \] 对某一行加上另外一行的K倍，不改变行列式的值 只要矩阵有一行为0，行列式就是0。因为行列式等于任意一行&#x2F;列的元素和其代数余子式的乘积之和，元素本身是0，行列式就是0 \[ |A|&#x3D;a_{i0}M_{i0}+a_{i1}M_{i1}+\dots+a_{in}M_{in}">
+<meta property="og:description" content="最近阅读论文，再回顾一些基础的线性代数知识 1. 行列式  转置不改变行列式的值 \[ |A|&#x3D;|A^T| \] 对某一行加上另外一行的K倍，不改变行列式的值 只要矩阵有一行为0，行列式就是0。因为行列式等于任意一行&#x2F;列的元素和其代数余子式的乘积之和，元素本身是0，行列式就是0 \[ |A|&#x3D;a_{i0}M_{i0}+a_{i1}M_{i1}+\dots+a_{in}M_{in">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://horizon86.github.io/2024/06/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE/2228692-20240624161143371-920930610.png">
 <meta property="og:image" content="https://horizon86.github.io/2024/06/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE/2228692-20240624162006994-1556994381.png">
@@ -295,11 +295,12 @@
                 <p>最近阅读论文，再回顾一些基础的线性代数知识</p>
 <h1 id="行列式">1. 行列式</h1>
 <ul>
-<li><p>转置不改变行列式的值 <span class="math display">\[
+<li><p>转置不改变行列式的值<br />
+<span class="math display">\[
 |A|=|A^T|
 \]</span></p></li>
 <li><p>对某一行加上另外一行的K倍，不改变行列式的值</p></li>
-<li><p>只要矩阵有一行为0，行列式就是0。因为行列式等于任意一行/列的元素和其代数余子式的乘积之和，元素本身是0，行列式就是0
+<li><p>只要矩阵有一行为0，行列式就是0。因为行列式等于任意一行/列的元素和其代数余子式的乘积之和，元素本身是0，行列式就是0<br />
 <span class="math display">\[
 |A|=a_{i0}M_{i0}+a_{i1}M_{i1}+\dots+a_{in}M_{in}
 \]</span></p></li>
@@ -320,7 +321,8 @@ class="math inline">\(\iff\)</span>不可以作为一组N维空间的基</p>
 <ol type="1">
 <li>定义</li>
 </ol>
-<p>迹是矩阵对角元素的和： <span class="math display">\[
+<p>迹是矩阵对角元素的和：<br />
+<span class="math display">\[
 Tr(A)=\sum_iA_{ii}
 \]</span></p>
 <ol start="2" type="1">
@@ -328,8 +330,8 @@ Tr(A)=\sum_iA_{ii}
 </ol>
 <ul>
 <li><p>转置不改变矩阵的迹</p></li>
-<li><p>矩阵乘法顺序不影响矩阵的迹，即使二者形状不同。 <span
-class="math display">\[
+<li><p>矩阵乘法顺序不影响矩阵的迹，即使二者形状不同。<br />
+<span class="math display">\[
 Tr(AB)=Tr(BA)
 \]</span></p></li>
 </ul>
@@ -389,7 +391,8 @@ T(\bm{\alpha_1}+\bm{\alpha_2})=T(\bm{\alpha_1})+T(\bm{\alpha_2})
 <li><ol start="2" type="1">
 <li>任给<span class="math inline">\(\bm{\alpha}\in V_n, \lambda \in
 R\)</span>（从而<span class="math inline">\(\lambda \bm{\alpha}\in
-V_n\)</span>，有 <span class="math display">\[
+V_n\)</span>，有<br />
+<span class="math display">\[
 T(\lambda \bm{\alpha})=\lambda T(\bm{\alpha})
 \]</span></li>
 </ol></li>

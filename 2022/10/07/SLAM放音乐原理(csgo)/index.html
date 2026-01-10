@@ -290,7 +290,7 @@
               <div class="markdown-body">
                 
                 <p>csgo本身提供了一个<code>voice_inputfromfile</code>命令，如果该命令设置为1，将使语音输入来自voice_input.wav文件，而不是您的麦克风。</p>
-<p>slam启动后会生成一个slam.cfg文件，该文件位置在<code>C:\SteamLibrary\steamapps\common\Counter-Strike Global Offensive\csgo\cfg\slam.cfg</code>，有几行重要内容：
+<p>slam启动后会生成一个slam.cfg文件，该文件位置在<code>C:\SteamLibrary\steamapps\common\Counter-Strike Global Offensive\csgo\cfg\slam.cfg</code>，有几行重要内容：<br />
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cfg">alias slam_play slam_play_on<br>alias slam_play_on &quot;alias slam_play slam_play_off; voice_inputfromfile 1; voice_loopback 1; +voicerecord&quot;<br>alias slam_play_off &quot;-voicerecord; voice_inputfromfile 0; voice_loopback 0; alias slam_play slam_play_on&quot;<br>alias slam_updatecfg &quot;host_writeconfig slam_relay&quot;<br>bind X slam_play<br><br>alias 1 &quot;bind = 1; slam_updatecfg; echo Loaded: AメFKDQW&quot;<br>...<br>alias 5 &quot;bind = 5; slam_updatecfg; echo Loaded: EメHq.jingdian4&quot;<br>...<br></code></pre></td></tr></table></figure></p>
 <p>每次放音乐执行过程如下：</p>
 <ol type="1">

@@ -302,13 +302,14 @@
 <img src="2228692-20210906141309215-1204759683.png" srcset="/img/loading.gif" lazyload alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<p>创建一个符号链接： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -s Target Link_Name<br></code></pre></td></tr></table></figure></p>
+<p>创建一个符号链接：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -s Target Link_Name<br></code></pre></td></tr></table></figure></p>
 <p>看ln命令的帮助中的说法：</p>
 <p>为Target创建一个符号链接，并命名为Link_Name.（create a link to TARGET
 with the name LINK_NAME.）</p>
 <p>符号链接的Target不一定要存在，不存在的话就是创建了一个无效的符号链接。</p>
 <h1 id="硬链接">硬链接</h1>
-<p>硬链接是在目录文件中添加一项，但是inode号和源文件一样，两个文件在inode表中共享一行，用一个link-count来计数，删除一个文件时，只是将link-count减1，直到为0再把文件真正删除。
+<p>硬链接是在目录文件中添加一项，但是inode号和源文件一样，两个文件在inode表中共享一行，用一个link-count来计数，删除一个文件时，只是将link-count减1，直到为0再把文件真正删除。<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> Target Link-Name<br></code></pre></td></tr></table></figure></p>
 <p>硬链接的Target必须存在。</p>
 

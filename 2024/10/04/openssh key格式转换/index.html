@@ -297,7 +297,7 @@
 <p><code>-----BEGIN RSA PRIVATE KEY-----</code></p>
 <p>我遇到这个问题是因为，在maven中使用wagon-maven-plugin把构建好的jar文件自动上传到服务器，但是报错：invalid
 privatekey: [B@7f64bd7</p>
-<p>这就是因为私钥格式无法被java使用的ssh库识别。可以把格式转换为旧版格式，命令：
+<p>这就是因为私钥格式无法被java使用的ssh库识别。可以把格式转换为旧版格式，命令：<br />
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">ssh-keygen -p -m pem -f <span class="hljs-tag">&lt;<span class="hljs-name">path</span>&gt;</span><br></code></pre></td></tr></table></figure></p>
 <p>转换后会直接覆盖原文件，如果想保留源文件，可以先备份一份。</p>
 <p>转换后就可以了。</p>

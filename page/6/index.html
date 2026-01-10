@@ -249,7 +249,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/AP%E9%9A%94%E7%A6%BB%E7%9A%84%E8%AE%BE%E5%A4%87%E4%BA%92%E7%9B%B8%E8%AE%BF%E9%97%AE/" target="_self">
         <div>
-          本校校园网开启了AP隔离，同一个网段，不同楼栋的设备无法互相访问，但是他们都可以访问相同的网关。所以通过设置路由规则让他们可以互相访问。 首先查看路由表： 1234~$ ip routedefault via 172.23.128.1 dev eno1 proto dhcp metric 100172.23.128.0/17 dev eno1 proto kernel scope link sr
+          本校校园网开启了AP隔离，同一个网段，不同楼栋的设备无法互相访问，但是他们都可以访问相同的网关。所以通过设置路由规则让他们可以互相访问。 首先查看路由表： 1234~$ ip routedefault via 172.23.128.1 dev eno1 proto dhcp metric 100172.23.128.0/17 dev eno1 proto kernel scope link s
         </div>
       </a>
 
@@ -303,7 +303,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/linux%E6%B7%BB%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%88%B0systemctl/" target="_self">
         <div>
-          1. 添加服务 linux的systemctl的服务文件保存在/lib/systemd/system和/etc/systemd/system中，这里以/lib/systemd/system为例。 首先准备一个service文件，名字为XXX.service， 该文件示例内容如下： 1234567891011121314151617[Unit]Description=Baidu service
+          1. 添加服务 linux的systemctl的服务文件保存在/lib/systemd/system和/etc/systemd/system中，这里以/lib/systemd/system为例。 首先准备一个service文件，名字为XXX.service， 该文件示例内容如下： 1234567891011121314151617[Unit]Description=Baidu servic
         </div>
       </a>
 
@@ -411,7 +411,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/12/14/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/" target="_self">
         <div>
-          查看支持的字体： 123456# 查询当前系统所有字体from matplotlib.font_manager import FontManagermpl_fonts = set(f.name for f in FontManager().ttflist)print(&#x27;all font list get from matplotlib.font_manager:&#x27;)for t
+          查看支持的字体： 123456# 查询当前系统所有字体from matplotlib.font_manager import FontManagermpl_fonts = set(f.name for f in FontManager().ttflist)print(&#x27;all font list get from matplotlib.font_manager:&#x27;)for t
         </div>
       </a>
 
@@ -526,7 +526,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/09/30/curl%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_self">
         <div>
-          上传文件 https://www.cnblogs.com/wangbingbing/p/16596851.html 普通POST文件 1curl -F &#x27;file=@img-cls.tar.gz&#x27; http://127.0.0.1/hfs-upload/ 带密码认证的POST 1curl -u user:password -F file=@info.csv http://
+          上传文件 https://www.cnblogs.com/wangbingbing/p/16596851.html 普通POST文件 1curl -F &#x27;file=@img-cls.tar.gz&#x27; http://127.0.0.1/hfs-upload/ 带密码认证的POST 1curl -u user:password -F file=@info.csv http:
         </div>
       </a>
 
@@ -580,7 +580,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/09/04/%E8%AE%A9linux%20shell%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C/" target="_self">
         <div>
-          vscode的shell可以用颜色来标记命令执行是否成功   image  如图，蓝色圆点表示成功，红色表示失败。但是默认的shell不可以。通过设置PS1可以实现这个功能。 在.bashrc文件中找到： 12345678910if [ -n &quot;$force_color_prompt&quot; ]; then    if [ -x /usr/bin/tput ] &amp;
+          vscode的shell可以用颜色来标记命令执行是否成功   image  如图，蓝色圆点表示成功，红色表示失败。但是默认的shell不可以。通过设置PS1可以实现这个功能。 在.bashrc文件中找到： 12345678910if [ -n &quot;$force_color_prompt&quot; ]; then    if [ -x /usr/bin/tput ] &amp
         </div>
       </a>
 
@@ -634,7 +634,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/09/01/docker%E6%9F%A5%E7%9C%8B%E9%95%9C%E5%83%8F%E3%80%81%E8%BF%90%E8%A1%8C%E5%AE%B9%E5%99%A8%E3%80%81%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" target="_self">
         <div>
-          查看镜像 12docker imagesdocker image ls 查看容器 1docker ps 查看所有容器 1docker ps -a 运行镜像 1234docker run [options] image-d 后台-i 交互式shell-t 为容器重新分配伪输入终端，和-i同时使用 端口映射 1-p [hostip:]host port:container port
+          查看镜像 12docker imagesdocker image ls 查看容器 1docker ps 查看所有容器 1docker ps -a 运行镜像 1234docker run [options] image-d 后台-i 交互式shell-t 为容器重新分配伪输入终端，和-i同时使用 端口映射 1-p [hostip:]host port:container port
         </div>
       </a>
 
@@ -749,7 +749,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/08/09/%E8%AE%BE%E7%BD%AE%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
         <div>
-          添加路由规则让服务器走特定网关 1234sudo ip route add 172.19.128.224/28 via 172.24.64.1sudo ip route add 211.81.55.170 via 172.24.64.1sudo ip route add 211.81.55.176 via 172.24.64.1sudo ip route add 211.81.55.158 via
+          添加路由规则让服务器走特定网关 1234sudo ip route add 172.19.128.224/28 via 172.24.64.1sudo ip route add 211.81.55.170 via 172.24.64.1sudo ip route add 211.81.55.176 via 172.24.64.1sudo ip route add 211.81.55.158 vi
         </div>
       </a>
 
