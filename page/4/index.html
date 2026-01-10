@@ -241,6 +241,128 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/07/17/deepspeed%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%8F%90%E7%A4%BA%EF%BC%9Acpu_adam.so_%20cannot%20open%20shared%20object%20file_%20No%20such%20file%20or%20directory/" target="_self">
+          deepspeed训练模型提示：cpu_adam.so: cannot open shared object file: No such file or directory
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/17/deepspeed%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%8F%90%E7%A4%BA%EF%BC%9Acpu_adam.so_%20cannot%20open%20shared%20object%20file_%20No%20such%20file%20or%20directory/" target="_self">
+        <div>
+          背景  #本人在安装deepspeed后遇到了这个报错，明眼人一看就是缺库，但是搜索到的解决方案(凌漪_, 2023)说是设置一个环境变量，实在是治标不治本，而且对本人来说连标都治不了。其他的博客尚未看到解决此问题的。  分析  这个so文件理论上应该在安装deepspeed的过程中就自动编译好了，但是现在没有，我们肯定需要找到编译这个so文件的地方。  解决过程  通过
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-17 20:11" pubdate>
+              2024-07-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/AI/linux/" class="category-chain-item">linux</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/AI/linux/%E5%85%B7%E4%BD%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" class="category-chain-item">具体报错解决</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/15/Linux%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%8C%E4%BB%A5%E5%8F%8A%E9%87%8D%E5%AE%9A%E5%90%91%E5%90%8E%E7%9A%84%E8%BE%93%E5%87%BA/" target="_self">
+          Linux查看某个进程的环境变量，以及重定向后的输出
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/15/Linux%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%8C%E4%BB%A5%E5%8F%8A%E9%87%8D%E5%AE%9A%E5%90%91%E5%90%8E%E7%9A%84%E8%BE%93%E5%87%BA/" target="_self">
+        <div>
+          1. 查看环境变量 根据进程pid看，以121927号进程为例： 1cat /proc/121927/environ | tr &#x27;\0&#x27; &#x27;\n&#x27; 每个环境变量都以'\0'结束，直接cat会不方便查看，将'\0'替换为''可以方便查看。注意，tr后必须加单引号，不然参数会被shell转义为0和n。或者可以： 1cat /proc/121927/envi
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-15 19:31" pubdate>
+              2024-07-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/06/28/docker%E4%BD%BF%E7%94%A8%E6%9C%A8%E6%A3%8D%E6%8B%89%E9%95%9C%E5%83%8F/" target="_self">
           docker使用木棍拉镜像
         </a>
@@ -659,121 +781,6 @@
       <span class="category-chain">
         
   <a href="/categories/AI/" class="category-chain-item">AI</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/15/%E6%B2%A1%E6%9C%89root%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7_%E5%AE%89%E8%A3%85GCC_G++%20_%20%E4%BD%BF%E7%94%A8conda%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%87%E7%BA%A7gcc%E7%89%88%E6%9C%AC%20_%20linux%E5%8D%87%E7%BA%A7GCC%E7%89%88%E6%9C%AC/" target="_self">
-          没有root如何升级/安装GCC/G++ | 使用conda安装和升级gcc版本 | linux升级GCC版本
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/15/%E6%B2%A1%E6%9C%89root%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7_%E5%AE%89%E8%A3%85GCC_G++%20_%20%E4%BD%BF%E7%94%A8conda%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%87%E7%BA%A7gcc%E7%89%88%E6%9C%AC%20_%20linux%E5%8D%87%E7%BA%A7GCC%E7%89%88%E6%9C%AC/" target="_self">
-        <div>
-          鉴于有评论区用户质疑本文的必要性，首先前排提醒： linux大部分你可能以为需要root的需求都可以不用root解决。  只要你善用conda、.bashrc、LD_LIBRARY_PATH基本可以解决。  conda可以安装各种二进制包，包括各种版本的gcc/g++ 安装最新版gcc和g++ 1conda install gxx_linux-64 gxx_impl_linux-64
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-15 10:47" pubdate>
-              2024-04-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/linux/python/" class="category-chain-item">python</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/10/%E6%9F%A5%E7%9C%8B%E5%93%AA%E4%BA%9BIP%E5%B0%9D%E8%AF%95%E7%88%86%E7%A0%B4%E4%BD%A0%E7%9A%84Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-          查看哪些IP尝试爆破你的Linux服务器
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/10/%E6%9F%A5%E7%9C%8B%E5%93%AA%E4%BA%9BIP%E5%B0%9D%E8%AF%95%E7%88%86%E7%A0%B4%E4%BD%A0%E7%9A%84Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-        <div>
-          苯人有一台服务器，由于没有设置什么ssh ip过滤规则，经常被扫描，所以今天在此查看一下是哪些倒运鬼东西一直扫描的，把它们给屏蔽了。 以下是苯人服务器环境：  Ubuntu 20.04 LTS  ssh认证的日志会记录在/var/log/auth.log中（在ubuntu 16.04之前似乎是/var/log/secure） 一般认证失败的日志有两种格式： 12Apr  8 01:
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-10 17:19" pubdate>
-              2024-04-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
   
   
 

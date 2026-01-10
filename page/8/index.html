@@ -241,6 +241,121 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/05/23/pytorch%E6%98%BE%E5%AD%98%E6%9C%BA%E5%88%B6/" target="_self">
+          pytorch显存机制
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/23/pytorch%E6%98%BE%E5%AD%98%E6%9C%BA%E5%88%B6/" target="_self">
+        <div>
+          根据个人理解，pytorch显存分3个概念：reserved memory、allocated memory、context memory。参考：https://discuss.pytorch.org/t/difference-between-allocated-and-reserved-memory/87278/4 reserved memory是pytorch向GPU申请的，用来给pyt
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-23 17:39" pubdate>
+              2023-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/AI/python/" class="category-chain-item">python</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/04/13/nfs%20via%20ssh%20tunnel%EF%BC%88%E9%80%9A%E8%BF%87ssh%E9%9A%A7%E9%81%93%E8%B7%A8%E7%BD%91%E7%BB%9C%E6%8C%82%E8%BD%BDnfs%EF%BC%89/" target="_self">
+          nfs via ssh tunnel（通过ssh隧道跨网络挂载nfs）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/13/nfs%20via%20ssh%20tunnel%EF%BC%88%E9%80%9A%E8%BF%87ssh%E9%9A%A7%E9%81%93%E8%B7%A8%E7%BD%91%E7%BB%9C%E6%8C%82%E8%BD%BDnfs%EF%BC%89/" target="_self">
+        <div>
+          这篇代码段帮了大忙： https://gist.github.com/proudlygeek/5721498 下面给出我的设置： 我要在机器97上访问机器231上的硬盘，需要把231上的/data1/ubuntu挂载到97上 1. 共享nfs文件夹 在231上编辑：/etc/exports（需要root） 123ubuntu@lthpc:~$ cat /etc/exports/data1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-13 18:01" pubdate>
+              2023-04-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/03/24/iptables%E8%A7%84%E5%88%99%E6%8C%81%E4%B9%85%E5%8C%96/" target="_self">
           iptables规则持久化
         </a>
@@ -639,128 +754,6 @@
         
   <a href="/categories/%E4%B8%8D%E4%BE%BF%E4%BA%8E%E5%88%86%E7%B1%BB%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB%E7%9F%A5%E8%AF%86%E8%AE%B0%E5%BD%95%E7%AD%89/" class="category-chain-item">不便于分类的计算机类知识记录等</a>
   
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/01/27/java11%E5%8F%8A%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8Cjavafx%E7%A8%8B%E5%BA%8F/" target="_self">
-          java11及以上版本运行javafx程序
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/27/java11%E5%8F%8A%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8Cjavafx%E7%A8%8B%E5%BA%8F/" target="_self">
-        <div>
-          高版本的java不再自带javafx，需要自己添加路径，如果是java8的话直接可以使用。 本文分为两个部分：第一部分介绍如何运行javafx程序，第二部分介绍如何打包一个包含了javafx的jre环境。 运行javafx程序 下载openjfx https://gluonhq.com/products/javafx/ openjfx的LTS版本好像要付费才能下载，所以勾选“Includ
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-27 17:56" pubdate>
-              2023-01-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E5%BC%80%E5%8F%91/" class="category-chain-item">学开发</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E5%BC%80%E5%8F%91/java/" class="category-chain-item">java</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/01/22/gradle%E7%BA%AF%E7%BA%AF%E5%B0%8F%E7%99%BD%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_self">
-          gradle纯纯小白使用教程
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/22/gradle%E7%BA%AF%E7%BA%AF%E5%B0%8F%E7%99%BD%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_self">
-        <div>
-          gradle程序和build.gradle文件是用来“构建”java项目的，类似于C语言中的make和Makefile。 建议先看Gradle 扫盲与 Task 基础 - 知乎 然后再看Gradle教程 然后看依赖的类型： gradle使用教程，一篇就够 - 简书 大概了解了之后，就可以看gradle官方文档。官方给了个java库和java项目的配置例子 12345gradlew
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-22 21:49" pubdate>
-              2023-01-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E5%BC%80%E5%8F%91/" class="category-chain-item">学开发</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E5%BC%80%E5%8F%91/java/" class="category-chain-item">java</a>
-  
-  
-
   
 
       </span>

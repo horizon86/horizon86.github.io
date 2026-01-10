@@ -241,6 +241,114 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2022/07/31/softmax%20-%20numpy%E5%AE%9E%E7%8E%B0/" target="_self">
+          softmax - numpy实现
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/31/softmax%20-%20numpy%E5%AE%9E%E7%8E%B0/" target="_self">
+        <div>
+          image  123456def softmax(x):    x -= np.max(x, axis= 1, keepdims=True)        f_x = np.exp(x) / np.sum(np.exp(x), axis=1, keepdims=True)    return f_x 第一步：减去最大值。 因为在求exp时，可能因为指数过大，出现溢出的情况。 而在
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-31 18:51" pubdate>
+              2022-07-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/07/29/tokenize%20embeding%20word2wec...%E8%AF%8D%E8%A1%A8%EF%BC%8C%E8%AF%8D%E5%B5%8C%E5%85%A5%EF%BC%8C%E5%88%86%E8%AF%8D...%E9%83%BD%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%9A%84/" target="_self">
+          tokenize embeding word2wec...词表，词嵌入，分词...都是干什么的
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/29/tokenize%20embeding%20word2wec...%E8%AF%8D%E8%A1%A8%EF%BC%8C%E8%AF%8D%E5%B5%8C%E5%85%A5%EF%BC%8C%E5%88%86%E8%AF%8D...%E9%83%BD%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%9A%84/" target="_self">
+        <div>
+          在NLP任务中，输入的大多是一个句子，多个句子组成一个batch。模型本身不能直接处理文本，所以需要先把文本转化成数字。流程大多数是： 分词-&gt;构建词表-&gt;词嵌入  分词  分词是将一个句子拆分成一个个单词/短语，这些单词/短语称为token，分词被叫做tokenize。 tokenize的粒度有word/char/subword三个层级。 一个token并不一定是一个单
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-29 18:09" pubdate>
+              2022-07-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2022/07/28/transformers%20tokenizers%E9%9C%80%E8%A6%81glibc2.29%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_self">
           transformers tokenizers需要glibc2.29解决办法
         </a>
@@ -454,25 +562,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/windows/" class="category-chain-item">windows</a>
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/windows/linux/" class="category-chain-item">linux</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/windows/linux/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
-  
-  
-
-  
-
   
 
       </span>
+    
+  
+    
+  
     
   
 </span>
@@ -595,114 +693,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2022-05-17 14:13" pubdate>
               2022-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/AI/" class="category-chain-item">AI</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2022/05/16/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2list/" target="_self">
-          优秀博客list
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/16/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2list/" target="_self">
-        <div>
-          pytorch如何保存与加载训练模型 - 简书 Pytorch冻结部分层的参数 - 简书 剪枝 （论文 + 代码）_看不见我呀的博客-CSDN博客_剪枝代码 Pytorch 剪枝操作实现 - 虾野百鹤 - 博客园 pytorch官方的剪枝教程（推荐，简单明了，比看别人的博客好的多） Pruning Tutorial — PyTorch Tutorials 1.11.0+cu10
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-16 20:36" pubdate>
-              2022-05-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/AI/" class="category-chain-item">AI</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2022/05/16/bert%E7%BB%86%E8%8A%82%E8%A7%A3%E8%AF%BB%E5%92%8C%E8%AE%B0%E5%BD%95/" target="_self">
-          bert细节解读和记录
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/16/bert%E7%BB%86%E8%8A%82%E8%A7%A3%E8%AF%BB%E5%92%8C%E8%AE%B0%E5%BD%95/" target="_self">
-        <div>
-          Q&amp;A：  Q：BERT输如和输出是什么？  A：输入是句子，每个句子由n个单词组成，也就是输入的形状是[batch_size, sentence_len]。这里每个单词用一个整数来表示，输入后对每个单词进行embbding，之后的维度是[batch_size, sentence_len, emb_dim]，这里每个单词用一个emd_dim维的向量来表示。 输出是[batch
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-16 20:30" pubdate>
-              2022-05-16
             </time>
           </div>
         
