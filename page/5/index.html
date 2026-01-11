@@ -241,6 +241,60 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/05/15/pytorch%E8%B0%83%E8%AF%95%E6%97%B6CUDA%E6%8A%A5%E9%94%99%EF%BC%8C%E5%A6%82%E4%BD%95%E7%B2%BE%E7%A1%AE%E5%AE%9A%E4%BD%8D/" target="_self">
+          pytorch调试时CUDA报错，如何精确定位
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/15/pytorch%E8%B0%83%E8%AF%95%E6%97%B6CUDA%E6%8A%A5%E9%94%99%EF%BC%8C%E5%A6%82%E4%BD%95%E7%B2%BE%E7%A1%AE%E5%AE%9A%E4%BD%8D/" target="_self">
+        <div>
+          由于pytorch的python语句执行和CUDA后端实际上是异步执行的，所以当CUDA runtime报错时，并不一定能正确地反映在python抛出的错误语句中，因此，可以添加一个环境变量来实现：  CUDA_LAUNCH_BLOCKING=1  这里再补充一些关于cuda和pytorch异步执行的知识，当你写了一句torch.mm(X, Y)时，实际上的操作仅仅是将乘法操作加入计算
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-15 20:16" pubdate>
+              2024-05-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/04/15/%E6%B2%A1%E6%9C%89root%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7_%E5%AE%89%E8%A3%85GCC_G++%20_%20%E4%BD%BF%E7%94%A8conda%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%87%E7%BA%A7gcc%E7%89%88%E6%9C%AC%20_%20linux%E5%8D%87%E7%BA%A7GCC%E7%89%88%E6%9C%AC/" target="_self">
           没有root如何升级/安装GCC/G++ | 使用conda安装和升级gcc版本 | linux升级GCC版本
         </a>
@@ -713,60 +767,6 @@
       <span class="category-chain">
         
   <a href="/categories/windows/" class="category-chain-item">windows</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/13/vscode%E9%94%99%E8%AF%AF%EF%BC%9AUnable%20to%20connect%20to%20VS%20Code%20server_%20Error%20in%20request/" target="_self">
-          vscode错误：Unable to connect to VS Code server: Error in request.
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/13/vscode%E9%94%99%E8%AF%AF%EF%BC%9AUnable%20to%20connect%20to%20VS%20Code%20server_%20Error%20in%20request/" target="_self">
-        <div>
-          这种错误常见于vscode自动连上了之前失效的socket，解决方案就是，关闭vscode，然后用ssh进入服务器，kill掉所有的vscode进程 1ps -fu $USER | grep vscode | grep -v grep | awk &#x27;&#123;print $2&#125;&#x27; | xargs kill 然后重启vscode即可。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-13 14:35" pubdate>
-              2024-01-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
   
   
 

@@ -21,21 +21,21 @@
   <meta name="author" content="horizon86">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言 根据微软的说明，1.99以上的 vscode 将需要 GLIBC 2.28以上版本，微软官方给出的解决方案是自己编译一套GLIBC。但是这个可行度比较低，实际上我们也可以找到相关的预编译包，直接下载解压即可，不必自己编译。 致谢 MelodiCly在 Ubuntu 12.04 上安装了新版本的GLIBC，并成功运行 vscode。如果你是ubuntu系统，可以参考上文。如果你是">
+    <meta name="description" content="0. 引言 逃离塔科夫离线版实现联机，一般有以下几种方式：  拥有公网 IPv4：可以直接进行联机。 处于同一局域网：可以直接联机。 无公网 IPv4：使用 RadminLAN 等虚拟局域网工具联机。 无公网 IPv4：使用 FRP 等内网穿透技术联机。  前三种情况比较简单，网上资料也较多，这里不再重复说明。本文将主要针对第 4 种情况展开讲解。 实际上，使用内网穿透联机并">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.99 以上版本微软大战代码（Microsoft VS Code） 连接 centos 7的解决方案（CentOS 7 安装升级 glibc）">
-<meta property="og:url" content="https://horizon86.github.io/2026/01/11/1-99-%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E5%BE%AE%E8%BD%AF%E5%A4%A7%E6%88%98%E4%BB%A3%E7%A0%81%EF%BC%88Microsoft-VS-Code%EF%BC%89-%E8%BF%9E%E6%8E%A5-centos-7%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%88CentOS-7-%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7-glibc%EF%BC%89/index.html">
+<meta property="og:title" content="逃离塔科夫离线版联机指南（内网穿透）">
+<meta property="og:url" content="https://horizon86.github.io/2026/01/11/%E9%80%83%E7%A6%BB%E5%A1%94%E7%A7%91%E5%A4%AB%E7%A6%BB%E7%BA%BF%E7%89%88%E8%81%94%E6%9C%BA%E6%8C%87%E5%8D%97%EF%BC%88%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%89/index.html">
 <meta property="og:site_name" content="horizon86的博客">
-<meta property="og:description" content="前言 根据微软的说明，1.99以上的 vscode 将需要 GLIBC 2.28以上版本，微软官方给出的解决方案是自己编译一套GLIBC。但是这个可行度比较低，实际上我们也可以找到相关的预编译包，直接下载解压即可，不必自己编译。 致谢 MelodiCly在 Ubuntu 12.04 上安装了新版本的GLIBC，并成功运行 vscode。如果你是ubuntu系统，可以参考上文。如果你是">
+<meta property="og:description" content="0. 引言 逃离塔科夫离线版实现联机，一般有以下几种方式：  拥有公网 IPv4：可以直接进行联机。 处于同一局域网：可以直接联机。 无公网 IPv4：使用 RadminLAN 等虚拟局域网工具联机。 无公网 IPv4：使用 FRP 等内网穿透技术联机。  前三种情况比较简单，网上资料也较多，这里不再重复说明。本文将主要针对第 4 种情况展开讲解。 实际上，使用内网穿透联机并">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-10T16:05:24.000Z">
-<meta property="article:modified_time" content="2026-01-10T16:06:11.739Z">
+<meta property="article:published_time" content="2026-01-11T01:16:49.000Z">
+<meta property="article:modified_time" content="2026-01-11T01:16:52.000Z">
 <meta property="article:author" content="horizon86">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>1.99 以上版本微软大战代码（Microsoft VS Code） 连接 centos 7的解决方案（CentOS 7 安装升级 glibc） - horizon86的博客</title>
+  <title>逃离塔科夫离线版联机指南（内网穿透） - horizon86的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="1.99 以上版本微软大战代码（Microsoft VS Code） 连接 centos 7的解决方案（CentOS 7 安装升级 glibc）"></span>
+            <span id="subtitle" data-typed-text="逃离塔科夫离线版联机指南（内网穿透）"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-11 00:05" pubdate>
-          2026年1月11日 凌晨
+        <time datetime="2026-01-11 09:16" pubdate>
+          2026年1月11日 上午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          554 字
+          1.4k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          5 分钟
+          12 分钟
         
       </span>
     
@@ -284,48 +284,118 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">1.99 以上版本微软大战代码（Microsoft VS Code） 连接 centos 7的解决方案（CentOS 7 安装升级 glibc）</h1>
+            <h1 id="seo-header">逃离塔科夫离线版联机指南（内网穿透）</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言">前言</h2>
-<p>根据<a
-target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/faq#_can-i-run-vs-code-server-on-older-linux-distributions">微软的说明</a>，1.99以上的
-vscode 将需要 GLIBC
-2.28以上版本，微软官方给出的解决方案是自己编译一套GLIBC。但是这个可行度比较低，实际上我们也可以找到相关的预编译包，直接下载解压即可，不必自己编译。</p>
-<h2 id="致谢">致谢</h2>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/551770477">MelodiCly</a>在
-Ubuntu 12.04 上安装了新版本的GLIBC，并成功运行
-vscode。如果你是ubuntu系统，可以参考上文。如果你是centos
-7系统，可以参考本文。本文的一些内容参考了上述文章。</p>
-<h2 id="操作步骤">操作步骤</h2>
+                <h1 id="引言">0. 引言</h1>
+<p>逃离塔科夫离线版实现联机，一般有以下几种方式：</p>
 <ol type="1">
-<li><p>首先创建一个工作文件夹并进入<br />
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir glibc<br></code></pre></td></tr></table></figure></p></li>
-<li><p>下载<a
-target="_blank" rel="noopener" href="https://cdn-ubi.redhat.com/content/public/ubi/dist/ubi8/8/x86_64/baseos/os/Packages/g/glibc-2.28-251.el8_10.27.x86_64.rpm">glibc-2.28-251.el8_10.27.x86_64.rpm</a>并解压<br />
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cd</span> glibc<br><span class="hljs-attribute">wget</span> https://cdn-ubi.redhat.com/content/public/ubi/dist/ubi8/<span class="hljs-number">8</span>/x86_64/baseos/os/Packages/g/glibc-<span class="hljs-number">2</span>.<span class="hljs-number">28</span>-<span class="hljs-number">251</span>.el8_10.<span class="hljs-number">27</span>.x86_64.rpm<br><span class="hljs-attribute">mkdir</span> glibc-<span class="hljs-number">2</span>.<span class="hljs-number">28</span>-<span class="hljs-number">251</span>.el8_10.<span class="hljs-number">27</span>.x86_64<br><span class="hljs-attribute">cd</span> glibc-<span class="hljs-number">2</span>.<span class="hljs-number">28</span>-<span class="hljs-number">251</span>.el8_10.<span class="hljs-number">27</span>.x86_64<br><span class="hljs-attribute">rpm2cpio</span> ../glibc-<span class="hljs-number">2</span>.<span class="hljs-number">28</span>-<span class="hljs-number">251</span>.el8_10.<span class="hljs-number">27</span>.x86_64.rpm | cpio -idmv<br><span class="hljs-attribute">cd</span> ..<br></code></pre></td></tr></table></figure></p></li>
-<li><p>下载<a
-target="_blank" rel="noopener" href="https://cdn-ubi.redhat.com/content/public/ubi/dist/ubi8/8/x86_64/baseos/os/Packages/l/libstdc++-8.5.0-28.el8_10.x86_64.rpm">libstdc++-8.5.0-28.el8_10.x86_64.rpm</a>并解压<br />
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wget</span> https://cdn-ubi.redhat.com/content/public/ubi/dist/ubi8/<span class="hljs-number">8</span>/x86_64/baseos/os/Packages/l/libstdc++-<span class="hljs-number">8</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span>-<span class="hljs-number">28</span>.el8_10.x86_64.rpm<br><span class="hljs-attribute">mkdir</span> libstdc++-<span class="hljs-number">8</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span>-<span class="hljs-number">28</span>.el8_10.x86_64<br><span class="hljs-attribute">cd</span> libstdc++-<span class="hljs-number">8</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span>-<span class="hljs-number">28</span>.el8_10.x86_64<br><span class="hljs-attribute">rpm2cpio</span> ../libstdc++-<span class="hljs-number">8</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span>-<span class="hljs-number">28</span>.el8_10.x86_64.rpm | cpio -idmv<br><span class="hljs-attribute">cd</span> ..<br></code></pre></td></tr></table></figure></p></li>
-<li><p>下载<a
-target="_blank" rel="noopener" href="https://github.com/NixOS/patchelf/tree/0.18.0">patchelf
-0.18.0</a>并解压<br />
-这步需要手动去GitHub下载，下载完成后放置于最初创建的工作文件夹<code>glibc</code>中，得到：patchelf-0.18.0-x86_64.tar.gz，然后将其解压<br />
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> patchelf<br><span class="hljs-built_in">cd</span> patchelf<br>tar -xf ../patchelf-0.18.0-x86_64.tar.gz<br><span class="hljs-built_in">cd</span> ..<br></code></pre></td></tr></table></figure></p></li>
-<li><p>然后将所有需要的库文件拷贝到一个文件夹，命名为<code>custom_lib_for_vsc</code><br />
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">mkdir</span> custom_lib_for_vsc<br><span class="hljs-attribute">cp</span> -rd glibc-<span class="hljs-number">2</span>.<span class="hljs-number">28</span>-<span class="hljs-number">251</span>.el8_10.<span class="hljs-number">27</span>.x86_64/usr/lib64/* custom_lib_for_vsc/<br><span class="hljs-attribute">cp</span> -rd libstdc++-<span class="hljs-number">8</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span>-<span class="hljs-number">28</span>.el8_10.x86_64/usr/lib64/* custom_lib_for_vsc/<br><span class="hljs-attribute">cp</span> patchelf/bin/patchelf custom_lib_for_vsc/<br></code></pre></td></tr></table></figure></p></li>
-<li><p>随后，修改~/.bashrc，添加几行环境变量<br />
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">VSCODE_SERVER_CUSTOM_GLIBC_LINKER</span>=/path/to/your/glibc/custom_lib_for_vsc/ld-linux-x86-64.so.2<br><span class="hljs-built_in">export</span> <span class="hljs-attribute">VSCODE_SERVER_CUSTOM_GLIBC_PATH</span>=/path/to/your/glibc/custom_lib_for_vsc<br><span class="hljs-built_in">export</span> <span class="hljs-attribute">VSCODE_SERVER_PATCHELF_PATH</span>=/path/to/your/glibc/custom_lib_for_vsc/patchelf<br></code></pre></td></tr></table></figure><br />
-并将<code>/path/to/your/glibc</code>替换为你刚刚创建的工作文件夹路径。</p></li>
-<li><p>至此，请享用您的微软大战代码程序。</p></li>
+<li><strong>拥有公网 IPv4</strong>：可以直接进行联机。</li>
+<li><strong>处于同一局域网</strong>：可以直接联机。</li>
+<li><strong>无公网 IPv4</strong>：使用 RadminLAN
+等虚拟局域网工具联机。</li>
+<li><strong>无公网 IPv4</strong>：使用 FRP 等内网穿透技术联机。</li>
 </ol>
-<h2 id="tips">tips</h2>
-<p>用该方法patch后，使用vscode连接服务器可能会提示你：正在连接到不受支持的操作系统，请点击允许即可。</p>
-<h2 id="后记">后记</h2>
-<p>在GitHub也有一个<a
-target="_blank" rel="noopener" href="https://github.com/MikeWang000000/vscode-server-centos7">项目</a>，patch了vscode的server端程序，但是使用该项目patch的vscode，本人无法使用某些插件。转而使用官方建议的上述方法patch，可以正常使用插件。</p>
+<p>前三种情况比较简单，网上资料也较多，这里不再重复说明。本文将主要针对第
+4 种情况展开讲解。</p>
+<p>实际上，使用内网穿透联机并不复杂，但目前简体中文互联网上相关的完整资料较少，大多只有零散的讨论（如贴吧用户<a
+target="_blank" rel="noopener" href="https://tieba.baidu.com/p/10163356775">敲里猫</a>、<a
+target="_blank" rel="noopener" href="https://tieba.baidu.com/p/9780098808?pid=152337016426&amp;cid=0#152337016426">咸鱼_相惜</a>等的帖子），往往没有说明具体原理和配置方法。即便是一些较详细的教程（如
+B 站用户<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/opus/915622650279100425">“神龙烈焰美利桃”的文章</a>），也没有涉及
+Fika 联机模组的配置与使用。</p>
+<p>经过笔者调研，目前在简体中文网络中，<strong>尚未出现系统讲解“FiKa
+联机模组 + FRP 内网穿透”方案的完整指南</strong>。</p>
+<p>本文的主要贡献如下：<br />
+1. <strong>首次系统性地提出并详细讲解</strong>如何利用 FiKa 联机模组配合
+FRP
+内网穿透，实现逃离塔科夫离线版的多人在线功能，填补了该领域中文教程的空白。<br />
+2.
+<strong>提供了一套可实操、可复现的解决方案</strong>，尤其适用于没有公网
+IPv4 的用户，涵盖了服务端配置、客户端连接及背后的网络通信原理。<br />
+3.
+<strong>通过实际测试验证了该方案的可行性</strong>，并总结了常见问题与调试建议，确保连接的稳定性与易用性。</p>
+<h1 id="实现方法">1. 实现方法</h1>
+<p>本文介绍的联机方案基于逃离塔科夫离线版以及 <a
+target="_blank" rel="noopener" href="https://github.com/project-fika/Fika-Plugin">Fika
+联机模组</a>。</p>
+<blockquote>
+<p>以下将介绍一种典型场景，希望读者能理解联机的基本原理，并根据自身网络环境灵活调整。联机的核心问题在于：<strong>让游戏客户端能够正确连接到对应的游戏服务器</strong>。</p>
+</blockquote>
+<h3 id="角色与定义">角色与定义</h3>
+<ol type="1">
+<li><strong>公网服务器</strong>：一台具有公网 IPv4 的阿里云服务器，记作
+<strong>S</strong>，其公网 IP 记为 <strong>IP_public</strong>。</li>
+<li><strong>后端服务器主机</strong>：运行 <code>SPT.Server.exe</code>
+的本地主机，记作 <strong>L1</strong>。该主机没有公网
+IPv4。SPT.Server.exe 会在本地 TCP 6969 端口启动一个 HTTPS
+服务（称为后端服务器/Backend Server），负责玩家 IP
+登记、登录管理等。</li>
+<li><strong>房主玩家</strong>：负责创建并主持游戏战局的玩家，其主机记作
+<strong>L2</strong>。该主机同样没有公网 IPv4。游戏将在该主机上监听 UDP
+25565 端口，所有 AI 计算与战局逻辑均由此主机负责。</li>
+<li><strong>普通玩家</strong>：其他参与游戏的玩家，记作 <strong>P1, P2,
+…</strong>。他们不运行
+SPT.Server.exe，也不主持战局，仅作为客户端加入游戏。</li>
+</ol>
+<blockquote>
+<p>本文假设读者已了解 FRP
+的基本用法，即能够将远程服务器的某个端口映射到本地端口。如不熟悉，建议先学习
+FRP 基础再继续阅读。</p>
+</blockquote>
+<h3 id="联机原理说明">联机原理说明</h3>
+<p>玩家需要在 <code>SPT.Launcher.exe</code> 中设置 URL，指向运行
+SPT.Server.exe 的地址。启动游戏后，Fika 模组会将玩家的 <strong>局域网
+IP（LAN IP）</strong>、<strong>公网 IP（WAN IP）</strong> 以及 UDP
+端口（默认为 25565）上报给后端服务器。</p>
+<p>当房主开启战局，其他玩家点击“加入”时，游戏会从后端服务器获取房主上报的
+IP 和端口，并尝试直接连接。</p>
+<p>Fika 设置中的 <strong>“强制IP”</strong>
+用于手动指定上报给后端服务器的公网 IP；而 <strong>“强制绑定IP”</strong>
+则用于设定游戏服务器（25565 端口）绑定的本地网络接口。例如：<br />
+- 设置为 <code>127.0.0.1</code>，则只能通过 <code>127.0.0.1:25565</code>
+访问；<br />
+- 设置为 <code>192.168.0.103</code>，则只能通过该 IP 访问；<br />
+- 设置为 <code>0.0.0.0</code>，则可通过本机的任意 IP 访问。</p>
+<p>因此，一般情况下<strong>“强制绑定IP”建议设置为
+<code>0.0.0.0</code></strong>。</p>
+<h3 id="具体配置步骤">具体配置步骤</h3>
+<ol type="1">
+<li><p>在阿里云服务器 <strong>S</strong> 上启动 FRP 服务端。</p></li>
+<li><p>在 <strong>L1</strong> 上运行 <code>SPT.Server.exe</code>，并配置
+FRP 客户端，将本地的 TCP 6969 端口映射到
+<code>IP_public:6969</code>。</p></li>
+<li><p>所有玩家在 <code>SPT.Launcher.exe</code> 中将 URL 设置为
+<strong><code>https://IP_public:6969</code></strong>。</p>
+<blockquote>
+<p>如果 SPT.Server.exe 就运行在某一玩家的电脑上，该玩家可直连
+<code>https://127.0.0.1:6969</code>。总之，要确保能访问到后端服务器。</p>
+</blockquote></li>
+<li><p><strong>房主玩家（L2）的设置</strong><br />
+<strong>游戏内设置（Fika 模组）</strong><br />
+启动游戏后，按下 <code>F12</code> 打开 Fika 设置界面：</p>
+<ul>
+<li>点击 <strong>“Advanced Settings” → “Expand
+All”</strong>，滚动至底部；</li>
+<li>将 <strong>“强制IP”</strong> 填写为服务器的公网地址
+<strong><code>IP_public</code></strong>；</li>
+<li>将 <strong>“强制绑定IP”</strong> 设置为
+<strong><code>0.0.0.0</code></strong>。</li>
+</ul>
+<p><strong>完成上述游戏内设置后，务必重启游戏，否则配置不生效。</strong><br />
+<strong>完成上述游戏内设置后，务必重启游戏，否则配置不生效。。</strong><br />
+<strong>完成上述游戏内设置后，务必重启游戏，否则配置不生效。。</strong></p>
+<p><strong>游戏外设置（FRP 客户端）</strong><br />
+在房主的电脑上配置 FRP 客户端，将本地的 <code>127.0.0.1:25565</code>
+映射至公网地址 <code>IP_public:25565</code>。</p>
+<blockquote>
+<p>注：如果在 Fika 设置中修改了游戏监听端口，FRP
+中的端口映射也需对应调整。</p>
+</blockquote></li>
+<li><p>房主重启游戏后，创建战局；其他玩家加入该战局。若一切配置正确，即可成功联机。</p></li>
+</ol>
 
                 
               </div>
@@ -344,12 +414,12 @@ target="_blank" rel="noopener" href="https://github.com/MikeWang000000/vscode-se
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  <a href="/categories/%E6%B8%B8%E6%88%8F/" class="category-chain-item">游戏</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/vscode/" class="category-chain-item">vscode</a>
+  <a href="/categories/%E6%B8%B8%E6%88%8F/%E9%80%83%E7%A6%BB%E5%A1%94%E7%A7%91%E5%A4%AB/" class="category-chain-item">逃离塔科夫</a>
   
   
 
@@ -371,8 +441,8 @@ target="_blank" rel="noopener" href="https://github.com/MikeWang000000/vscode-se
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>1.99 以上版本微软大战代码（Microsoft VS Code） 连接 centos 7的解决方案（CentOS 7 安装升级 glibc）</div>
-      <div>https://horizon86.github.io/2026/01/11/1-99-以上版本微软大战代码（Microsoft-VS-Code）-连接-centos-7的解决方案（CentOS-7-安装升级-glibc）/</div>
+      <div>逃离塔科夫离线版联机指南（内网穿透）</div>
+      <div>https://horizon86.github.io/2026/01/11/逃离塔科夫离线版联机指南（内网穿透）/</div>
     </div>
     <div class="license-meta">
       
@@ -416,18 +486,12 @@ target="_blank" rel="noopener" href="https://github.com/MikeWang000000/vscode-se
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/01/11/%E9%80%83%E7%A6%BB%E5%A1%94%E7%A7%91%E5%A4%AB%E7%A6%BB%E7%BA%BF%E7%89%88%E8%81%94%E6%9C%BA%E6%8C%87%E5%8D%97%EF%BC%88%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%89/" title="逃离塔科夫离线版联机指南（内网穿透）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">逃离塔科夫离线版联机指南（内网穿透）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/01/10/VS-Code-%E8%BF%9E%E6%8E%A5-Remote-SSH-%E4%B8%80%E7%9B%B4%E5%8D%A1%E5%9C%A8-Downloading-VS-Code-Server-%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="VS Code 连接 Remote SSH 一直卡在 &#34;Downloading VS Code Server&#34; 的解决方案">
-                        <span class="hidden-mobile">VS Code 连接 Remote SSH 一直卡在 &#34;Downloading VS Code Server&#34; 的解决方案</span>
+                      <a href="/2026/01/11/1-99-%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E5%BE%AE%E8%BD%AF%E5%A4%A7%E6%88%98%E4%BB%A3%E7%A0%81%EF%BC%88Microsoft-VS-Code%EF%BC%89-%E8%BF%9E%E6%8E%A5-centos-7%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%88CentOS-7-%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7-glibc%EF%BC%89/" title="1.99 以上版本微软大战代码（Microsoft VS Code） 连接 centos 7的解决方案（CentOS 7 安装升级 glibc）">
+                        <span class="hidden-mobile">1.99 以上版本微软大战代码（Microsoft VS Code） 连接 centos 7的解决方案（CentOS 7 安装升级 glibc）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -484,6 +548,12 @@ target="_blank" rel="noopener" href="https://github.com/MikeWang000000/vscode-se
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -676,6 +746,50 @@ target="_blank" rel="noopener" href="https://github.com/MikeWang000000/vscode-se
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] },
+              tags: 'ams'
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

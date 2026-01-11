@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>逃离塔科夫离线版联机指南（内网穿透）</title>
+    <link href="/2026/01/11/%E9%80%83%E7%A6%BB%E5%A1%94%E7%A7%91%E5%A4%AB%E7%A6%BB%E7%BA%BF%E7%89%88%E8%81%94%E6%9C%BA%E6%8C%87%E5%8D%97%EF%BC%88%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%89/"/>
+    <url>/2026/01/11/%E9%80%83%E7%A6%BB%E5%A1%94%E7%A7%91%E5%A4%AB%E7%A6%BB%E7%BA%BF%E7%89%88%E8%81%94%E6%9C%BA%E6%8C%87%E5%8D%97%EF%BC%88%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="引言">0. 引言</h1><p>逃离塔科夫离线版实现联机，一般有以下几种方式：</p><ol type="1"><li><strong>拥有公网 IPv4</strong>：可以直接进行联机。</li><li><strong>处于同一局域网</strong>：可以直接联机。</li><li><strong>无公网 IPv4</strong>：使用 RadminLAN等虚拟局域网工具联机。</li><li><strong>无公网 IPv4</strong>：使用 FRP 等内网穿透技术联机。</li></ol><p>前三种情况比较简单，网上资料也较多，这里不再重复说明。本文将主要针对第4 种情况展开讲解。</p><p>实际上，使用内网穿透联机并不复杂，但目前简体中文互联网上相关的完整资料较少，大多只有零散的讨论（如贴吧用户<ahref="https://tieba.baidu.com/p/10163356775">敲里猫</a>、<ahref="https://tieba.baidu.com/p/9780098808?pid=152337016426&amp;cid=0#152337016426">咸鱼_相惜</a>等的帖子），往往没有说明具体原理和配置方法。即便是一些较详细的教程（如B 站用户<ahref="https://www.bilibili.com/opus/915622650279100425">“神龙烈焰美利桃”的文章</a>），也没有涉及Fika 联机模组的配置与使用。</p><p>经过笔者调研，目前在简体中文网络中，<strong>尚未出现系统讲解“FiKa联机模组 + FRP 内网穿透”方案的完整指南</strong>。</p><p>本文的主要贡献如下：<br />1. <strong>首次系统性地提出并详细讲解</strong>如何利用 FiKa 联机模组配合FRP内网穿透，实现逃离塔科夫离线版的多人在线功能，填补了该领域中文教程的空白。<br />2.<strong>提供了一套可实操、可复现的解决方案</strong>，尤其适用于没有公网IPv4 的用户，涵盖了服务端配置、客户端连接及背后的网络通信原理。<br />3.<strong>通过实际测试验证了该方案的可行性</strong>，并总结了常见问题与调试建议，确保连接的稳定性与易用性。</p><h1 id="实现方法">1. 实现方法</h1><p>本文介绍的联机方案基于逃离塔科夫离线版以及 <ahref="https://github.com/project-fika/Fika-Plugin">Fika联机模组</a>。</p><blockquote><p>以下将介绍一种典型场景，希望读者能理解联机的基本原理，并根据自身网络环境灵活调整。联机的核心问题在于：<strong>让游戏客户端能够正确连接到对应的游戏服务器</strong>。</p></blockquote><h3 id="角色与定义">角色与定义</h3><ol type="1"><li><strong>公网服务器</strong>：一台具有公网 IPv4 的阿里云服务器，记作<strong>S</strong>，其公网 IP 记为 <strong>IP_public</strong>。</li><li><strong>后端服务器主机</strong>：运行 <code>SPT.Server.exe</code>的本地主机，记作 <strong>L1</strong>。该主机没有公网IPv4。SPT.Server.exe 会在本地 TCP 6969 端口启动一个 HTTPS服务（称为后端服务器/Backend Server），负责玩家 IP登记、登录管理等。</li><li><strong>房主玩家</strong>：负责创建并主持游戏战局的玩家，其主机记作<strong>L2</strong>。该主机同样没有公网 IPv4。游戏将在该主机上监听 UDP25565 端口，所有 AI 计算与战局逻辑均由此主机负责。</li><li><strong>普通玩家</strong>：其他参与游戏的玩家，记作 <strong>P1, P2,…</strong>。他们不运行SPT.Server.exe，也不主持战局，仅作为客户端加入游戏。</li></ol><blockquote><p>本文假设读者已了解 FRP的基本用法，即能够将远程服务器的某个端口映射到本地端口。如不熟悉，建议先学习FRP 基础再继续阅读。</p></blockquote><h3 id="联机原理说明">联机原理说明</h3><p>玩家需要在 <code>SPT.Launcher.exe</code> 中设置 URL，指向运行SPT.Server.exe 的地址。启动游戏后，Fika 模组会将玩家的 <strong>局域网IP（LAN IP）</strong>、<strong>公网 IP（WAN IP）</strong> 以及 UDP端口（默认为 25565）上报给后端服务器。</p><p>当房主开启战局，其他玩家点击“加入”时，游戏会从后端服务器获取房主上报的IP 和端口，并尝试直接连接。</p><p>Fika 设置中的 <strong>“强制IP”</strong>用于手动指定上报给后端服务器的公网 IP；而 <strong>“强制绑定IP”</strong>则用于设定游戏服务器（25565 端口）绑定的本地网络接口。例如：<br />- 设置为 <code>127.0.0.1</code>，则只能通过 <code>127.0.0.1:25565</code>访问；<br />- 设置为 <code>192.168.0.103</code>，则只能通过该 IP 访问；<br />- 设置为 <code>0.0.0.0</code>，则可通过本机的任意 IP 访问。</p><p>因此，一般情况下<strong>“强制绑定IP”建议设置为<code>0.0.0.0</code></strong>。</p><h3 id="具体配置步骤">具体配置步骤</h3><ol type="1"><li><p>在阿里云服务器 <strong>S</strong> 上启动 FRP 服务端。</p></li><li><p>在 <strong>L1</strong> 上运行 <code>SPT.Server.exe</code>，并配置FRP 客户端，将本地的 TCP 6969 端口映射到<code>IP_public:6969</code>。</p></li><li><p>所有玩家在 <code>SPT.Launcher.exe</code> 中将 URL 设置为<strong><code>https://IP_public:6969</code></strong>。</p><blockquote><p>如果 SPT.Server.exe 就运行在某一玩家的电脑上，该玩家可直连<code>https://127.0.0.1:6969</code>。总之，要确保能访问到后端服务器。</p></blockquote></li><li><p><strong>房主玩家（L2）的设置</strong><br /><strong>游戏内设置（Fika 模组）</strong><br />启动游戏后，按下 <code>F12</code> 打开 Fika 设置界面：</p><ul><li>点击 <strong>“Advanced Settings” → “ExpandAll”</strong>，滚动至底部；</li><li>将 <strong>“强制IP”</strong> 填写为服务器的公网地址<strong><code>IP_public</code></strong>；</li><li>将 <strong>“强制绑定IP”</strong> 设置为<strong><code>0.0.0.0</code></strong>。</li></ul><p><strong>完成上述游戏内设置后，务必重启游戏，否则配置不生效。</strong><br /><strong>完成上述游戏内设置后，务必重启游戏，否则配置不生效。。</strong><br /><strong>完成上述游戏内设置后，务必重启游戏，否则配置不生效。。</strong></p><p><strong>游戏外设置（FRP 客户端）</strong><br />在房主的电脑上配置 FRP 客户端，将本地的 <code>127.0.0.1:25565</code>映射至公网地址 <code>IP_public:25565</code>。</p><blockquote><p>注：如果在 Fika 设置中修改了游戏监听端口，FRP中的端口映射也需对应调整。</p></blockquote></li><li><p>房主重启游戏后，创建战局；其他玩家加入该战局。若一切配置正确，即可成功联机。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>游戏</category>
+      
+      <category>逃离塔科夫</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>1.99 以上版本微软大战代码（Microsoft VS Code） 连接 centos 7的解决方案（CentOS 7 安装升级 glibc）</title>
     <link href="/2026/01/11/1-99-%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E5%BE%AE%E8%BD%AF%E5%A4%A7%E6%88%98%E4%BB%A3%E7%A0%81%EF%BC%88Microsoft-VS-Code%EF%BC%89-%E8%BF%9E%E6%8E%A5-centos-7%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%88CentOS-7-%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7-glibc%EF%BC%89/"/>
     <url>/2026/01/11/1-99-%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E5%BE%AE%E8%BD%AF%E5%A4%A7%E6%88%98%E4%BB%A3%E7%A0%81%EF%BC%88Microsoft-VS-Code%EF%BC%89-%E8%BF%9E%E6%8E%A5-centos-7%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%88CentOS-7-%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7-glibc%EF%BC%89/</url>

@@ -241,6 +241,60 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/13/vscode%E9%94%99%E8%AF%AF%EF%BC%9AUnable%20to%20connect%20to%20VS%20Code%20server_%20Error%20in%20request/" target="_self">
+          vscode错误：Unable to connect to VS Code server: Error in request.
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/13/vscode%E9%94%99%E8%AF%AF%EF%BC%9AUnable%20to%20connect%20to%20VS%20Code%20server_%20Error%20in%20request/" target="_self">
+        <div>
+          这种错误常见于vscode自动连上了之前失效的socket，解决方案就是，关闭vscode，然后用ssh进入服务器，kill掉所有的vscode进程 1ps -fu $USER | grep vscode | grep -v grep | awk &#x27;&#123;print $2&#125;&#x27; | xargs kill 然后重启vscode即可。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-13 14:35" pubdate>
+              2024-01-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/27/AP%E9%9A%94%E7%A6%BB%E7%9A%84%E8%AE%BE%E5%A4%87%E4%BA%92%E7%9B%B8%E8%AE%BF%E9%97%AE/" target="_self">
           AP隔离的设备互相访问
         </a>
@@ -721,60 +775,6 @@
   
   
 
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/08/09/%E8%AE%BE%E7%BD%AE%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-          设置路由表连接服务器
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/09/%E8%AE%BE%E7%BD%AE%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-        <div>
-          添加路由规则让服务器走特定网关 1234sudo ip route add 172.19.128.224/28 via 172.24.64.1sudo ip route add 211.81.55.170 via 172.24.64.1sudo ip route add 211.81.55.176 via 172.24.64.1sudo ip route add 211.81.55.158 vi
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-09 14:55" pubdate>
-              2023-08-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
-  
   
 
       </span>
